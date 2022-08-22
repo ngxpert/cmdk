@@ -6,7 +6,17 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "contributors:add": "all-contributors add",
+    "hooks:pre-commit": "node hooks/pre-commit.js",
+    "commit": "cz",
+    "deploy": "ng deploy --base-href=/cmdk/",
+    "copy": "cpx README.md dist/ngneat/cmdk",
+    "build:lib": "ng build @ngneat/cmdk --prod && npm run copy",
+    "test:lib": "ng test @ngneat/cmdk",
+    "test:lib:headless": "cross-env CI=true npm run test:lib",
+    "postbuild:lib": "npm run build --prefix projects/ngneat/cmdk",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +28,7 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "@ngneat/lib": "^5.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -33,6 +44,38 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.7.2"
+    "ng-packagr": "^14.1.0",
+    "typescript": "~4.7.2",
+    "cpx": "^1.5.0",
+    "jsonc-parser": "^3.1.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^19.0.3",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "all-contributors-cli": "^6.20.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "husky": "^8.0.1",
+    "cross-env": "^7.0.3",
+    "commitizen": "^4.2.5",
+    "@ngneat/spectator": "^11.1.3",
+    "angular-cli-ghpages": "^1.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,ts,html,component.html}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run hooks:pre-commit && lint-staged"
+    }
   }
 }

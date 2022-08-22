@@ -1,0 +1,26 @@
+name: Publish the library
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: NPM install, lint, build, test and release
+        env:
+            GH_TOKEN: ${{ secrets.GH_TOKEN }}
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm ci
+          npm run lint
+          npm run build -- --prod
+          npm run test -- --watch=false --browsers=ChromeHeadless
+          npm run build:lib
+          npx semantic-release --debug
