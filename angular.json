@@ -134,6 +134,15 @@
             "tsConfig": "projects/ngneat/cmdk/tsconfig.spec.json",
             "karmaConfig": "projects/ngneat/cmdk/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngneat/cmdk/**/*.ts",
+              "projects/ngneat/cmdk/**/*.html"
+            ]
+          }
         }
       }
     }
