@@ -1,3 +1,5 @@
+import { EventEmitter } from '@angular/core';
+
 export interface CommandProps {
   /**
    * Accessible label for this command menu. Not shown visibly.
@@ -21,5 +23,5 @@ export interface CommandProps {
   /**
    * Event handler called when the selected item of the menu changes.
    */
-  valueChanged?: (value: string) => void;
+  valueChanged: EventEmitter<string>;
 }

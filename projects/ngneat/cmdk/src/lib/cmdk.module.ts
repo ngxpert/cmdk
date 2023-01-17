@@ -1,27 +1,31 @@
 import { NgModule } from '@angular/core';
-import { DialogComponent } from './components/dialog/dialog.component';
-import { ListComponent } from './components/list/list.component';
-import { ListItemComponent } from './components/list-item/list-item.component';
-import { SeparatorComponent } from './components/separator/separator.component';
-import { InputComponent } from './components/input/input.component';
-import { GroupComponent } from './components/group/group.component';
-import { EmptyComponent } from './components/empty/empty.component';
-import { LoaderComponent } from './components/loader/loader.component';
+import { InputDirective } from './directives/input/input.directive';
+import { EmptyDirective } from './directives/empty/empty.directive';
+import { GroupDirective } from './directives/group/group.directive';
+import { ListDirective } from './directives/list/list.directive';
+import { ListItemDirective } from './directives/list-item/list-item.directive';
+import { SeparatorDirective } from './directives/separator/separator.directive';
 import { CommandComponent } from './components/command/command.component';
 
 @NgModule({
   declarations: [
-    DialogComponent,
-    ListComponent,
-    ListItemComponent,
-    SeparatorComponent,
-    InputComponent,
-    GroupComponent,
-    EmptyComponent,
-    LoaderComponent,
     CommandComponent,
+    InputDirective,
+    EmptyDirective,
+    GroupDirective,
+    ListDirective,
+    ListItemDirective,
+    SeparatorDirective,
   ],
   imports: [],
-  exports: [],
+  exports: [
+    CommandComponent,
+    InputDirective,
+    EmptyDirective,
+    GroupDirective,
+    ListDirective,
+    ListItemDirective,
+    SeparatorDirective,
+  ],
 })
 export class CmdkModule {}
