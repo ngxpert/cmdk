@@ -1,10 +1,8 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[cmdkListItem]'
+  selector: '[cmdkListItem]',
 })
 export class ListItemDirective {
-
-  constructor() { }
-
+  constructor(public _elementRef: ElementRef<HTMLLIElement>) {}
 }
