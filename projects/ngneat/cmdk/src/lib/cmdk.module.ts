@@ -6,6 +6,7 @@ import { ListDirective } from './directives/list/list.directive';
 import { ListItemDirective } from './directives/list-item/list-item.directive';
 import { SeparatorDirective } from './directives/separator/separator.directive';
 import { CommandComponent } from './components/command/command.component';
+import { DynamicViewModule } from '@ngneat/overview';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { CommandComponent } from './components/command/command.component';
     ListItemDirective,
     SeparatorDirective,
   ],
-  imports: [],
+  imports: [DynamicViewModule],
   exports: [
     CommandComponent,
     InputDirective,

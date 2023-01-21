@@ -1,3 +1,7 @@
-<div [attr.aria-label]="label">
-    <<ng-content></ng-content>
-</div>
+<ng-template #cmdkContent>
+  <div [attr.aria-label]="label">
+    <ng-content></ng-content>
+  </div>
+</ng-template>
+
+<ng-container *dynamicView="cmdkContent"></ng-container>
