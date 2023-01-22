@@ -1,19 +1,21 @@
 <cmdk-command label="Command Menu">
-    <input cmdkInput type="search">
+    <input cmdkInput />
 
-    <ul cmdkList>
+    <cmdk-list>
 
-        <li cmdkEmpty>No results found.</li>
+        <div *cmdkEmpty>No results found.</div>
 
-        <li cmdkGroup heading="Letters">
-            <ul cmdkList>
-                <li cmdkListItem>a</li>
-                <li cmdkListItem>b</li>
-                <li cmdkSeparator></li>
-                <li cmdkListItem>c</li>
-            </ul>
-        </li>
+        <cmdk-group label="Letters">
+           <cmdk-list>
+                <cmdk-item>a</cmdk-item>
+                <cmdk-item>b</cmdk-item>
+                 <cmdk-separator />
+                <cmdk-item>c</cmdk-item>
+             </cmdk-list>
+        </cmdk-group>
 
-        <li cmdkListItem>Apple</li>
-    </ul>
+        <cmdk-separator />
+
+        <cmdk-item>Apple</cmdk-item>
+    </cmdk-list>
 </cmdk-command>

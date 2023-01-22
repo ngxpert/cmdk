@@ -1,10 +1,15 @@
 import { EventEmitter } from '@angular/core';
+import { Content } from '@ngneat/overview';
 
-export interface CommandProps {
+export interface CmdkCommandProps {
   /**
-   * Accessible label for this command menu. Not shown visibly.
+   * Label for this command menu. Can be shown visibly.
    */
-  label?: string;
+  label?: Content;
+  /**
+   * Accessible Label for this command menu. Not shown visibly.
+   */
+  ariaLabel?: string;
   /**
    * Optionally set to `false` to turn off the automatic filtering and sorting.
    * If `false`, you must conditionally render valid items based on the search query yourself.
@@ -24,4 +29,32 @@ export interface CommandProps {
    * Event handler called when the selected item of the menu changes.
    */
   valueChanged: EventEmitter<string>;
+}
+
+export interface CmdkListProps {
+  /**
+   * Label for this command menu. Can be shown visibly.
+   */
+  label?: Content;
+  /**
+   * Accessible Label for this command menu. Not shown visibly.
+   */
+  ariaLabel?: string;
+}
+
+export interface CmdkGroupProps {
+  /**
+   * Label for this command menu. Can be shown visibly.
+   */
+  label?: Content;
+  /**
+   * Accessible Label for this command menu. Not shown visibly.
+   */
+  ariaLabel?: string;
+}
+export interface CmdkListItemProps {
+  /**
+   * Contextual Value of the list-item
+   */
+  value: string | undefined;
 }

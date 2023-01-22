@@ -1,4 +1,10 @@
-import { Attribute, Directive, HostBinding, HostListener } from '@angular/core';
+import {
+  Attribute,
+  Directive,
+  HostBinding,
+  HostListener,
+  inject,
+} from '@angular/core';
 import { CmdkService } from '../../cmdk.service';
 
 @Directive({
@@ -6,26 +12,22 @@ import { CmdkService } from '../../cmdk.service';
 })
 export class InputDirective {
   private _searchValue: string | undefined;
-
-  constructor(
-    @Attribute('value') value: string,
-    private _cmdkService: CmdkService
-  ) {
-    this.search = value;
-  }
+  private _cmdkService = inject(CmdkService);
 
   @HostBinding('class.cmdk-input')
   get cmdkInputClass() {
     return true;
   }
 
-  @HostListener('change', ['event.target.value'])
-  set search(value: string | undefined) {
-    this._searchValue = value;
-    this._cmdkService.setSearch(value);
+  @HostBinding('attr.type')
+  get cmdkInputType() {
+    return 'search';
   }
 
-  get search() {
-    return this._searchValue;
+  @HostListener('change', ['$event.target.value'])
+  search(value: string | undefined) {
+    console.log('value', value);
+    this._searchValue = value;
+    this._cmdkService.setSearch(value);
   }
 }

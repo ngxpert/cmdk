@@ -1,7 +1,6 @@
 import {
   Component,
   EventEmitter,
-  HostBinding,
   Input,
   OnInit,
   Output,
@@ -11,16 +10,20 @@ import {
   ViewChild,
   ContentChildren,
   QueryList,
-  AfterViewInit,
   AfterContentInit,
   ElementRef,
+  inject,
 } from '@angular/core';
+import { Content } from '@ngneat/overview';
+import { UntilDestroy } from '@ngneat/until-destroy';
+import { filter } from 'rxjs';
 import { CmdkService } from '../../cmdk.service';
-import { ListItemDirective } from '../../directives/list-item/list-item.directive';
-import { ListDirective } from '../../directives/list/list.directive';
-import { CommandProps } from '../../types';
+import { CmdkCommandProps } from '../../types';
+import { ItemComponent } from '../item/item.component';
+import { ListComponent } from '../list/list.component';
 
 let commandId = 0;
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'cmdk-command',
   templateUrl: './command.component.html',
@@ -30,10 +33,9 @@ let commandId = 0;
   encapsulation: ViewEncapsulation.None,
   exportAs: 'cmdkCommand',
 })
-export class CommandComponent
-  implements CommandProps, OnInit, AfterContentInit
-{
-  @Input() label?: string;
+export class CommandComponent implements CmdkCommandProps, OnInit {
+  @Input() label?: Content;
+  @Input() ariaLabel?: string;
   @Input() shouldFilter?: boolean;
   @Input() filter?: (value: string, search: string) => number;
   @Input() value?: string;
@@ -47,32 +49,35 @@ export class CommandComponent
   @ViewChild('panel') panel: ElementRef | undefined;
 
   /** Reference to all lists within the cmdk-command. */
-  @ContentChildren(ListDirective, { descendants: true }) lists:
-    | QueryList<ListDirective>
+  @ContentChildren(ListComponent, { descendants: true }) lists:
+    | QueryList<ListComponent>
     | undefined;
   /** Reference to all list-items within the cmdk-command. */
-  @ContentChildren(ListItemDirective, { descendants: true }) items:
-    | QueryList<ListItemDirective>
+  @ContentChildren(ItemComponent, { descendants: true }) items:
+    | QueryList<ItemComponent>
     | undefined;
 
   allItems = new Set<string>(); // [...itemIds];
   allGroups = new Map<string, Set<string>>(); // groupId → [...itemIds]
   ids = new Map<string, string>(); // id → value
 
-  constructor(private _cmdkService: CmdkService) {}
+  private _cmdkService = inject(CmdkService);
 
   readonly panelId = `cmdk-command-${commandId++}`;
 
   ngOnInit() {
-    this._cmdkService.search$.subscribe((s) => this.handleSearch(s));
+    this._cmdkService.search$
+      .pipe(filter((s) => s !== undefined))
+      .subscribe((s) => this.handleSearch(s!));
   }
 
-  ngAfterContentInit(): void {
-    console.log(this.lists?.length);
-    this.items?.forEach((i) =>
-      console.log(i._elementRef.nativeElement.textContent)
-    );
+  handleSearch(search: string) {
+    this.items?.forEach((item) => {
+      if (item.value && item.value.search(search) >= 0) {
+        item.visible = true;
+      } else {
+        item.visible = false;
+      }
+    });
   }
-
-  handleSearch(search: string | undefined) {}
 }

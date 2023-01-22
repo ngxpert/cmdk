@@ -1,32 +1,33 @@
 import { NgModule } from '@angular/core';
 import { InputDirective } from './directives/input/input.directive';
 import { EmptyDirective } from './directives/empty/empty.directive';
-import { GroupDirective } from './directives/group/group.directive';
-import { ListDirective } from './directives/list/list.directive';
-import { ListItemDirective } from './directives/list-item/list-item.directive';
-import { SeparatorDirective } from './directives/separator/separator.directive';
 import { CommandComponent } from './components/command/command.component';
 import { DynamicViewModule } from '@ngneat/overview';
+import { ListComponent } from './components/list/list.component';
+import { GroupComponent } from './components/group/group.component';
+import { SeparatorComponent } from './components/separator/separator.component';
+import { CommonModule } from '@angular/common';
+import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
   declarations: [
     CommandComponent,
     InputDirective,
     EmptyDirective,
-    GroupDirective,
-    ListDirective,
-    ListItemDirective,
-    SeparatorDirective,
+    ListComponent,
+    GroupComponent,
+    SeparatorComponent,
+    ItemComponent,
   ],
-  imports: [DynamicViewModule],
+  imports: [CommonModule, DynamicViewModule],
   exports: [
     CommandComponent,
     InputDirective,
     EmptyDirective,
-    GroupDirective,
-    ListDirective,
-    ListItemDirective,
-    SeparatorDirective,
+    ListComponent,
+    GroupComponent,
+    SeparatorComponent,
+    ItemComponent,
   ],
 })
 export class CmdkModule {}
