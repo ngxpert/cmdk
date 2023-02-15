@@ -26,7 +26,6 @@ export class InputDirective {
 
   @HostListener('change', ['$event.target.value'])
   search(value: string | undefined) {
-    console.log('value', value);
     this._searchValue = value;
     this._cmdkService.setSearch(value);
   }

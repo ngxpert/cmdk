@@ -3,7 +3,7 @@ import { InputDirective } from './directives/input/input.directive';
 import { EmptyDirective } from './directives/empty/empty.directive';
 import { CommandComponent } from './components/command/command.component';
 import { DynamicViewModule } from '@ngneat/overview';
-import { ListComponent } from './components/list/list.component';
+// import { ListComponent } from './components/list/list.component';
 import { GroupComponent } from './components/group/group.component';
 import { SeparatorComponent } from './components/separator/separator.component';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { ItemComponent } from './components/item/item.component';
     CommandComponent,
     InputDirective,
     EmptyDirective,
-    ListComponent,
+    // ListComponent,
     GroupComponent,
     SeparatorComponent,
     ItemComponent,
@@ -24,7 +24,7 @@ import { ItemComponent } from './components/item/item.component';
     CommandComponent,
     InputDirective,
     EmptyDirective,
-    ListComponent,
+    // ListComponent,
     GroupComponent,
     SeparatorComponent,
     ItemComponent,

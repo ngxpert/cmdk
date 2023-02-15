@@ -1,3 +1,7 @@
-<div class="cmdk-list" role="group" [attr.aria-label]="ariaLabel" *ngIf="hasContent">
-  <ng-content></ng-content>
-</div>
+<ng-template #cmdkList>
+  <div class="cmdk-list" role="group" [attr.aria-label]="ariaLabel">
+    <ng-content [select]="parentGroup ? 'cmdk-group' : 'cmdk-item'"></ng-content>
+  </div>
+</ng-template>
+
+<ng-container *dynamicView="cmdkList"></ng-container>

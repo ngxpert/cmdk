@@ -1,21 +1,17 @@
 <cmdk-command label="Command Menu">
-    <input cmdkInput />
+  <input cmdkInput />
 
-    <cmdk-list>
+  <div *cmdkEmpty>No results found.</div>
 
-        <div *cmdkEmpty>No results found.</div>
+  
+  <cmdk-group label="Projects">
+    <cmdk-item value="search_projects">Search Projects</cmdk-item>
+    <cmdk-item value="add_project">&plus; Add Project</cmdk-item>
+    <cmdk-separator></cmdk-separator>
+    <cmdk-item value="view_all_projects">View All Projects</cmdk-item>
+  </cmdk-group>
 
-        <cmdk-group label="Letters">
-           <cmdk-list>
-                <cmdk-item>a</cmdk-item>
-                <cmdk-item>b</cmdk-item>
-                 <cmdk-separator />
-                <cmdk-item>c</cmdk-item>
-             </cmdk-list>
-        </cmdk-group>
+  <cmdk-separator></cmdk-separator>
 
-        <cmdk-separator />
-
-        <cmdk-item>Apple</cmdk-item>
-    </cmdk-list>
+  <cmdk-item value="help">Help</cmdk-item>
 </cmdk-command>

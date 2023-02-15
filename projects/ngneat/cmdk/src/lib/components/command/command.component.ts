@@ -13,11 +13,13 @@ import {
   AfterContentInit,
   ElementRef,
   inject,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Content } from '@ngneat/overview';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { filter } from 'rxjs';
 import { CmdkService } from '../../cmdk.service';
+import { EmptyDirective } from '../../directives/empty/empty.directive';
 import { CmdkCommandProps } from '../../types';
 import { ItemComponent } from '../item/item.component';
 import { ListComponent } from '../list/list.component';
@@ -33,7 +35,9 @@ let commandId = 0;
   encapsulation: ViewEncapsulation.None,
   exportAs: 'cmdkCommand',
 })
-export class CommandComponent implements CmdkCommandProps, OnInit {
+export class CommandComponent
+  implements CmdkCommandProps, OnInit, AfterContentInit
+{
   @Input() label?: Content;
   @Input() ariaLabel?: string;
   @Input() shouldFilter?: boolean;
@@ -53,31 +57,36 @@ export class CommandComponent implements CmdkCommandProps, OnInit {
     | QueryList<ListComponent>
     | undefined;
   /** Reference to all list-items within the cmdk-command. */
-  @ContentChildren(ItemComponent, { descendants: true }) items:
-    | QueryList<ItemComponent>
+  @ContentChildren(ItemComponent) items!: QueryList<ItemComponent>;
+  /** Reference to all empty-items within the cmdk-command. */
+  @ContentChildren(EmptyDirective) emptyList:
+    | QueryList<EmptyDirective>
     | undefined;
 
-  allItems = new Set<string>(); // [...itemIds];
-  allGroups = new Map<string, Set<string>>(); // groupId → [...itemIds]
-  ids = new Map<string, string>(); // id → value
+  filteredItems: ItemComponent[] = [];
 
   private _cmdkService = inject(CmdkService);
 
   readonly panelId = `cmdk-command-${commandId++}`;
 
+  constructor(private _cdr: ChangeDetectorRef) {}
+
   ngOnInit() {
-    this._cmdkService.search$
-      .pipe(filter((s) => s !== undefined))
-      .subscribe((s) => this.handleSearch(s!));
+    this._cmdkService.search$.subscribe((s) => this.handleSearch(s));
   }
 
-  handleSearch(search: string) {
-    this.items?.forEach((item) => {
-      if (item.value && item.value.search(search) >= 0) {
-        item.visible = true;
-      } else {
-        item.visible = false;
+  ngAfterContentInit(): void {
+    this.handleSearch('');
+  }
+
+  handleSearch(search = '') {
+    this.filteredItems = this.items.filter((item) => {
+      if (!search) {
+        return true;
       }
+      const filterValue = search.toLowerCase();
+      return item.value.toLowerCase().includes(filterValue);
     });
+    this._cdr.markForCheck();
   }
 }

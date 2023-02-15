@@ -1,25 +1,20 @@
 import {
   Directive,
   HostBinding,
-  inject,
   Input,
-  OnInit,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { takeWhile } from 'rxjs';
-import { CmdkService } from '../../cmdk.service';
 
 @UntilDestroy({ checkProperties: true })
 @Directive({
   selector: '[cmdkEmpty]',
 })
-export class EmptyDirective implements OnInit {
+export class EmptyDirective {
   @Input() shouldChange = true;
 
   private _hasView = false;
-  private _cmdkService = inject(CmdkService);
 
   constructor(
     private _templateRef: TemplateRef<any>,
@@ -29,12 +24,6 @@ export class EmptyDirective implements OnInit {
   @HostBinding('class.cmdk-empty')
   get cmdkEmptyClass() {
     return true;
-  }
-
-  ngOnInit(): void {
-    this._cmdkService.isEmpty$
-      .pipe(takeWhile(() => !this.shouldChange))
-      .subscribe((isEmpty) => (this.cmdkEmpty = isEmpty));
   }
 
   @Input() set cmdkEmpty(condition: boolean | string) {
