@@ -1,8 +1,8 @@
 <ng-template #cmdkGroup>
-  <ng-container *ngIf="filteredItems.length">
+  <ng-container *ngIf="showGroup">
     <div role="presentation" *ngIf="label" class="cmdk-group-label">{{ label }}</div>
     <div class="cmdk-group" role="group" [attr.aria-label]="ariaLabel">
-      <ng-container *ngFor="let cmdkItem of filteredItems" [ngTemplateOutlet]="cmdkItem.templateRef"></ng-container>
+      <ng-content></ng-content>
     </div>
   </ng-container>
 </ng-template>

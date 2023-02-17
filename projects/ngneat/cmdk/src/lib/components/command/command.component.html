@@ -1,7 +1,6 @@
 <ng-template #cmdkContent>
   <div class="cmdk-command" role="listbox" [attr.aria-label]="ariaLabel" [id]="panelId" #panel>
     <ng-content></ng-content>
-    <ng-container *ngFor="let cmdkItem of filteredItems" [ngTemplateOutlet]="cmdkItem.templateRef"></ng-container>
   </div>
 </ng-template>
 

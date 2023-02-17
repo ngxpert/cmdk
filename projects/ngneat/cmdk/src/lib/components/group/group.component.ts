@@ -1,53 +1,46 @@
 import {
   AfterContentInit,
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ContentChildren,
   inject,
   Input,
-  OnInit,
   QueryList,
 } from '@angular/core';
 import { Content } from '@ngneat/overview';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
+import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkGroupProps } from '../../types';
-import { ItemComponent } from '../item/item.component';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'cmdk-group',
   templateUrl: './group.component.html',
   styleUrls: ['./group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GroupComponent
-  implements CmdkGroupProps, OnInit, AfterContentInit
-{
+export class GroupComponent implements CmdkGroupProps, AfterContentInit {
   @Input() label?: Content;
   @Input() ariaLabel?: string;
-  @ContentChildren(ItemComponent) items!: QueryList<ItemComponent>;
-  private _cmdkService = inject(CmdkService);
-  filteredItems: ItemComponent[] = [];
+
+  @ContentChildren(ItemDirective, { descendants: true })
+  items!: QueryList<ItemDirective>;
+
+  private cmdkService = inject(CmdkService);
+  showGroup = true;
 
   constructor(private _cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    this._cmdkService.search$.subscribe((s) => this.handleSearch(s));
+  ngAfterContentInit() {
+    this.cmdkService.search$
+      .pipe(untilDestroyed(this))
+      .subscribe(() => this.handleSearch());
   }
 
-  ngAfterContentInit(): void {
-    this.handleSearch('');
-  }
-
-  handleSearch(search = '') {
-    this.filteredItems = this.items.filter((item) => {
-      if (!search) {
-        return true;
-      }
-      const filterValue = search.toLowerCase();
-      return item.value.toLowerCase().includes(filterValue);
-    });
+  handleSearch() {
+    this.showGroup = this.items.some((item) => item.display === 'initial');
     this._cdr.markForCheck();
   }
 }

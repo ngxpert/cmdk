@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CmdkService } from '../../cmdk.service';
 
 /**
@@ -9,6 +9,7 @@ import { CmdkService } from '../../cmdk.service';
   selector: 'cmdk-separator',
   templateUrl: './separator.component.html',
   styleUrls: ['./separator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SeparatorComponent {
   private _cmdkService = inject(CmdkService);
