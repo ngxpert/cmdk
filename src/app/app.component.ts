@@ -29,4 +29,8 @@ export class AppComponent {
       ],
     },
   ];
+
+  filter(value: string, search: string) {
+    return value === search;
+  }
 }

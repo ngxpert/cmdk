@@ -1,17 +1,48 @@
-<cmdk-command label="Command Menu">
-  <input cmdkInput />
+<section>
+  <div class="example-container">
+  <h2>Default</h2>
+    <cmdk-command label="Command Menu">
+      <input cmdkInput />
+    
+      <div *cmdkEmpty>No results found.</div>
+    
+      
+      <cmdk-group label="Projects">
+        <button cmdkItem value="search_projects">Search Projects</button>
+        <button cmdkItem value="add_project">&plus; Add Project</button>
+        <cmdk-separator></cmdk-separator>
+        <button cmdkItem value="view_all_projects">View All Projects</button>
+      </cmdk-group>
+    
+      <cmdk-separator></cmdk-separator>
+    
+      <button cmdkItem value="help">Help</button>
+    </cmdk-command>
+  </div>
+</section>
+<section>
+  <div class="example-container">
+    <h2>With custom filter</h2>
+    <pre><code>
+      {{ filter.toString() }}
+    </code></pre>
+    <cmdk-command label="Command Menu" [filter]="filter">
+      <input cmdkInput />
+    
+      <div *cmdkEmpty>No results found.</div>
+    
+      
+      <cmdk-group label="Projects">
+        <button cmdkItem value="search_projects">Search Projects</button>
+        <button cmdkItem value="add_project">&plus; Add Project</button>
+        <cmdk-separator></cmdk-separator>
+        <button cmdkItem value="view_all_projects">View All Projects</button>
+      </cmdk-group>
+    
+      <cmdk-separator></cmdk-separator>
+    
+      <button cmdkItem value="help">Help</button>
+    </cmdk-command>
+  </div>
+</section>
 
-  <div *cmdkEmpty>No results found.</div>
-
-  
-  <cmdk-group label="Projects">
-    <button cmdkItem value="search_projects">Search Projects</button>
-    <button cmdkItem value="add_project">&plus; Add Project</button>
-    <cmdk-separator></cmdk-separator>
-    <button cmdkItem value="view_all_projects">View All Projects</button>
-  </cmdk-group>
-
-  <cmdk-separator></cmdk-separator>
-
-  <button cmdkItem value="help">Help</button>
-</cmdk-command>

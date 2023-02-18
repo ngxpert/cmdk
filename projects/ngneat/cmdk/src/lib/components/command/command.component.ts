@@ -32,13 +32,13 @@ let commandId = 0;
 export class CommandComponent implements CmdkCommandProps, AfterContentInit {
   @Input() label?: Content;
   @Input() ariaLabel?: string;
-  @Input() shouldFilter?: boolean;
-  @Input() filter?: (value: string, search: string) => number;
+  @Input() shouldFilter = true;
+  @Input() filter?: (value: string, search: string) => boolean;
   @Input() value?: string;
   @Output() valueChanged = new EventEmitter<string>();
 
   @ContentChildren(ItemDirective, { descendants: true })
-  items!: QueryList<ItemDirective>;
+  items: QueryList<ItemDirective> | undefined;
   @ContentChild(EmptyDirective) empty!: EmptyDirective;
 
   readonly panelId = `cmdk-command-${commandId++}`;
@@ -46,14 +46,20 @@ export class CommandComponent implements CmdkCommandProps, AfterContentInit {
   private cmdkService = inject(CmdkService);
 
   ngAfterContentInit() {
-    this.cmdkService.search$
-      .pipe(untilDestroyed(this))
-      .subscribe((s) => this.handleSearch());
+    if (this.shouldFilter) {
+      this.cmdkService.search$
+        .pipe(untilDestroyed(this))
+        .subscribe(() => this.handleSearch());
+    }
+    if (this.items) {
+      this.items.first.active = true;
+    }
   }
 
   handleSearch() {
-    this.empty.cmdkEmpty = !this.items.some(
-      (item) => item.display === 'initial'
-    );
+    if (this.items) {
+      this.empty.cmdkEmpty = !this.items.some((item) => item.filtered);
+      this.items.first.active = true;
+    }
   }
 }

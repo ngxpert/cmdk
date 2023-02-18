@@ -2,19 +2,22 @@ import {
   Directive,
   ElementRef,
   HostBinding,
+  HostListener,
   inject,
   Input,
   OnInit,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
+import { CommandComponent } from '../../components/command/command.component';
 
-UntilDestroy({ checkProperties: true });
+@UntilDestroy({ checkProperties: true })
 @Directive({
   selector: '[cmdkItem]',
 })
 export class ItemDirective implements OnInit {
-  private _filtered = true;
+  filtered = true;
+  private _active = false;
   private _value: string = '';
   @Input()
   set value(value: string) {
@@ -26,11 +29,14 @@ export class ItemDirective implements OnInit {
 
   private _cmdkService = inject(CmdkService);
 
-  constructor(private _elementRef: ElementRef<HTMLButtonElement>) {}
+  constructor(
+    private _elementRef: ElementRef<HTMLButtonElement>,
+    private cmdkCommad: CommandComponent
+  ) {}
 
   @HostBinding('style.display')
   get display() {
-    return !this._filtered ? 'none' : 'initial';
+    return !this.filtered ? 'none' : 'initial';
   }
 
   @HostBinding('attr.role')
@@ -43,18 +49,42 @@ export class ItemDirective implements OnInit {
     return 'button';
   }
 
+  @HostBinding('class.cmdk-item-active')
+  get active() {
+    return this._active;
+  }
+  set active(value: boolean) {
+    this._active = value;
+  }
+
+  @HostListener('click')
+  onClick() {
+    this.cmdkCommad.valueChanged.emit(this.value);
+  }
+
+  @HostListener('keyup', ['$event'])
+  onKeyUp(ev: KeyboardEvent) {
+    if (ev.key === 'Enter') {
+      this.cmdkCommad.valueChanged.emit(this.value);
+    }
+  }
+
   ngOnInit() {
-    this._cmdkService.search$
-      .pipe(untilDestroyed(this))
-      .subscribe((s) => this.handleSearch(s));
+    if (this.cmdkCommad.shouldFilter) {
+      this._cmdkService.search$
+        .pipe(untilDestroyed(this))
+        .subscribe((s) => this.handleSearch(s));
+    }
   }
 
   handleSearch(search = '') {
     if (!search) {
-      this._filtered = true;
+      this.filtered = true;
     } else {
       const filterValue = search.toLowerCase();
-      this._filtered = this.value.toLowerCase().includes(filterValue);
+      this.filtered = this.cmdkCommad.filter
+        ? this.cmdkCommad.filter(this.value, search)
+        : this.value.toLowerCase().includes(filterValue);
     }
   }
 }

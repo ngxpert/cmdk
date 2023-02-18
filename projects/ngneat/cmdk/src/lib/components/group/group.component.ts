@@ -13,6 +13,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
 import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkGroupProps } from '../../types';
+import { CommandComponent } from '../command/command.component';
 
 @UntilDestroy({ checkProperties: true })
 @Component({
@@ -31,16 +32,21 @@ export class GroupComponent implements CmdkGroupProps, AfterContentInit {
   private cmdkService = inject(CmdkService);
   showGroup = true;
 
-  constructor(private _cdr: ChangeDetectorRef) {}
+  constructor(
+    private _cdr: ChangeDetectorRef,
+    private cmdkCommand: CommandComponent
+  ) {}
 
   ngAfterContentInit() {
-    this.cmdkService.search$
-      .pipe(untilDestroyed(this))
-      .subscribe(() => this.handleSearch());
+    if (this.cmdkCommand.shouldFilter) {
+      this.cmdkService.search$
+        .pipe(untilDestroyed(this))
+        .subscribe(() => this.handleSearch());
+    }
   }
 
   handleSearch() {
-    this.showGroup = this.items.some((item) => item.display === 'initial');
+    this.showGroup = this.items.some((item) => item.filtered);
     this._cdr.markForCheck();
   }
 }

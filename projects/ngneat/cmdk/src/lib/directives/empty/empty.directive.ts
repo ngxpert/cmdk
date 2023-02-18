@@ -6,6 +6,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { CommandComponent } from '../../components/command/command.component';
 
 @UntilDestroy({ checkProperties: true })
 @Directive({
@@ -18,7 +19,8 @@ export class EmptyDirective {
 
   constructor(
     private _templateRef: TemplateRef<any>,
-    private _viewContainer: ViewContainerRef
+    private _viewContainer: ViewContainerRef,
+    private cmdkCommand: CommandComponent
   ) {}
 
   @HostBinding('class.cmdk-empty')
@@ -27,7 +29,7 @@ export class EmptyDirective {
   }
 
   @Input() set cmdkEmpty(condition: boolean | string) {
-    if (condition && !this._hasView) {
+    if (this.cmdkCommand.shouldFilter && condition && !this._hasView) {
       this._viewContainer.createEmbeddedView(this._templateRef);
       this._hasView = true;
     } else if (!condition && this._hasView) {

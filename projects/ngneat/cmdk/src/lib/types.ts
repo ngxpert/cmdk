@@ -17,10 +17,9 @@ export interface CmdkCommandProps {
   shouldFilter?: boolean;
   /**
    * Custom filter function for whether each command menu item should matches the given search query.
-   * It should return a number between 0 and 1, with 1 being the best match and 0 being hidden entirely.
-   * By default, uses the `command-score` library.
+   * It should return a boolean, false being hidden entirely.
    */
-  filter?: (value: string, search: string) => number;
+  filter?: (value: string, search: string) => boolean;
   /**
    * Optional controlled state of the selected command menu item.
    */
