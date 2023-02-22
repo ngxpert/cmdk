@@ -12,7 +12,6 @@ import {
 @Component({
   selector: 'cmdk-separator',
   templateUrl: './separator.component.html',
-  styleUrls: ['./separator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SeparatorComponent {

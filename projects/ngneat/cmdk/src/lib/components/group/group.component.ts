@@ -21,7 +21,6 @@ let cmdkGroupId = 0;
 @Component({
   selector: 'cmdk-group',
   templateUrl: './group.component.html',
-  styleUrls: ['./group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GroupComponent implements CmdkGroupProps, AfterViewInit {

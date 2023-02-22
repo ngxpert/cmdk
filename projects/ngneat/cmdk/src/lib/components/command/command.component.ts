@@ -28,7 +28,6 @@ let commandId = 0;
 @Component({
   selector: 'cmdk-command',
   templateUrl: './command.component.html',
-  styleUrls: ['./command.component.scss'],
   providers: [CmdkService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'cmdkCommand',
