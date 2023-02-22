@@ -3,24 +3,17 @@ import { CmdkService } from '../../cmdk.service';
 
 @Directive({
   selector: '[cmdkInput]',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'cmdk-input',
+    type: 'search',
+  },
 })
 export class InputDirective {
-  private _searchValue: string | undefined;
   private _cmdkService = inject(CmdkService);
 
-  @HostBinding('class.cmdk-input')
-  get cmdkInputClass() {
-    return true;
-  }
-
-  @HostBinding('attr.type')
-  get cmdkInputType() {
-    return 'search';
-  }
-
   @HostListener('change', ['$event.target.value'])
-  search(value: string | undefined) {
-    this._searchValue = value;
+  search(value: string) {
     this._cmdkService.setSearch(value);
   }
 }

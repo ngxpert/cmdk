@@ -11,18 +11,22 @@ export class AppComponent {
 
   menu: Array<{
     groupName: string;
-    options: Array<{ value: string; label: string; isSeparator?: boolean }>;
+    options: Array<
+      | { value?: never; label?: never; isSeparator: boolean }
+      | { value: string; label: string; isSeparator?: never }
+    >;
   }> = [
     {
-      groupName: 'Projects',
+      groupName: '<strong>Projects</strong>',
       options: [
         { value: 'search_projects', label: 'Search Projects...' },
-        { value: 'add_project', label: 'Add Project', isSeparator: true },
+        { value: 'add_project', label: 'Add Project' },
+        { isSeparator: true },
         { value: 'view_all_projects', label: 'View All Projects' },
       ],
     },
     {
-      groupName: 'Help',
+      groupName: '<strong>Help</strong>',
       options: [
         { value: 'search_docs', label: 'Search Docs...' },
         { value: 'faqs', label: 'FAQs' },
@@ -32,5 +36,13 @@ export class AppComponent {
 
   filter(value: string, search: string) {
     return value === search;
+  }
+
+  valueChanged(ev: string) {
+    console.log('value changed to', ev);
+  }
+
+  getItemContext(item: any) {
+    return { $implicit: item };
   }
 }

@@ -1,21 +1,27 @@
 import {
+  AfterContentInit,
   Directive,
   ElementRef,
   HostBinding,
   HostListener,
   inject,
   Input,
-  OnInit,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
-import { CommandComponent } from '../../components/command/command.component';
+import { CmdkItemProps } from '../../types';
 
-@UntilDestroy({ checkProperties: true })
+let cmdkItemId = 0;
+
+@UntilDestroy()
 @Directive({
   selector: '[cmdkItem]',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'cmdk-item',
+  },
 })
-export class ItemDirective implements OnInit {
+export class ItemDirective implements AfterContentInit, CmdkItemProps {
   filtered = true;
   private _active = false;
   private _value: string = '';
@@ -29,10 +35,8 @@ export class ItemDirective implements OnInit {
 
   private _cmdkService = inject(CmdkService);
 
-  constructor(
-    private _elementRef: ElementRef<HTMLButtonElement>,
-    private cmdkCommad: CommandComponent
-  ) {}
+  readonly itemId = `cmdk-item-${cmdkItemId++}`;
+  private _elementRef = inject(ElementRef<HTMLButtonElement>);
 
   @HostBinding('style.display')
   get display() {
@@ -55,36 +59,31 @@ export class ItemDirective implements OnInit {
   }
   set active(value: boolean) {
     this._active = value;
+    if (value) {
+      this._elementRef.nativeElement.focus();
+    }
   }
 
   @HostListener('click')
   onClick() {
-    this.cmdkCommad.valueChanged.emit(this.value);
+    this.emitValue();
   }
 
-  @HostListener('keyup', ['$event'])
-  onKeyUp(ev: KeyboardEvent) {
-    if (ev.key === 'Enter') {
-      this.cmdkCommad.valueChanged.emit(this.value);
-    }
+  ngAfterContentInit() {
+    this._cmdkService.activeItem$
+      .pipe(untilDestroyed(this))
+      .subscribe((itemId) => {
+        this.active = itemId === this.itemId;
+      });
+    this._cmdkService.value$.pipe(untilDestroyed(this)).subscribe((value) => {
+      if (this.value === value) {
+        this._cmdkService.setActiveItem(this.itemId);
+      }
+    });
   }
 
-  ngOnInit() {
-    if (this.cmdkCommad.shouldFilter) {
-      this._cmdkService.search$
-        .pipe(untilDestroyed(this))
-        .subscribe((s) => this.handleSearch(s));
-    }
-  }
-
-  handleSearch(search = '') {
-    if (!search) {
-      this.filtered = true;
-    } else {
-      const filterValue = search.toLowerCase();
-      this.filtered = this.cmdkCommad.filter
-        ? this.cmdkCommad.filter(this.value, search)
-        : this.value.toLowerCase().includes(filterValue);
-    }
+  private emitValue() {
+    this._cmdkService.setValue(this.value);
+    this._cmdkService.setActiveItem(this.itemId);
   }
 }

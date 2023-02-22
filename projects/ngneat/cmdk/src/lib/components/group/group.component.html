@@ -1,10 +1,12 @@
 <ng-template #cmdkGroup>
-  <ng-container *ngIf="showGroup">
-    <div role="presentation" *ngIf="label" class="cmdk-group-label">{{ label }}</div>
-    <div class="cmdk-group" role="group" [attr.aria-label]="ariaLabel">
+  <div class="cmdk-group" [ngClass]="{'cmdk-group-active': active}" *ngIf="showGroup" [id]="groupId">
+    <div role="presentation" *ngIf="label" class="cmdk-group-label">
+      <ng-container *dynamicView="label"></ng-container>
+    </div>
+    <div class="cmdk-group-content" role="group" [attr.aria-label]="ariaLabel">
       <ng-content></ng-content>
     </div>
-  </ng-container>
+  </div>
 </ng-template>
 
-<ng-container *dynamicView="cmdkGroup"></ng-container>
+<ng-container *ngTemplateOutlet="cmdkGroup"></ng-container>

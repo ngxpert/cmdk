@@ -1,5 +1,5 @@
 <ng-template #cmdkSeparator>
-    <hr class="cmdk-separator" *ngIf="!cmdkCommand.shouldFilter || (search$ | async) === '' || (search$ | async) === undefined || (search$ | async) === null">
+    <hr class="cmdk-separator" *ngIf="showSeparator">
 </ng-template>
 
-<ng-container *dynamicView="cmdkSeparator"></ng-container>
+<ng-container *ngTemplateOutlet="cmdkSeparator"></ng-container>

@@ -1,35 +1,22 @@
-import {
-  Directive,
-  HostBinding,
-  Input,
-  TemplateRef,
-  ViewContainerRef,
-} from '@angular/core';
-import { UntilDestroy } from '@ngneat/until-destroy';
-import { CommandComponent } from '../../components/command/command.component';
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
-@UntilDestroy({ checkProperties: true })
 @Directive({
   selector: '[cmdkEmpty]',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'cmdk-empty',
+  },
 })
 export class EmptyDirective {
-  @Input() shouldChange = true;
-
   private _hasView = false;
 
   constructor(
     private _templateRef: TemplateRef<any>,
-    private _viewContainer: ViewContainerRef,
-    private cmdkCommand: CommandComponent
+    private _viewContainer: ViewContainerRef
   ) {}
 
-  @HostBinding('class.cmdk-empty')
-  get cmdkEmptyClass() {
-    return true;
-  }
-
-  @Input() set cmdkEmpty(condition: boolean | string) {
-    if (this.cmdkCommand.shouldFilter && condition && !this._hasView) {
+  set cmdkEmpty(condition: boolean | string) {
+    if (condition && !this._hasView) {
       this._viewContainer.createEmbeddedView(this._templateRef);
       this._hasView = true;
     } else if (!condition && this._hasView) {

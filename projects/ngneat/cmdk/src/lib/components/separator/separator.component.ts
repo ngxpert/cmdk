@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CmdkService } from '../../cmdk.service';
-import { CommandComponent } from '../command/command.component';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+} from '@angular/core';
 
 /**
  * A visual and semantic separator between items or groups.
@@ -13,8 +16,6 @@ import { CommandComponent } from '../command/command.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SeparatorComponent {
-  private _cmdkService = inject(CmdkService);
-  search$ = this._cmdkService.search$;
-
-  constructor(public cmdkCommand: CommandComponent) {}
+  showSeparator = true;
+  public cdr = inject(ChangeDetectorRef);
 }
