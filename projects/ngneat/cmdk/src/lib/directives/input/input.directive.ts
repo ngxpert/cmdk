@@ -1,4 +1,4 @@
-import { Directive, HostBinding, HostListener, inject } from '@angular/core';
+import { Directive, HostListener, inject } from '@angular/core';
 import { CmdkService } from '../../cmdk.service';
 
 @Directive({

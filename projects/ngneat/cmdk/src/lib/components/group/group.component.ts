@@ -1,6 +1,4 @@
 import {
-  AfterContentInit,
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -10,20 +8,17 @@ import {
   QueryList,
 } from '@angular/core';
 import { Content } from '@ngneat/overview';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { CmdkService } from '../../cmdk.service';
 import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkGroupProps } from '../../types';
 
 let cmdkGroupId = 0;
 
-@UntilDestroy()
 @Component({
   selector: 'cmdk-group',
   templateUrl: './group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GroupComponent implements CmdkGroupProps, AfterViewInit {
+export class GroupComponent implements CmdkGroupProps {
   @Input() label?: Content;
   @Input() ariaLabel?: string;
 
@@ -32,11 +27,8 @@ export class GroupComponent implements CmdkGroupProps, AfterViewInit {
 
   showGroup = true;
   private _active = false;
-  private _cmdkService = inject(CmdkService);
   readonly groupId = `cmdk-group-${cmdkGroupId++}`;
   _cdr = inject(ChangeDetectorRef);
-
-  constructor() {}
 
   get filteredItems() {
     return this.items?.filter((item) => item.filtered);
@@ -52,15 +44,5 @@ export class GroupComponent implements CmdkGroupProps, AfterViewInit {
 
   get filtered() {
     return this.filteredItems.length > 0;
-  }
-
-  ngAfterViewInit() {
-    this._cmdkService.activeGroup$
-      .pipe(untilDestroyed(this))
-      .subscribe((groupId) => {
-        setTimeout(() => {
-          this.active = this.groupId === groupId;
-        });
-      });
   }
 }

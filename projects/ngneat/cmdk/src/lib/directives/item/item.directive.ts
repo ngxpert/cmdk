@@ -1,5 +1,5 @@
+import { FocusableOption, FocusOrigin, Highlightable } from '@angular/cdk/a11y';
 import {
-  AfterContentInit,
   Directive,
   ElementRef,
   HostBinding,
@@ -7,7 +7,7 @@ import {
   inject,
   Input,
 } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
 import { CmdkItemProps } from '../../types';
 
@@ -21,7 +21,22 @@ let cmdkItemId = 0;
     class: 'cmdk-item',
   },
 })
-export class ItemDirective implements AfterContentInit, CmdkItemProps {
+export class ItemDirective
+  implements CmdkItemProps, Highlightable, FocusableOption
+{
+  focus(origin?: FocusOrigin | undefined): void {
+    this._elementRef.nativeElement.focus();
+  }
+  @Input() disabled = false;
+  getLabel?(): string {
+    throw new Error('Method not implemented.');
+  }
+  setActiveStyles(): void {
+    this.active = true;
+  }
+  setInactiveStyles(): void {
+    this.active = false;
+  }
   filtered = true;
   private _active = false;
   private _value: string = '';
@@ -64,26 +79,8 @@ export class ItemDirective implements AfterContentInit, CmdkItemProps {
     }
   }
 
-  @HostListener('click')
+  @HostListener('mouseup')
   onClick() {
-    this.emitValue();
-  }
-
-  ngAfterContentInit() {
-    this._cmdkService.activeItem$
-      .pipe(untilDestroyed(this))
-      .subscribe((itemId) => {
-        this.active = itemId === this.itemId;
-      });
-    this._cmdkService.value$.pipe(untilDestroyed(this)).subscribe((value) => {
-      if (this.value === value) {
-        this._cmdkService.setActiveItem(this.itemId);
-      }
-    });
-  }
-
-  private emitValue() {
-    this._cmdkService.setValue(this.value);
-    this._cmdkService.setActiveItem(this.itemId);
+    this._cmdkService.itemClicked(this.value);
   }
 }

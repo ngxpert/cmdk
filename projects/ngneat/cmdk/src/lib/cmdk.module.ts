@@ -7,6 +7,7 @@ import { GroupComponent } from './components/group/group.component';
 import { SeparatorComponent } from './components/separator/separator.component';
 import { CommonModule } from '@angular/common';
 import { ItemDirective } from './directives/item/item.directive';
+import { A11yModule } from '@angular/cdk/a11y';
 
 const ComponentsAndDirectives = [
   CommandComponent,
@@ -18,7 +19,7 @@ const ComponentsAndDirectives = [
 ];
 @NgModule({
   declarations: ComponentsAndDirectives,
-  imports: [CommonModule, DynamicViewModule],
+  imports: [CommonModule, DynamicViewModule, A11yModule],
   exports: ComponentsAndDirectives,
 })
 export class CmdkModule {}

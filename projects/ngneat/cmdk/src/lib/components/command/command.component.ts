@@ -13,15 +13,14 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { Content } from '@ngneat/overview';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { first } from 'rxjs';
 import { CmdkService } from '../../cmdk.service';
 import { EmptyDirective } from '../../directives/empty/empty.directive';
 import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkCommandProps } from '../../types';
 import { GroupComponent } from '../group/group.component';
 import { SeparatorComponent } from '../separator/separator.component';
+import { ActiveDescendantKeyManager, FocusKeyManager } from '@angular/cdk/a11y';
 
 let commandId = 0;
 @UntilDestroy()
@@ -36,19 +35,15 @@ export class CommandComponent
   implements CmdkCommandProps, AfterViewInit, OnChanges
 {
   @Output() valueChanged = new EventEmitter<string>();
-  @Input() value?: string;
-  @Input() label?: Content;
+  @Input() value: string | undefined;
   @Input() ariaLabel?: string;
   @Input() filter: ((value: string, search: string) => boolean) | null = (
     value,
     search
-  ) => {
-    const searchValue = search.toLowerCase();
-    return value.toLowerCase().includes(searchValue);
-  };
+  ) => value.toLowerCase().includes(search.toLowerCase());
 
   @ContentChildren(ItemDirective, { descendants: true })
-  items: QueryList<ItemDirective> | undefined;
+  items!: QueryList<ItemDirective>;
   @ContentChildren(GroupComponent, { descendants: true })
   groups: QueryList<GroupComponent> | undefined;
   @ContentChildren(SeparatorComponent, { descendants: true })
@@ -59,37 +54,51 @@ export class CommandComponent
 
   private cmdkService = inject(CmdkService);
 
+  private keyManager!: ActiveDescendantKeyManager<ItemDirective>;
+  private focusKeyManager!: FocusKeyManager<ItemDirective>;
+
   ngOnChanges(changes: SimpleChanges) {
-    if (
-      changes['value'] &&
-      changes['value'].previousValue !== changes['value'].currentValue &&
-      this.value
-    ) {
+    if (changes['value']) {
       this.setValue(this.value);
     }
   }
 
   ngAfterViewInit() {
+    // create key and focus managers
+    this.keyManager = new ActiveDescendantKeyManager(this.items)
+      .withWrap()
+      .skipPredicate((item) => item.disabled);
+    this.focusKeyManager = new FocusKeyManager(this.items)
+      .withWrap()
+      .skipPredicate((item) => item.disabled);
     if (this.filter) {
       this.cmdkService.search$
         .pipe(untilDestroyed(this))
         .subscribe((s) => this.handleSearch(s));
     }
 
-    if (!this.value) {
+    // if value is given, make that item active, else make first item active
+    if (this.value) {
+      this.setValue(this.value);
+    } else {
       this.makeFirstItemActive();
-      this.makeFirstGroupActive();
     }
 
-    this.cmdkService.value$
+    // emit value on item clicks
+    this.cmdkService.itemClicked$
       .pipe(untilDestroyed(this))
-      .subscribe((value) => this.valueChanged.emit(value));
-
-    this.cmdkService.activeItem$
-      .pipe(untilDestroyed(this))
-      .subscribe((itemId) => {
-        this.setActiveGroupForActiveItem(itemId);
+      .subscribe((value) => {
+        this.setValue(value);
+        this.valueChanged.emit(value);
       });
+
+    // set active group on active item change
+    this.keyManager.change.pipe(untilDestroyed(this)).subscribe(() => {
+      const activeItem = this.keyManager.activeItem;
+      if (activeItem) {
+        this.setActiveGroupForActiveItem(activeItem.itemId);
+      }
+    });
   }
 
   get filteredItems() {
@@ -129,10 +138,11 @@ export class CommandComponent
 
   @HostListener('keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent) {
-    if (ev.key === 'ArrowDown') {
-      this.makeNextItemActive();
-    } else if (ev.key === 'ArrowUp') {
-      this.makePreviousItemActive();
+    if (ev.key === 'Enter' && this.keyManager.activeItem) {
+      this.valueChanged.emit(this.keyManager.activeItem.value);
+    } else {
+      this.keyManager.onKeydown(ev);
+      this.focusKeyManager.onKeydown(ev);
     }
   }
 
@@ -140,63 +150,29 @@ export class CommandComponent
     setTimeout(() => {
       const firstItem = this.filteredItems?.[0];
       if (firstItem) {
-        this.cmdkService.setActiveItem(firstItem.itemId);
+        this.keyManager.setFirstItemActive();
+        this.focusKeyManager.setFirstItemActive();
       }
     });
-  }
-
-  private makeFirstGroupActive() {
-    setTimeout(() => {
-      const firstGroup = this.filteredGroups?.[0];
-      if (firstGroup) {
-        this.cmdkService.setActiveGroup(firstGroup.groupId);
-      }
-    });
-  }
-  private makePreviousItemActive() {
-    this.cmdkService.activeItem$
-      .pipe(first(), untilDestroyed(this))
-      .subscribe((activeItemId) => {
-        if (this.filteredItems?.length) {
-          const activeItemIndex = this.filteredItems.findIndex(
-            (item) => item.itemId === activeItemId
-          );
-          const nextActiveItem = this.filteredItems[activeItemIndex - 1];
-          if (nextActiveItem) {
-            const nextActiveItemId = nextActiveItem.itemId;
-            this.cmdkService.setActiveItem(nextActiveItemId);
-          }
-        }
-      });
   }
 
   private setActiveGroupForActiveItem(nextActiveItemId: string) {
-    const nextActiveGroupId = this.filteredGroups?.find((group) =>
-      group.filteredItems.some((item) => item.itemId === nextActiveItemId)
-    )?.groupId;
-    if (nextActiveGroupId) {
-      this.cmdkService.setActiveGroup(nextActiveGroupId);
+    this.filteredGroups?.forEach((group) => {
+      group.active = group.filteredItems.some(
+        (item) => item.itemId === nextActiveItemId
+      );
+    });
+  }
+
+  private setValue(value: string | undefined) {
+    if (value !== undefined) {
+      const valueItem = this.filteredItems?.find(
+        (item) => item.value === value
+      );
+      if (valueItem) {
+        this.keyManager.setActiveItem(valueItem);
+        this.focusKeyManager.setActiveItem(valueItem);
+      }
     }
-  }
-
-  private makeNextItemActive() {
-    this.cmdkService.activeItem$
-      .pipe(first(), untilDestroyed(this))
-      .subscribe((activeItemId) => {
-        if (this.filteredItems?.length) {
-          const activeItemIndex = this.filteredItems.findIndex(
-            (item) => item.itemId === activeItemId
-          );
-          const nextActiveItem = this.filteredItems[activeItemIndex + 1];
-          if (nextActiveItem) {
-            const nextActiveItemId = nextActiveItem.itemId;
-            this.cmdkService.setActiveItem(nextActiveItemId);
-          }
-        }
-      });
-  }
-
-  private setValue(value: string) {
-    this.cmdkService.setValue(value);
   }
 }
