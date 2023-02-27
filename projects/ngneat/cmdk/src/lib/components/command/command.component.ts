@@ -58,7 +58,7 @@ export class CommandComponent
   private focusKeyManager!: FocusKeyManager<ItemDirective>;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['value']) {
+    if (changes['value'] && !changes['value'].firstChange) {
       this.setValue(this.value);
     }
   }
@@ -67,10 +67,10 @@ export class CommandComponent
     // create key and focus managers
     this.keyManager = new ActiveDescendantKeyManager(this.items)
       .withWrap()
-      .skipPredicate((item) => item.disabled);
+      .skipPredicate((item) => item.disabled || !item.filtered);
     this.focusKeyManager = new FocusKeyManager(this.items)
       .withWrap()
-      .skipPredicate((item) => item.disabled);
+      .skipPredicate((item) => item.disabled || !item.filtered);
     if (this.filter) {
       this.cmdkService.search$
         .pipe(untilDestroyed(this))
@@ -149,6 +149,7 @@ export class CommandComponent
   private makeFirstItemActive() {
     setTimeout(() => {
       const firstItem = this.filteredItems?.[0];
+      console.log("firstItem", firstItem);
       if (firstItem) {
         this.keyManager.setFirstItemActive();
         this.focusKeyManager.setFirstItemActive();
@@ -170,8 +171,10 @@ export class CommandComponent
         (item) => item.value === value
       );
       if (valueItem) {
-        this.keyManager.setActiveItem(valueItem);
-        this.focusKeyManager.setActiveItem(valueItem);
+        setTimeout(() => {
+          this.keyManager.setActiveItem(valueItem);
+          this.focusKeyManager.setActiveItem(valueItem);
+        });
       }
     }
   }

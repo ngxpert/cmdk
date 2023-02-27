@@ -12,15 +12,20 @@ export class AppComponent {
   menu: Array<{
     groupName: string;
     options: Array<
-      | { value?: never; label?: never; isSeparator: boolean }
-      | { value: string; label: string; isSeparator?: never }
+      | { value?: never; label?: never; disabled?: never; isSeparator: boolean }
+      | {
+          value: string;
+          label: string;
+          disabled?: boolean;
+          isSeparator?: never;
+        }
     >;
   }> = [
     {
       groupName: '<strong>Projects</strong>',
       options: [
         { value: 'search_projects', label: 'Search Projects...' },
-        { value: 'add_project', label: 'Add Project' },
+        { value: 'add_project', label: 'Add Project', disabled: true },
         { isSeparator: true },
         { value: 'view_all_projects', label: 'View All Projects' },
       ],

@@ -72,6 +72,17 @@ export class ItemDirective
   get active() {
     return this._active;
   }
+
+  @HostBinding('class.cmdk-item-disabled')
+  get itemDisabled() {
+    return this.disabled;
+  }
+
+  @HostBinding('class.cmdk-item-filtered')
+  get itemFiltered() {
+    return this.filtered;
+  }
+
   set active(value: boolean) {
     this._active = value;
     if (value) {

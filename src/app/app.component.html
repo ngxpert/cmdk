@@ -6,7 +6,7 @@
       <cmdk-group [label]="group.groupName" *ngFor="let group of menu">
         <ng-container *ngFor="let item of group.options">
           <cmdk-separator *ngIf="item.isSeparator"></cmdk-separator>
-          <button cmdkItem *ngIf="!item.isSeparator && item.value" [value]="item.value">{{ item.label }}</button>
+          <button cmdkItem [disabled]="!!item.disabled" *ngIf="!item.isSeparator && item.value" [value]="item.value">{{ item.label }}</button>
         </ng-container>
       </cmdk-group>
     </cmdk-command>

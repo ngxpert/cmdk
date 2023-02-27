@@ -3,5 +3,10 @@
   "dest": "../../../dist/ngneat/cmdk",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "@ngneat/overview",
+    "@ngneat/until-destroy",
+    "@angular/cdk"
+  ]
 }

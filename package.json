@@ -12,7 +12,7 @@
     "commit": "cz",
     "deploy": "ng deploy --base-href=/cmdk/",
     "copy": "cpx README.md dist/ngneat/cmdk",
-    "build:lib": "ng build @ngneat/cmdk --prod && npm run copy",
+    "build:lib": "ng build @ngneat/cmdk && npm run copy",
     "test:lib": "ng test @ngneat/cmdk",
     "test:lib:headless": "cross-env CI=true npm run test:lib",
     "postbuild:lib": "npm run build --prefix projects/ngneat/cmdk",

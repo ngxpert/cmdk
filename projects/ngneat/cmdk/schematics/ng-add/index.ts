@@ -7,7 +7,6 @@ import { InsertChange } from '@schematics/angular/utility/change';
 import { Schema } from './schema';
 import {
   addModuleImportToRootModule,
-  addPackageToPackageJson,
   getProjectFromWorkspace,
   getSourceFile,
   getWorkspace,
@@ -19,35 +18,29 @@ const importModuleSet: {
   moduleName: string;
   importModuleStatement: string;
   importPath: string;
-}[] = [{"moduleName":"CmdkModule","importModuleStatement":"CmdkModule.forRoot()","importPath":"@ngneat/cmdk"}];
+}[] = [
+  {
+    moduleName: 'CmdkModule',
+    importModuleStatement: 'CmdkModule.forRoot()',
+    importPath: '@ngneat/cmdk',
+  },
+];
 
-export const ngAdd = (options: Schema): Rule => (tree: Tree) => {
-  const workspaceConfig = tree.read('/angular.json');
-  if (!workspaceConfig) {
-    throw new SchematicsException('Could not find Angular workspace configuration');
-  }
-  return chain([
-    addPackageJsonDependencies(),
-    installPackageJsonDependencies(),
-    injectImports(options),
-    addModuleToImports(options),
-  ]);
-};
-
-const addPackageJsonDependencies = (): Rule => (host: Tree, context: SchematicContext) => {
-  const dependencies: { name: string; version: string }[] = [
-    { name: '@ngneat/overview', version: '4.1.0' },
-    { name: '@ngneat/until-destroy', version: '9.2.3' },
-    { name: '@angular/cdk', version: '15.2.0' },
-  ];
-
-  dependencies.forEach((dependency) => {
-    addPackageToPackageJson(host, dependency.name, `${dependency.version}`);
-    context.logger.log('info', `✅️ Added "${dependency.name}`);
-  });
-
-  return host;
-};
+export const ngAdd =
+  (options: Schema): Rule =>
+  (tree: Tree) => {
+    const workspaceConfig = tree.read('/angular.json');
+    if (!workspaceConfig) {
+      throw new SchematicsException(
+        'Could not find Angular workspace configuration'
+      );
+    }
+    return chain([
+      installPackageJsonDependencies(),
+      injectImports(options),
+      addModuleToImports(options),
+    ]);
+  };
 
 const installPackageJsonDependencies = (): Rule => (host: Tree, context: SchematicContext) => {
   context.addTask(new NodePackageInstallTask());

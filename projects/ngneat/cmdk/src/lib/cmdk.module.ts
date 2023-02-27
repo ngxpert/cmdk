@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { InputDirective } from './directives/input/input.directive';
 import { EmptyDirective } from './directives/empty/empty.directive';
 import { CommandComponent } from './components/command/command.component';
@@ -22,4 +22,10 @@ const ComponentsAndDirectives = [
   imports: [CommonModule, DynamicViewModule, A11yModule],
   exports: ComponentsAndDirectives,
 })
-export class CmdkModule {}
+export class CmdkModule {
+  static forRoot(): ModuleWithProviders<CmdkModule> {
+    return {
+      ngModule: CmdkModule,
+    };
+  }
+}

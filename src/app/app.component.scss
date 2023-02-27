@@ -6,6 +6,11 @@
     width: 300px;
 }
 
-.cmdk-item-active {
-    background-color: azure;
+.cmdk-item{
+    &-active {
+        background-color: azure;
+    }
+    &-disabled {
+        opacity: 0.5;
+    }
 }
