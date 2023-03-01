@@ -21,6 +21,7 @@ import { CmdkCommandProps } from '../../types';
 import { GroupComponent } from '../group/group.component';
 import { SeparatorComponent } from '../separator/separator.component';
 import { ActiveDescendantKeyManager, FocusKeyManager } from '@angular/cdk/a11y';
+import { LoaderDirective } from '../../directives/loader/loader.directive';
 
 let commandId = 0;
 @UntilDestroy()
@@ -37,6 +38,7 @@ export class CommandComponent
   @Output() valueChanged = new EventEmitter<string>();
   @Input() value: string | undefined;
   @Input() ariaLabel?: string;
+  @Input() loading?: boolean;
   @Input() filter: ((value: string, search: string) => boolean) | null = (
     value,
     search
@@ -48,7 +50,8 @@ export class CommandComponent
   groups: QueryList<GroupComponent> | undefined;
   @ContentChildren(SeparatorComponent, { descendants: true })
   separators: QueryList<SeparatorComponent> | undefined;
-  @ContentChild(EmptyDirective) empty!: EmptyDirective;
+  @ContentChild(EmptyDirective) empty: EmptyDirective | undefined;
+  @ContentChild(LoaderDirective) loader: LoaderDirective | undefined;
 
   readonly panelId = `cmdk-command-${commandId++}`;
 
@@ -60,10 +63,21 @@ export class CommandComponent
   ngOnChanges(changes: SimpleChanges) {
     if (changes['value'] && !changes['value'].firstChange) {
       this.setValue(this.value);
+    } else if (
+      changes['loading'] &&
+      !changes['loading'].firstChange &&
+      this.loader
+    ) {
+      this.loader.cmdkLoader = this.loading;
     }
   }
 
   ngAfterViewInit() {
+    // show/hide loader
+    if (this.loader) {
+      this.loader.cmdkLoader = this.loading;
+    }
+
     // create key and focus managers
     this.keyManager = new ActiveDescendantKeyManager(this.items)
       .withWrap()
@@ -117,7 +131,9 @@ export class CommandComponent
       });
 
       // show/hide empty directive
-      this.empty.cmdkEmpty = this.filteredItems?.length === 0;
+      if (this.empty) {
+        this.empty.cmdkEmpty = this.filteredItems?.length === 0;
+      }
 
       // make first item active and in-turn it will also make first group active, if available
       this.makeFirstItemActive();
@@ -149,7 +165,7 @@ export class CommandComponent
   private makeFirstItemActive() {
     setTimeout(() => {
       const firstItem = this.filteredItems?.[0];
-      console.log("firstItem", firstItem);
+      console.log('firstItem', firstItem);
       if (firstItem) {
         this.keyManager.setFirstItemActive();
         this.focusKeyManager.setFirstItemActive();

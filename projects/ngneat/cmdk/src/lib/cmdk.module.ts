@@ -8,6 +8,7 @@ import { SeparatorComponent } from './components/separator/separator.component';
 import { CommonModule } from '@angular/common';
 import { ItemDirective } from './directives/item/item.directive';
 import { A11yModule } from '@angular/cdk/a11y';
+import { LoaderDirective } from './directives/loader/loader.directive';
 
 const ComponentsAndDirectives = [
   CommandComponent,
@@ -16,6 +17,7 @@ const ComponentsAndDirectives = [
   GroupComponent,
   SeparatorComponent,
   ItemDirective,
+  LoaderDirective,
 ];
 @NgModule({
   declarations: ComponentsAndDirectives,

@@ -10,4 +10,5 @@ export * from './lib/components/separator/separator.component';
 export * from './lib/directives/empty/empty.directive';
 export * from './lib/directives/input/input.directive';
 export * from './lib/directives/item/item.directive';
+export * from './lib/directives/loader/loader.directive';
 export * from './lib/types';

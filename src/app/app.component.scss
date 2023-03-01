@@ -3,7 +3,7 @@
     border: 1px solid;
     border-radius: 4px;
     margin-bottom: 8px;
-    width: 300px;
+    // width: 300px;
 }
 
 .cmdk-item{
@@ -13,4 +13,9 @@
     &-disabled {
         opacity: 0.5;
     }
+}
+
+pre {
+    border: 1px solid blue;
+    background-color: lightblue;
 }

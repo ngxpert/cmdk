@@ -37,7 +37,7 @@ export class ItemDirective
   setInactiveStyles(): void {
     this.active = false;
   }
-  filtered = true;
+  @Input() filtered = true;
   private _active = false;
   private _value: string = '';
   @Input()

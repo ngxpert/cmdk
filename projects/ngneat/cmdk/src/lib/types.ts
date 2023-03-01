@@ -23,6 +23,10 @@ export interface CmdkCommandProps {
    * Event handler called when the selected item of the menu changes.
    */
   valueChanged: EventEmitter<string>;
+  /**
+   * Optional indicator to show loader
+   */
+  loading?: boolean;
 }
 
 export interface CmdkGroupProps {
