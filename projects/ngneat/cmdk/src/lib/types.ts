@@ -3,10 +3,6 @@ import { Content } from '@ngneat/overview';
 
 export interface CmdkCommandProps {
   /**
-   * Label for this command menu. Can be shown visibly.
-   */
-  label?: Content;
-  /**
    * Accessible Label for this command menu. Not shown visibly.
    */
   ariaLabel?: string;
@@ -44,4 +40,8 @@ export interface CmdkItemProps {
    * Contextual Value of the list-item
    */
   value: string | undefined;
+  /**
+   * Event handler called when the item is selected
+   */
+  selected: EventEmitter<void>;
 }

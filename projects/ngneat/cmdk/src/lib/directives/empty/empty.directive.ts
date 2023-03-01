@@ -1,4 +1,9 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  inject,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Directive({
   selector: '[cmdkEmpty]',
@@ -9,11 +14,8 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 })
 export class EmptyDirective {
   private _hasView = false;
-
-  constructor(
-    private _templateRef: TemplateRef<any>,
-    private _viewContainer: ViewContainerRef
-  ) {}
+  private _templateRef = inject(TemplateRef<any>);
+  private _viewContainer = inject(ViewContainerRef);
 
   set cmdkEmpty(condition: boolean | string) {
     if (condition && !this._hasView) {

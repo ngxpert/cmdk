@@ -1,7 +1,9 @@
-<ng-template #cmdkContent>
-  <div class="cmdk-command" role="listbox" [attr.aria-label]="ariaLabel" [id]="panelId" #panel>
-    <ng-content></ng-content>
-  </div>
-</ng-template>
-
-<ng-container *ngTemplateOutlet="cmdkContent"></ng-container>
+<div
+  class="cmdk-command"
+  role="listbox"
+  [attr.aria-label]="ariaLabel"
+  [id]="panelId"
+  #panel
+>
+  <ng-content></ng-content>
+</div>

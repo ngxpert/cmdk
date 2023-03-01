@@ -165,7 +165,6 @@ export class CommandComponent
   private makeFirstItemActive() {
     setTimeout(() => {
       const firstItem = this.filteredItems?.[0];
-      console.log('firstItem', firstItem);
       if (firstItem) {
         this.keyManager.setFirstItemActive();
         this.focusKeyManager.setFirstItemActive();

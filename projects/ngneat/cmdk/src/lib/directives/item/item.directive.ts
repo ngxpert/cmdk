@@ -2,10 +2,12 @@ import { FocusableOption, FocusOrigin, Highlightable } from '@angular/cdk/a11y';
 import {
   Directive,
   ElementRef,
+  EventEmitter,
   HostBinding,
   HostListener,
   inject,
   Input,
+  Output,
 } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
@@ -28,6 +30,7 @@ export class ItemDirective
     this._elementRef.nativeElement.focus();
   }
   @Input() disabled = false;
+  @Output() selected = new EventEmitter();
   getLabel?(): string {
     throw new Error('Method not implemented.');
   }
@@ -45,13 +48,27 @@ export class ItemDirective
     this._value = value;
   }
   get value() {
-    return this._value ?? this._elementRef.nativeElement.textContent;
+    return this._value
+      ? this._value
+      : this._elementRef.nativeElement.textContent;
   }
 
   private _cmdkService = inject(CmdkService);
 
   readonly itemId = `cmdk-item-${cmdkItemId++}`;
   private _elementRef = inject(ElementRef<HTMLButtonElement>);
+
+  @HostListener('click')
+  onClick() {
+    this.selected.emit();
+  }
+
+  @HostListener('keyup', ['event'])
+  onKeyUp(ev: KeyboardEvent) {
+    if (ev?.key === 'Enter') {
+      this.selected.emit();
+    }
+  }
 
   @HostBinding('style.display')
   get display() {
@@ -91,7 +108,8 @@ export class ItemDirective
   }
 
   @HostListener('mouseup')
-  onClick() {
+  onMouseUp() {
+    console.log('on', this.value.length);
     this._cmdkService.itemClicked(this.value);
   }
 }

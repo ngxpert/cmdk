@@ -1,91 +1,79 @@
 <section>
   <div class="example-container">
     <h2>Basic</h2>
-    <pre><code>{{ BASIC_CODE }}</code></pre>
-    <cmdk-command
-      label="Command Menu"
-      (valueChanged)="valueChanged($event)"
-      [value]="'faqs'"
-    >
+    <cmdk-command>
       <input cmdkInput />
       <div *cmdkEmpty>No results found.</div>
-      <cmdk-group [label]="group.groupName" *ngFor="let group of menu">
-        <ng-container *ngFor="let item of group.options">
-          <cmdk-separator *ngIf="item.isSeparator"></cmdk-separator>
-          <button
-            cmdkItem
-            [disabled]="!!item.disabled"
-            *ngIf="!item.isSeparator && item.value"
-            [value]="item.value"
-          >
-            {{ item.label }}
-          </button>
-        </ng-container>
+      <cmdk-group label="Letters">
+        <button cmdkItem>a</button>
+        <button cmdkItem>b</button>
+        <cmdk-separator></cmdk-separator>
+        <button cmdkItem>c</button>
       </cmdk-group>
+
+      <button cmdkItem>Apple</button>
     </cmdk-command>
   </div>
 </section>
 <section>
   <div class="example-container">
-    <h2>Loader</h2>
-    <button (click)="loading = !loading">Toggle Loader</button>
-    <pre><code>{{ LOADER }}</code></pre>
-    <cmdk-command
-      label="Command Menu"
-      [loading]="loading"
-      [value]="'faqs'"
-    >
-      <input cmdkInput [disabled]="loading" />
-      <div *cmdkLoader>Loading...</div>
-      <div *cmdkEmpty>No results found.</div>
-      <ng-container *ngIf="!loading">
-        <cmdk-group [label]="group.groupName" *ngFor="let group of menu">
-          <ng-container *ngFor="let item of group.options">
-            <cmdk-separator *ngIf="item.isSeparator"></cmdk-separator>
-            <button
-              cmdkItem
-              [disabled]="!!item.disabled"
-              *ngIf="!item.isSeparator && item.value"
-              [value]="item.value"
-            >
-              {{ item.label }}
-            </button>
-          </ng-container>
-        </cmdk-group>
+    <h2>Nested items</h2>
+    <p>
+      Often selecting one item should navigate deeper, with a more refined set
+      of items. For example selecting "Change theme…" should show new items
+      "Dark theme" and "Light theme". We call these sets of items "pages", and
+      they can be implemented with simple state:
+    </p>
+    <cmdk-command (keydown)="onKeyDown($event)">
+      <input cmdkInput (input)="setSearch($event)" />
+      <ng-container *ngIf="!page">
+        <button cmdkItem (selected)="setPages('projects')">Search projects...</button>
+        <button cmdkItem (selected)="setPages('teams')">Join a team...</button>
+      </ng-container>
+      <ng-container *ngIf="page === 'projects'">
+        <button cmdkItem>Project A</button>
+        <button cmdkItem>Project B</button>
+      </ng-container>
+      <ng-container *ngIf="page === 'teams'">
+        <button cmdkItem>Team 1</button>
+        <button cmdkItem>Team 2</button>
       </ng-container>
     </cmdk-command>
   </div>
 </section>
 <section>
   <div class="example-container">
-    <h2>Async with custom filter and loader</h2>
-    <pre><code>{{ ASYNC }}</code></pre>
-    <cmdk-command
-      label="Command Menu"
-      [filter]="null"
-      [loading]="asyncLoading"
-      [value]="'faqs'"
-    >
-      <input cmdkInput [disabled]="loading" [formControl]="searchFC" />
-      <div *cmdkLoader>Loading...</div>
-      <div *cmdkEmpty>No results found.</div>
-      <cmdk-group
-        [label]="group.groupName"
-        *ngFor="let group of asyncMenu$ | async"
-      >
-        <ng-container *ngFor="let item of group.options">
-          <cmdk-separator *ngIf="item.isSeparator"></cmdk-separator>
-          <button
-            cmdkItem
-            [disabled]="!!item.disabled"
-            *ngIf="!item.isSeparator && item.value"
-            [value]="item.value"
-            [filtered]="item.filtered ?? true"
-          >
-            {{ item.label }}
-          </button>
-        </ng-container>
-      </cmdk-group>
+    <h2>Asynchronous results</h2>
+    <p>Render the items as they become available. Filtering and sorting will happen automatically.</p>
+    <button (click)="getItems()">Get Items</button>
+    <cmdk-command [loading]="loading">
+      <input cmdkInput />
+      <div *cmdkLoader>Fetching words...</div>
+      <button cmdkItem *ngFor="let item of items" [value]="item">
+        {{item}}
+      </button>
     </cmdk-command>
+  </div>
+</section>
+<section>
+  <div class="example-container">
+    <h2>In a dialog</h2>
+    <p>Press <code>Cmd + K</code> or <code>Ctrl + K</code> to open.</p>
+    <p>Selected value: {{ value }}</p>
+    <dialog #dialog>
+      <cmdk-command (valueChanged)="valueChanged($event)">
+        <input cmdkInput />
+        <div *cmdkEmpty>No results found.</div>
+        <cmdk-group label="Letters">
+          <button cmdkItem>a</button>
+          <button cmdkItem>b</button>
+          <cmdk-separator></cmdk-separator>
+          <button cmdkItem>c</button>
+        </cmdk-group>
+  
+        <button cmdkItem>Apple</button>
+      </cmdk-command>
+      <button (click)="closeDialog()">Close</button>
+    </dialog>
   </div>
 </section>
