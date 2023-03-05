@@ -154,7 +154,11 @@ export class CommandComponent
 
   @HostListener('keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent) {
-    if (ev.key === 'Enter' && this.keyManager.activeItem) {
+    if (
+      ev.key === 'Enter' &&
+      this.keyManager.activeItem &&
+      this.filteredItems.length > 0
+    ) {
       this.valueChanged.emit(this.keyManager.activeItem.value);
     } else {
       this.keyManager.onKeydown(ev);
@@ -168,6 +172,8 @@ export class CommandComponent
       if (firstItem) {
         this.keyManager.setFirstItemActive();
         this.focusKeyManager.setFirstItemActive();
+      } else {
+        this.valueChanged.emit(undefined);
       }
     });
   }

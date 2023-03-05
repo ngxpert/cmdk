@@ -72,7 +72,7 @@ export class ItemDirective
 
   @HostBinding('style.display')
   get display() {
-    return !this.filtered ? 'none' : 'initial';
+    return !this.filtered ? 'none' : '';
   }
 
   @HostBinding('attr.role')
@@ -83,6 +83,11 @@ export class ItemDirective
   @HostBinding('type')
   get buttonType() {
     return 'button';
+  }
+
+  @HostBinding('attr.aria-selected')
+  get isSelected() {
+    return this._active;
   }
 
   @HostBinding('class.cmdk-item-active')

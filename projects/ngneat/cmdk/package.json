@@ -35,6 +35,7 @@
     "build": "tsc -p tsconfig.schematics.json",
     "copy:schemas": "cpx schematics/ng-add ../../../dist/ngneat/cmdk/",
     "copy:collection": "cpx schematics/collection.json ../../../dist/ngneat/cmdk/schematics/",
-    "postbuild": "npm run copy:schemas && npm run copy:collection"
+    "css": "sass --no-source-map styles:../../../dist/ngneat/cmdk/styles",
+    "postbuild": "npm run copy:schemas && npm run copy:collection && npm run css"
   }
 }

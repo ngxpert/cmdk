@@ -1,79 +1,53 @@
-<section>
-  <div class="example-container">
-    <h2>Basic</h2>
-    <cmdk-command>
-      <input cmdkInput />
-      <div *cmdkEmpty>No results found.</div>
-      <cmdk-group label="Letters">
-        <button cmdkItem>a</button>
-        <button cmdkItem>b</button>
-        <cmdk-separator></cmdk-separator>
-        <button cmdkItem>c</button>
-      </cmdk-group>
 
-      <button cmdkItem>Apple</button>
-    </cmdk-command>
+<main class="main">
+  <div class="content">
+    <div class="meta">
+      <div class="info-wrapper">
+        <span class="versionBadge">v{{ version }}</span>
+        <div class="info">
+        <img class="cmdk-logo" src="assets/ngneat cdk.svg" alt="ngneat cmdk logo">
+        <div>
+          <p>Fast, composable, unstyled command menu for Angular.</p>
+          <small
+            >Highly inspired from
+            <a href="https://github.com/pacocoursey/cmdk">/pacocoursey/cmdk</a
+            >.</small
+          >
+        </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="installButton" (click)="copyInstall()">
+          ng add @ngneat/cmdk
+          <span>
+            <app-copied *ngIf="copied; else copyIcon"></app-copied>
+          </span>
+        </button>
+        <a
+          href="https://github.com/ngneat/cmdk"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="githubButton"
+        >
+          <app-github></app-github>
+          ngneat/cmdk
+        </a>
+      </div>
+    </div>
+
+    <div class="cmdk-wrapper">
+        <app-framer></app-framer>
+
+    </div>
+
+    <div aria-hidden class="line" ></div>
+
+    <app-code-block language="html" [snippet]="snippet"></app-code-block>
+    <app-footer></app-footer>
   </div>
-</section>
-<section>
-  <div class="example-container">
-    <h2>Nested items</h2>
-    <p>
-      Often selecting one item should navigate deeper, with a more refined set
-      of items. For example selecting "Change theme…" should show new items
-      "Dark theme" and "Light theme". We call these sets of items "pages", and
-      they can be implemented with simple state:
-    </p>
-    <cmdk-command (keydown)="onKeyDown($event)">
-      <input cmdkInput (input)="setSearch($event)" />
-      <ng-container *ngIf="!page">
-        <button cmdkItem (selected)="setPages('projects')">Search projects...</button>
-        <button cmdkItem (selected)="setPages('teams')">Join a team...</button>
-      </ng-container>
-      <ng-container *ngIf="page === 'projects'">
-        <button cmdkItem>Project A</button>
-        <button cmdkItem>Project B</button>
-      </ng-container>
-      <ng-container *ngIf="page === 'teams'">
-        <button cmdkItem>Team 1</button>
-        <button cmdkItem>Team 2</button>
-      </ng-container>
-    </cmdk-command>
-  </div>
-</section>
-<section>
-  <div class="example-container">
-    <h2>Asynchronous results</h2>
-    <p>Render the items as they become available. Filtering and sorting will happen automatically.</p>
-    <button (click)="getItems()">Get Items</button>
-    <cmdk-command [loading]="loading">
-      <input cmdkInput />
-      <div *cmdkLoader>Fetching words...</div>
-      <button cmdkItem *ngFor="let item of items" [value]="item">
-        {{item}}
-      </button>
-    </cmdk-command>
-  </div>
-</section>
-<section>
-  <div class="example-container">
-    <h2>In a dialog</h2>
-    <p>Press <code>Cmd + K</code> or <code>Ctrl + K</code> to open.</p>
-    <p>Selected value: {{ value }}</p>
-    <dialog #dialog>
-      <cmdk-command (valueChanged)="valueChanged($event)">
-        <input cmdkInput />
-        <div *cmdkEmpty>No results found.</div>
-        <cmdk-group label="Letters">
-          <button cmdkItem>a</button>
-          <button cmdkItem>b</button>
-          <cmdk-separator></cmdk-separator>
-          <button cmdkItem>c</button>
-        </cmdk-group>
-  
-        <button cmdkItem>Apple</button>
-      </cmdk-command>
-      <button (click)="closeDialog()">Close</button>
-    </dialog>
-  </div>
-</section>
+
+</main>
+<ng-template #copyIcon>
+  <app-copy></app-copy>
+</ng-template>
