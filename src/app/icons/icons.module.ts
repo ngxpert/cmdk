@@ -15,6 +15,13 @@ import { RadioComponent } from './radio/radio.component';
 import { RaycastIconComponent } from './raycast-icon/raycast-icon.component';
 import { SliderComponent } from './slider/slider.component';
 import { VercelIconComponent } from './vercel-icon/vercel-icon.component';
+import { AssignToIconComponent } from './assign-to-icon/assign-to-icon.component';
+import { AssignToMeIconComponent } from './assign-to-me-icon/assign-to-me-icon.component';
+import { ChangeLabelsIconComponent } from './change-labels-icon/change-labels-icon.component';
+import { ChangePriorityIconComponent } from './change-priority-icon/change-priority-icon.component';
+import { ChangeStatusIconComponent } from './change-status-icon/change-status-icon.component';
+import { RemoveLabelIconComponent } from './remove-label-icon/remove-label-icon.component';
+import { SetDueDateIconComponent } from './set-due-date-icon/set-due-date-icon.component';
 
 const ICONS = [
   AvatarComponent,
@@ -32,6 +39,13 @@ const ICONS = [
   SearchComponent,
   SliderComponent,
   VercelIconComponent,
+  AssignToIconComponent,
+  AssignToMeIconComponent,
+  ChangeLabelsIconComponent,
+  ChangePriorityIconComponent,
+  ChangeStatusIconComponent,
+  RemoveLabelIconComponent,
+  SetDueDateIconComponent,
 ];
 
 @NgModule({
