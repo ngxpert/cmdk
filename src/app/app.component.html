@@ -1,53 +1,13 @@
-
 <main class="main">
   <div class="content">
-    <div class="meta">
-      <div class="info-wrapper">
-        <span class="versionBadge">v{{ version }}</span>
-        <div class="info">
-        <img class="cmdk-logo" src="assets/ngneat cdk.svg" alt="ngneat cmdk logo">
-        <div>
-          <p>Fast, composable, unstyled command menu for Angular.</p>
-          <small
-            >Highly inspired from
-            <a href="https://github.com/pacocoursey/cmdk">/pacocoursey/cmdk</a
-            >.</small
-          >
-        </div>
-        </div>
-      </div>
+    <app-meta></app-meta>
 
-      <div class="buttons">
-        <button class="installButton" (click)="copyInstall()">
-          ng add @ngneat/cmdk
-          <span>
-            <app-copied *ngIf="copied; else copyIcon"></app-copied>
-          </span>
-        </button>
-        <a
-          href="https://github.com/ngneat/cmdk"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="githubButton"
-        >
-          <app-github></app-github>
-          ngneat/cmdk
-        </a>
-      </div>
-    </div>
+    <app-theme-switcher></app-theme-switcher>
 
-    <div class="cmdk-wrapper">
-        <app-framer></app-framer>
-
-    </div>
-
-    <div aria-hidden class="line" ></div>
+    <div aria-hidden class="line"></div>
 
     <app-code-block language="html" [snippet]="snippet"></app-code-block>
-    <app-footer></app-footer>
   </div>
-
 </main>
-<ng-template #copyIcon>
-  <app-copy></app-copy>
-</ng-template>
+<app-footer></app-footer>
+

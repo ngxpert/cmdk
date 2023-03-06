@@ -5,38 +5,26 @@ import { CmdkModule } from '@ngneat/cmdk';
 import { DynamicViewModule } from '@ngneat/overview';
 
 import { AppComponent } from './app.component';
-import { FramerComponent } from './components/framer/framer.component';
-import { SearchComponent } from './icons/search/search.component';
-import { ButtonComponent } from './icons/button/button.component';
-import { InputComponent } from './icons/input/input.component';
-import { RadioComponent } from './icons/radio/radio.component';
-import { BadgeComponent } from './icons/badge/badge.component';
-import { SliderComponent } from './icons/slider/slider.component';
-import { AvatarComponent } from './icons/avatar/avatar.component';
-import { LayoutComponent } from './icons/layout/layout.component';
-import { CopiedComponent } from './icons/copied/copied.component';
-import { CopyComponent } from './icons/copy/copy.component';
-import { GithubComponent } from './icons/github/github.component';
-import { CodeBlockComponent } from './code-block/code-block.component';
-import { FooterComponent } from './footer/footer.component';
+import { FramerComponent } from './themes/framer/framer.component';
+import { FooterComponent } from './sections/footer/footer.component';
+import { LinearComponent } from './themes/linear/linear.component';
+import { RaycastComponent } from './themes/raycast/raycast.component';
+import { VercelComponent } from './themes/vercel/vercel.component';
+import { IconsModule } from './icons/icons.module';
+import { SharedModule } from './shared/shared.module';
+import { ThemeSwitcherComponent } from './sections/theme-switcher/theme-switcher.component';
+import { MetaComponent } from './sections/meta/meta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FramerComponent,
-    SearchComponent,
-    ButtonComponent,
-    InputComponent,
-    RadioComponent,
-    BadgeComponent,
-    SliderComponent,
-    AvatarComponent,
-    LayoutComponent,
-    CopiedComponent,
-    CopyComponent,
-    GithubComponent,
-    CodeBlockComponent,
     FooterComponent,
+    LinearComponent,
+    RaycastComponent,
+    VercelComponent,
+    ThemeSwitcherComponent,
+    MetaComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +32,8 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     DynamicViewModule,
+    IconsModule,
+    SharedModule,
   ],
   bootstrap: [AppComponent],
 })

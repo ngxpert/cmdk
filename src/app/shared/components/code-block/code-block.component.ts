@@ -5,7 +5,7 @@ import {
   OnChanges,
   ViewChild,
 } from '@angular/core';
-import { CodeHighlightService } from '../core/services/code-highlight.service';
+import { CodeHighlightService } from '../../../core/services/code-highlight.service';
 
 @Component({
   selector: 'app-code-block',
