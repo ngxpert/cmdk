@@ -22,6 +22,17 @@ import { ChangePriorityIconComponent } from './change-priority-icon/change-prior
 import { ChangeStatusIconComponent } from './change-status-icon/change-status-icon.component';
 import { RemoveLabelIconComponent } from './remove-label-icon/remove-label-icon.component';
 import { SetDueDateIconComponent } from './set-due-date-icon/set-due-date-icon.component';
+import { LogoComponent } from './logo/logo.component';
+import { ClipboardIconComponent } from './clipboard-icon/clipboard-icon.component';
+import { FigmaComponent } from './figma/figma.component';
+import { HammerIconComponent } from './hammer-icon/hammer-icon.component';
+import { RaycastDarkIconComponent } from './raycast-dark-icon/raycast-dark-icon.component';
+import { RaycastLightIconComponent } from './raycast-light-icon/raycast-light-icon.component';
+import { SlackIconComponent } from './slack-icon/slack-icon.component';
+import { YouTubeIconComponent } from './you-tube-icon/you-tube-icon.component';
+import { WindowIconComponent } from './window-icon/window-icon.component';
+import { FinderIconComponent } from './finder-icon/finder-icon.component';
+import { StarIconComponent } from './star-icon/star-icon.component';
 
 const ICONS = [
   AvatarComponent,
@@ -46,6 +57,17 @@ const ICONS = [
   ChangeStatusIconComponent,
   RemoveLabelIconComponent,
   SetDueDateIconComponent,
+  LogoComponent,
+  ClipboardIconComponent,
+  FigmaComponent,
+  HammerIconComponent,
+  RaycastDarkIconComponent,
+  RaycastLightIconComponent,
+  SlackIconComponent,
+  YouTubeIconComponent,
+  WindowIconComponent,
+  FinderIconComponent,
+  StarIconComponent,
 ];
 
 @NgModule({

@@ -20,7 +20,7 @@ import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkCommandProps } from '../../types';
 import { GroupComponent } from '../group/group.component';
 import { SeparatorComponent } from '../separator/separator.component';
-import { ActiveDescendantKeyManager, FocusKeyManager } from '@angular/cdk/a11y';
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { LoaderDirective } from '../../directives/loader/loader.directive';
 
 let commandId = 0;
@@ -58,7 +58,6 @@ export class CommandComponent
   private cmdkService = inject(CmdkService);
 
   private keyManager!: ActiveDescendantKeyManager<ItemDirective>;
-  private focusKeyManager!: FocusKeyManager<ItemDirective>;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['value'] && !changes['value'].firstChange) {
@@ -80,9 +79,6 @@ export class CommandComponent
 
     // create key and focus managers
     this.keyManager = new ActiveDescendantKeyManager(this.items)
-      .withWrap()
-      .skipPredicate((item) => item.disabled || !item.filtered);
-    this.focusKeyManager = new FocusKeyManager(this.items)
       .withWrap()
       .skipPredicate((item) => item.disabled || !item.filtered);
     if (this.filter) {
@@ -152,7 +148,7 @@ export class CommandComponent
     }
   }
 
-  @HostListener('keyup', ['$event'])
+  @HostListener('keydown', ['$event'])
   onKeyUp(ev: KeyboardEvent) {
     if (
       ev.key === 'Enter' &&
@@ -162,7 +158,6 @@ export class CommandComponent
       this.valueChanged.emit(this.keyManager.activeItem.value);
     } else {
       this.keyManager.onKeydown(ev);
-      this.focusKeyManager.onKeydown(ev);
     }
   }
 
@@ -171,7 +166,6 @@ export class CommandComponent
       const firstItem = this.filteredItems?.[0];
       if (firstItem) {
         this.keyManager.setFirstItemActive();
-        this.focusKeyManager.setFirstItemActive();
       } else {
         this.valueChanged.emit(undefined);
       }
@@ -194,7 +188,6 @@ export class CommandComponent
       if (valueItem) {
         setTimeout(() => {
           this.keyManager.setActiveItem(valueItem);
-          this.focusKeyManager.setActiveItem(valueItem);
         });
       }
     }

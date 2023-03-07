@@ -37,6 +37,12 @@ a {
   text-decoration: none;
 }
 
+button.cmdk-item {
+  &:focus {
+    outline: none;
+  }
+}
+
 *,
 *::after,
 *::before {

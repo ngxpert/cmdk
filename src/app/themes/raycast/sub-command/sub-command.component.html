@@ -1,0 +1,12 @@
+<button class="cmdk-raycast-subcommand-trigger" (click)="isDialogOpen = !isDialogOpen" cdkOverlayOrigin #trigger="cdkOverlayOrigin" [attr.aria-expanded]="isDialogOpen">
+    Actions
+        <kbd>⌘</kbd>
+        <kbd>K</kbd>
+</button>
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isDialogOpen"
+>
+  <app-sub-command-dialog [value]="value"></app-sub-command-dialog>
+</ng-template>

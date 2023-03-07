@@ -2,6 +2,9 @@
 @use "../projects/ngneat/cmdk/styles/globals.scss";
 @use "../projects/ngneat/cmdk/styles/framer.scss";
 @use "../projects/ngneat/cmdk/styles/linear.scss";
+@use "../projects/ngneat/cmdk/styles/raycast.scss";
+
+@use "@angular/cdk/overlay-prebuilt.css";
 
 .main {
   width: 100vw;

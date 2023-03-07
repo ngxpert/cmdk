@@ -3,6 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CmdkModule } from '@ngneat/cmdk';
 import { DynamicViewModule } from '@ngneat/overview';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { A11yModule } from '@angular/cdk/a11y';
 
 import { AppComponent } from './app.component';
 import { FramerComponent } from './themes/framer/framer.component';
@@ -14,6 +16,11 @@ import { IconsModule } from './icons/icons.module';
 import { SharedModule } from './shared/shared.module';
 import { ThemeSwitcherComponent } from './sections/theme-switcher/theme-switcher.component';
 import { MetaComponent } from './sections/meta/meta.component';
+import { SubCommandComponent } from './themes/raycast/sub-command/sub-command.component';
+import {
+  RayCastSubItemComponent,
+  SubCommandDialogComponent,
+} from './themes/raycast/sub-command-dialog/sub-command-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +32,9 @@ import { MetaComponent } from './sections/meta/meta.component';
     VercelComponent,
     ThemeSwitcherComponent,
     MetaComponent,
+    SubCommandComponent,
+    SubCommandDialogComponent,
+    RayCastSubItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +44,8 @@ import { MetaComponent } from './sections/meta/meta.component';
     DynamicViewModule,
     IconsModule,
     SharedModule,
+    OverlayModule,
+    A11yModule,
   ],
   bootstrap: [AppComponent],
 })

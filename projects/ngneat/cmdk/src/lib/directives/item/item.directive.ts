@@ -1,4 +1,4 @@
-import { FocusableOption, FocusOrigin, Highlightable } from '@angular/cdk/a11y';
+import { Highlightable } from '@angular/cdk/a11y';
 import {
   Directive,
   ElementRef,
@@ -23,12 +23,7 @@ let cmdkItemId = 0;
     class: 'cmdk-item',
   },
 })
-export class ItemDirective
-  implements CmdkItemProps, Highlightable, FocusableOption
-{
-  focus(origin?: FocusOrigin | undefined): void {
-    this._elementRef.nativeElement.focus();
-  }
+export class ItemDirective implements CmdkItemProps, Highlightable {
   @Input() disabled = false;
   @Output() selected = new EventEmitter();
   getLabel?(): string {
@@ -63,7 +58,7 @@ export class ItemDirective
     this.selected.emit();
   }
 
-  @HostListener('keyup', ['event'])
+  @HostListener('keydown', ['event'])
   onKeyUp(ev: KeyboardEvent) {
     if (ev?.key === 'Enter') {
       this.selected.emit();
@@ -114,7 +109,6 @@ export class ItemDirective
 
   @HostListener('mouseup')
   onMouseUp() {
-    console.log('on', this.value.length);
     this._cmdkService.itemClicked(this.value);
   }
 }
