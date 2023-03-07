@@ -37,10 +37,14 @@ a {
   text-decoration: none;
 }
 
-button.cmdk-item {
+.cmdk-item {
   &:focus {
     outline: none;
   }
+}
+
+.cmdk-group, .cmdk-list, .cmdk-command {
+  display: block;
 }
 
 *,

@@ -13,6 +13,10 @@ import {
   selector: 'cmdk-separator',
   templateUrl: './separator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'cmdk-separator',
+  },
 })
 export class SeparatorComponent {
   showSeparator = true;

@@ -12,6 +12,8 @@ import {
   AfterViewInit,
   OnChanges,
   SimpleChanges,
+  OnDestroy,
+  HostBinding,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
@@ -22,6 +24,7 @@ import { GroupComponent } from '../group/group.component';
 import { SeparatorComponent } from '../separator/separator.component';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { LoaderDirective } from '../../directives/loader/loader.directive';
+import { ListComponent } from '../list/list.component';
 
 let commandId = 0;
 @UntilDestroy()
@@ -31,9 +34,13 @@ let commandId = 0;
   providers: [CmdkService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'cmdkCommand',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'cmdk-command',
+  },
 })
 export class CommandComponent
-  implements CmdkCommandProps, AfterViewInit, OnChanges
+  implements CmdkCommandProps, AfterViewInit, OnChanges, OnDestroy
 {
   @Output() valueChanged = new EventEmitter<string>();
   @Input() value: string | undefined;
@@ -48,10 +55,22 @@ export class CommandComponent
   items!: QueryList<ItemDirective>;
   @ContentChildren(GroupComponent, { descendants: true })
   groups: QueryList<GroupComponent> | undefined;
+  @ContentChildren(ListComponent, { descendants: true })
+  lists: QueryList<ListComponent> | undefined;
   @ContentChildren(SeparatorComponent, { descendants: true })
   separators: QueryList<SeparatorComponent> | undefined;
   @ContentChild(EmptyDirective) empty: EmptyDirective | undefined;
   @ContentChild(LoaderDirective) loader: LoaderDirective | undefined;
+
+  @HostBinding('attr.aria-label')
+  get attrAriaLabel() {
+    return this.ariaLabel;
+  }
+
+  @HostBinding('id')
+  get id() {
+    return this.panelId;
+  }
 
   readonly panelId = `cmdk-command-${commandId++}`;
 
@@ -106,6 +125,7 @@ export class CommandComponent
     this.keyManager.change.pipe(untilDestroyed(this)).subscribe(() => {
       const activeItem = this.keyManager.activeItem;
       if (activeItem) {
+        this.valueChanged.emit(activeItem.value);
         this.setActiveGroupForActiveItem(activeItem.itemId);
       }
     });
@@ -117,6 +137,10 @@ export class CommandComponent
 
   get filteredGroups() {
     return this.groups?.filter((group) => group.filtered);
+  }
+
+  get filteredLists() {
+    return this.lists?.filter((group) => group.filtered);
   }
 
   handleSearch(search: string) {
@@ -140,6 +164,12 @@ export class CommandComponent
         group._cdr.markForCheck();
       });
 
+      // show/hide list
+      this.lists?.forEach((list) => {
+        list.showList = list.filteredItems?.length > 0;
+        list._cdr.markForCheck();
+      });
+
       // hide separator if search and filter both are present, else show
       this.separators?.forEach((seperator) => {
         seperator.showSeparator = !(this.filter && search);
@@ -161,12 +191,18 @@ export class CommandComponent
     }
   }
 
+  ngOnDestroy(): void {
+    this.keyManager.destroy();
+  }
+
   private makeFirstItemActive() {
     setTimeout(() => {
       const firstItem = this.filteredItems?.[0];
       if (firstItem) {
+        console.log('first item found');
         this.keyManager.setFirstItemActive();
       } else {
+        console.log('first item not found');
         this.valueChanged.emit(undefined);
       }
     });
@@ -175,6 +211,11 @@ export class CommandComponent
   private setActiveGroupForActiveItem(nextActiveItemId: string) {
     this.filteredGroups?.forEach((group) => {
       group.active = group.filteredItems.some(
+        (item) => item.itemId === nextActiveItemId
+      );
+    });
+    this.filteredLists?.forEach((list) => {
+      list.active = list.filteredItems.some(
         (item) => item.itemId === nextActiveItemId
       );
     });

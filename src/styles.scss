@@ -3,6 +3,7 @@
 @use "../projects/ngneat/cmdk/styles/framer.scss";
 @use "../projects/ngneat/cmdk/styles/linear.scss";
 @use "../projects/ngneat/cmdk/styles/raycast.scss";
+@use "../projects/ngneat/cmdk/styles/vercel.scss";
 
 @use "@angular/cdk/overlay-prebuilt.css";
 
@@ -437,6 +438,7 @@
 .footer {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   margin: 32px auto;
   bottom: 16px;
@@ -444,6 +446,7 @@
   font-size: 13px;
   z-index: 3;
   width: 100%;
+  flex-direction: column;
 
   a {
     display: inline-flex;

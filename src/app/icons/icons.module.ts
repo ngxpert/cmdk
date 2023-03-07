@@ -33,6 +33,11 @@ import { YouTubeIconComponent } from './you-tube-icon/you-tube-icon.component';
 import { WindowIconComponent } from './window-icon/window-icon.component';
 import { FinderIconComponent } from './finder-icon/finder-icon.component';
 import { StarIconComponent } from './star-icon/star-icon.component';
+import { ContactIconComponent } from './contact-icon/contact-icon.component';
+import { DocsIconComponent } from './docs-icon/docs-icon.component';
+import { FeedbackIconComponent } from './feedback-icon/feedback-icon.component';
+import { PlusIconComponent } from './plus-icon/plus-icon.component';
+import { TeamsIconComponent } from './teams-icon/teams-icon.component';
 
 const ICONS = [
   AvatarComponent,
@@ -68,6 +73,11 @@ const ICONS = [
   WindowIconComponent,
   FinderIconComponent,
   StarIconComponent,
+  ContactIconComponent,
+  DocsIconComponent,
+  FeedbackIconComponent,
+  PlusIconComponent,
+  TeamsIconComponent,
 ];
 
 @NgModule({

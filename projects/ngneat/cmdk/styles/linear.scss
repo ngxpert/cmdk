@@ -1,5 +1,6 @@
 .linear {
     .cmdk-command {
+      display: block;
       max-width: 640px;
       width: 100%;
       background: #ffffff;
@@ -120,7 +121,7 @@
       }
     }
   
-    .cmdk-linear-list {
+    .cmdk-list {
       height: min(300px, var(--cmdk-list-height));
       max-height: 400px;
       overflow: auto;

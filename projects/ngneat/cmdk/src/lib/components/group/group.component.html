@@ -1,8 +1,5 @@
-<div
-  class="cmdk-group"
-  [ngClass]="{ 'cmdk-group-active': active }"
+<ng-container
   *ngIf="showGroup"
-  [id]="groupId"
 >
   <div role="presentation" *ngIf="label" class="cmdk-group-label">
     <ng-container *dynamicView="label"></ng-container>
@@ -10,4 +7,4 @@
   <div class="cmdk-group-content" role="group" [attr.aria-label]="ariaLabel">
     <ng-content></ng-content>
   </div>
-</div>
+</ng-container>

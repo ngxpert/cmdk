@@ -3,7 +3,7 @@
     <div class="cmdk-linear-badge">Issue - FUN-343</div>
     <input cmdkInput autoFocus placeholder="Type a command or search..." />
     <div *cmdkEmpty>No results found.</div>
-    <div class="cmdk-linear-list">
+    <cmdk-list>
         <button *ngFor="let item of items" cmdkItem [value]="item.label">
           <ng-container *dynamicView="item.icon"></ng-container>
           {{ item.label }}
@@ -11,6 +11,6 @@
             <kbd *ngFor="let key of item.shortcut">{{ key }}</kbd>
           </div>
         </button>
-    </div>
+    </cmdk-list>
   </cmdk-command>
 </div>

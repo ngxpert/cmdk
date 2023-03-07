@@ -1,1 +1,43 @@
-<p>vercel works!</p>
+<div class="vercel">
+    <cmdk-command (keydown)="onKeyDown($event)" [ngStyle]="{'transform': styleTransform}">
+      <div>
+        <div *ngFor="let p of pages" class="cmdk-vercel-badge">
+          {{ p }}
+        </div>
+      </div>
+      <input
+        cmdkInput
+        autoFocus
+        placeholder="What do you need?"
+        (change)="setInputValue($event)"
+      />
+      <div *cmdkEmpty>No results found.</div>
+      <cmdk-list>
+        <ng-container *ngIf="activePage === 'home'">
+          <cmdk-group [label]="group.group" *ngFor="let group of groups">
+            <button
+              cmdkItem
+              [value]="item.label"
+              *ngFor="let item of group.items"
+              (selected)="item.itemSelected && item.itemSelected()"
+            >
+              <ng-container *dynamicView="item.icon"></ng-container>
+              {{ item.label }}
+              <div class="cmdk-vercel-shortcuts" *ngIf="item.shortcut">
+                <kbd *ngFor="let key of item.shortcut.split(' ')">{{ key }}</kbd>
+              </div>
+            </button>
+          </cmdk-group>
+        </ng-container>
+        <ng-container *ngIf="activePage === 'projects'">
+          <button
+            cmdkItem
+            *ngFor="let item of projectItems; let i = index"
+            [value]="'Project' + (i + 1)"
+          >
+            Project {{ i + 1 }}
+          </button>
+        </ng-container>
+      </cmdk-list>
+    </cmdk-command>
+</div>

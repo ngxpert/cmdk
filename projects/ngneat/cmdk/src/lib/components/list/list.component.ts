@@ -8,31 +8,28 @@ import {
   Input,
   QueryList,
 } from '@angular/core';
-import { Content } from '@ngneat/overview';
 import { ItemDirective } from '../../directives/item/item.directive';
-import { CmdkGroupProps } from '../../types';
 
-let cmdkGroupId = 0;
+let cmdkListId = 0;
 
 @Component({
-  selector: 'cmdk-group',
-  templateUrl: './group.component.html',
+  selector: 'cmdk-list',
+  templateUrl: './list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
-    class: 'cmdk-group',
+    class: 'cmdk-list',
   },
 })
-export class GroupComponent implements CmdkGroupProps {
-  @Input() label?: Content;
+export class ListComponent {
   @Input() ariaLabel?: string;
 
   @ContentChildren(ItemDirective, { descendants: true })
   items!: QueryList<ItemDirective>;
 
-  showGroup = true;
+  showList = true;
   private _active = false;
-  readonly groupId = `cmdk-group-${cmdkGroupId++}`;
+  readonly listId = `cmdk-list-${cmdkListId++}`;
   _cdr = inject(ChangeDetectorRef);
 
   get filteredItems() {
@@ -53,10 +50,10 @@ export class GroupComponent implements CmdkGroupProps {
 
   @HostBinding('id')
   get id() {
-    return this.groupId;
+    return this.listId;
   }
 
-  @HostBinding('class.cmdk-group-active')
+  @HostBinding('class.cmdk-list-active')
   get activeClass() {
     return this.active;
   }

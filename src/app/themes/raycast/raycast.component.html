@@ -3,8 +3,8 @@
       <div class="cmdk-raycast-top-shine"></div>
       <input cmdkInput autoFocus placeholder="Search for apps and commands..." />
       <hr class="cmdk-raycast-loader" />
-      <div class="cmdk-raycast-list">
-        <div *cmdkEmpty>No results found.</div>
+      <div *cmdkEmpty>No results found.</div>
+      <cmdk-list>
         <cmdk-group label="Suggestions">
           <button cmdkItem value="Linear">
             <app-logo>
@@ -61,7 +61,7 @@
             <span class="cmdk-raycast-meta">Command</span>
           </button>
         </cmdk-group>
-      </div>
+      </cmdk-list>
 
       <div class="cmdk-raycast-footer">
         <!-- {theme === 'dark' ? <app-raycast-dark-icon /> : <app-raycast-light-icon />} -->

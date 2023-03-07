@@ -1,5 +1,6 @@
 .framer {
     .cmdk-command {
+      display: block;
       max-width: 640px;
       width: 100%;
       padding: 8px;
@@ -177,7 +178,7 @@
       }
     }
   
-    .cmdk-framer-list {
+    .cmdk-list {
       overflow: auto;
     }
   

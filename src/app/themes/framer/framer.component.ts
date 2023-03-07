@@ -11,7 +11,6 @@ import { SliderComponent } from 'src/app/icons/slider/slider.component';
 @Component({
   selector: 'app-framer',
   templateUrl: './framer.component.html',
-  styleUrls: ['./framer.component.scss'],
 })
 export class FramerComponent {
   value = 'Button';

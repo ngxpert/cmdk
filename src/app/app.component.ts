@@ -9,12 +9,14 @@ export class AppComponent {
 <cmdk-command>
   <input cmdkInput />
   <div *cmdkEmpty>No results found.</div>
-  <cmdk-group label="Letters">
-    <button cmdkItem>a</button>
-    <button cmdkItem>b</button>
-    <cmdk-separator></cmdk-separator>
-    <button cmdkItem>c</button>
-  </cmdk-group>
+  <cmdk-list>
+    <cmdk-group label="Letters">
+      <button cmdkItem>a</button>
+      <button cmdkItem>b</button>
+      <cmdk-separator></cmdk-separator>
+      <button cmdkItem>c</button>
+    </cmdk-group>
+  </cmdk-list>
 
   <button cmdkItem>Apple</button>
 </cmdk-command>`;
