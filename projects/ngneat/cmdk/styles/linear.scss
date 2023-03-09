@@ -1,8 +1,15 @@
 .linear {
+  .cmdk-list, .cmdk-item, .cmdk-separator, .cmdk-group {
+    &[cmdk-hidden="true"] {
+      display: none;
+    }
+  }
+  
+  .cmdk-group, .cmdk-list, .cmdk-command {
+    display: block;
+  }
     .cmdk-command {
-      display: block;
       max-width: 640px;
-      width: 100%;
       background: #ffffff;
       border-radius: 8px;
       overflow: hidden;
@@ -103,6 +110,10 @@
       &:active {
         transition-property: background;
         background: var(--gray4);
+      }
+
+      &:focus {
+        outline: none;
       }
 
       &:hover, &:focus {

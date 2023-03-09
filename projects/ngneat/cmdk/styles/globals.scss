@@ -37,16 +37,6 @@ a {
   text-decoration: none;
 }
 
-.cmdk-item {
-  &:focus {
-    outline: none;
-  }
-}
-
-.cmdk-group, .cmdk-list, .cmdk-command {
-  display: block;
-}
-
 *,
 *::after,
 *::before {

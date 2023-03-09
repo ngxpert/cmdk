@@ -22,6 +22,7 @@ export class VercelComponent {
       itemSelected?: () => void;
       icon: Content;
       shortcut: string;
+      separatorOnTop?: boolean;
     }>;
   }> = [
     {
@@ -72,6 +73,7 @@ export class VercelComponent {
           label: 'Contact Support',
           icon: ContactIconComponent,
           shortcut: '',
+          separatorOnTop: true,
         },
       ],
     },

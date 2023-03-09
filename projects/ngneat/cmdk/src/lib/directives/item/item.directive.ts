@@ -1,4 +1,9 @@
-import { Highlightable } from '@angular/cdk/a11y';
+import {
+  FocusableOption,
+  FocusOrigin,
+  Highlightable,
+  ListKeyManagerOption,
+} from '@angular/cdk/a11y';
 import {
   Directive,
   ElementRef,
@@ -23,7 +28,7 @@ let cmdkItemId = 0;
     class: 'cmdk-item',
   },
 })
-export class ItemDirective implements CmdkItemProps, Highlightable {
+export class ItemDirective implements CmdkItemProps, ListKeyManagerOption {
   @Input() disabled = false;
   @Output() selected = new EventEmitter();
   getLabel?(): string {
@@ -65,9 +70,9 @@ export class ItemDirective implements CmdkItemProps, Highlightable {
     }
   }
 
-  @HostBinding('style.display')
-  get display() {
-    return !this.filtered ? 'none' : '';
+  @HostBinding('attr.cmdk-hidden')
+  get hidden() {
+    return !this.filtered;
   }
 
   @HostBinding('attr.role')
@@ -102,9 +107,6 @@ export class ItemDirective implements CmdkItemProps, Highlightable {
 
   set active(value: boolean) {
     this._active = value;
-    if (value) {
-      this._elementRef.nativeElement.focus();
-    }
   }
 
   @HostListener('mouseup')

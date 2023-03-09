@@ -1,8 +1,15 @@
 .vercel {
-  .cmdk-command {
+  .cmdk-list, .cmdk-item, .cmdk-separator, .cmdk-group {
+    &[cmdk-hidden="true"] {
+      display: none;
+    }
+  }
+  
+  .cmdk-group, .cmdk-list, .cmdk-command {
     display: block;
+  }
+  .cmdk-command {
     max-width: 640px;
-    width: 100%;
     padding: 8px;
     background: #ffffff;
     border-radius: 12px;
@@ -83,6 +90,10 @@
       background: var(--gray4);
     }
 
+    &:focus {
+      outline: none;
+    }
+
     & + .cmdk-item {
       margin-top: 4px;
     }
@@ -123,7 +134,7 @@
     }
   }
 
-  .cmdk-separator {
+  .cmdk-separator hr {
     height: 1px;
     width: 100%;
     background: var(--gray5);

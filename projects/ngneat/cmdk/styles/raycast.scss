@@ -1,8 +1,15 @@
 .raycast {
-  .cmdk-command {
+  .cmdk-item, .cmdk-separator, .cmdk-group {
+    &[cmdk-hidden="true"] {
+      display: none;
+    }
+  }
+  
+  .cmdk-group, .cmdk-list, .cmdk-command {
     display: block;
+  }
+  .cmdk-command {
     max-width: 640px;
-    width: 100%;
     background: var(--gray1);
     border-radius: 12px;
     padding: 8px 0;
@@ -170,6 +177,10 @@
       background: var(--gray4);
     }
 
+    &:focus {
+      outline: none;
+    }
+
     &:first-child {
       margin-top: 8px;
     }
@@ -272,7 +283,7 @@
     }
   }
 
-  .cmdk-separator {
+  .cmdk-separator hr {
     height: 1px;
     width: 100%;
     background: var(--gray5);
@@ -400,6 +411,11 @@
 }
 
 .raycast-submenu {
+  .cmdk-item, .cmdk-separator, .cmdk-group {
+    &[cmdk-hidden="true"] {
+      display: none;
+    }
+  }
   .cmdk-command {
     display: flex;
     flex-direction: column;
@@ -446,6 +462,10 @@
     &[aria-disabled="true"] {
       color: var(--gray8);
       cursor: not-allowed;
+    }
+
+    &:focus {
+      outline: none;
     }
 
     svg {

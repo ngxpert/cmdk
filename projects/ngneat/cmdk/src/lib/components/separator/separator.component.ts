@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  HostBinding,
   inject,
 } from '@angular/core';
 
@@ -21,4 +22,9 @@ import {
 export class SeparatorComponent {
   showSeparator = true;
   public cdr = inject(ChangeDetectorRef);
+
+  @HostBinding('attr.cmdk-hidden')
+  get hidden() {
+    return !this.showSeparator;
+  }
 }

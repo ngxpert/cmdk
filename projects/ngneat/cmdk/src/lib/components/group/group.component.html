@@ -1,10 +1,6 @@
-<ng-container
-  *ngIf="showGroup"
->
-  <div role="presentation" *ngIf="label" class="cmdk-group-label">
-    <ng-container *dynamicView="label"></ng-container>
-  </div>
-  <div class="cmdk-group-content" role="group" [attr.aria-label]="ariaLabel">
-    <ng-content></ng-content>
-  </div>
-</ng-container>
+<div role="presentation" *ngIf="label" class="cmdk-group-label">
+  <ng-container *dynamicView="label"></ng-container>
+</div>
+<div class="cmdk-group-content" role="group" [attr.aria-label]="ariaLabel">
+  <ng-content></ng-content>
+</div>

@@ -57,4 +57,9 @@ export class ListComponent {
   get activeClass() {
     return this.active;
   }
+
+  @HostBinding('attr.cmdk-hidden')
+  get hidden() {
+    return !this.showList;
+  }
 }

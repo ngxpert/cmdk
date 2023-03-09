@@ -1,7 +1,7 @@
 <div class="linear">
   <cmdk-command>
     <div class="cmdk-linear-badge">Issue - FUN-343</div>
-    <input cmdkInput autoFocus placeholder="Type a command or search..." />
+    <input cmdkInput autofocus placeholder="Type a command or search..." />
     <div *cmdkEmpty>No results found.</div>
     <cmdk-list>
         <button *ngFor="let item of items" cmdkItem [value]="item.label">

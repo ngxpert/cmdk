@@ -4,7 +4,7 @@
       <app-search></app-search>
       <input
         cmdkInput
-        autoFocus
+        autofocus
         placeholder="Find components, packages, and interactions..."
       />
     </div>
@@ -13,7 +13,7 @@
 
       <div class="cmdk-framer-left">
         <cmdk-group label="Components">
-          <div
+          <button
             *ngFor="let component of components"
             cmdkItem
             [value]="component.value"
@@ -27,7 +27,7 @@
                 component.subTitle
               }}</span>
             </div>
-          </div>
+          </button>
         </cmdk-group>
       </div>
       <hr class="cmdk-framer-separator" />

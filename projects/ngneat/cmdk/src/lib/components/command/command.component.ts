@@ -22,7 +22,11 @@ import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkCommandProps } from '../../types';
 import { GroupComponent } from '../group/group.component';
 import { SeparatorComponent } from '../separator/separator.component';
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+import {
+  ActiveDescendantKeyManager,
+  FocusKeyManager,
+  ListKeyManager,
+} from '@angular/cdk/a11y';
 import { LoaderDirective } from '../../directives/loader/loader.directive';
 import { ListComponent } from '../list/list.component';
 
@@ -100,6 +104,7 @@ export class CommandComponent
     this.keyManager = new ActiveDescendantKeyManager(this.items)
       .withWrap()
       .skipPredicate((item) => item.disabled || !item.filtered);
+
     if (this.filter) {
       this.cmdkService.search$
         .pipe(untilDestroyed(this))
@@ -199,10 +204,8 @@ export class CommandComponent
     setTimeout(() => {
       const firstItem = this.filteredItems?.[0];
       if (firstItem) {
-        console.log('first item found');
         this.keyManager.setFirstItemActive();
       } else {
-        console.log('first item not found');
         this.valueChanged.emit(undefined);
       }
     });

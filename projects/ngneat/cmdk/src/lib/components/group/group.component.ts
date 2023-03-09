@@ -60,4 +60,9 @@ export class GroupComponent implements CmdkGroupProps {
   get activeClass() {
     return this.active;
   }
+
+  @HostBinding('attr.cmdk-hidden')
+  get hidden() {
+    return !this.showGroup;
+  }
 }
