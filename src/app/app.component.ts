@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
+  currentTheme: 'light' | 'dark' = 'light';
   snippet = `
 <cmdk-command>
   <input cmdkInput />
@@ -20,4 +21,14 @@ export class AppComponent {
 
   <button cmdkItem>Apple</button>
 </cmdk-command>`;
+
+  toggleTheme() {
+    if (this.currentTheme === 'light') {
+      this.currentTheme = 'dark';
+    } else {
+      this.currentTheme = 'light';
+    }
+
+    document.body.classList.toggle('dark');
+  }
 }

@@ -483,3 +483,12 @@
     width: 100%;
   }
 }
+
+.theme-switcher {
+  position: fixed;
+      z-index: 3;
+      font-size: 24px;
+      top: 12px;
+      right: 12px;
+      cursor: pointer;
+}
