@@ -434,7 +434,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/pacocoursey"><img src="https://avatars.githubusercontent.com/u/34928425?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paco</b></sub></a><br /><a href="#design-pacocoursey" title="Design">🎨</a> <a href="https://github.com/@ngneat/cmdk/commits?author=pacocoursey" title="Documentation">📖</a> <a href="#ideas-pacocoursey" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-pacocoursey" title="Research">🔬</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
