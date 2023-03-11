@@ -22,11 +22,7 @@ import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkCommandProps } from '../../types';
 import { GroupComponent } from '../group/group.component';
 import { SeparatorComponent } from '../separator/separator.component';
-import {
-  ActiveDescendantKeyManager,
-  FocusKeyManager,
-  ListKeyManager,
-} from '@angular/cdk/a11y';
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { LoaderDirective } from '../../directives/loader/loader.directive';
 import { ListComponent } from '../list/list.component';
 
@@ -56,6 +52,7 @@ export class CommandComponent
     value,
     search
   ) => value.toLowerCase().includes(search.toLowerCase());
+  @Input() loop = false;
 
   @ContentChildren(ItemDirective, { descendants: true })
   items!: QueryList<ItemDirective>;
@@ -104,7 +101,7 @@ export class CommandComponent
 
     // create key and focus managers
     this.keyManager = new ActiveDescendantKeyManager(this.items)
-      .withWrap()
+      .withWrap(this.loop)
       .skipPredicate((item) => item.disabled || !item.filtered);
 
     if (this.filter) {

@@ -1,5 +1,5 @@
 <div class="vercel">
-    <cmdk-command (keydown)="onKeyDown($event)" [ngStyle]="{'transform': styleTransform}">
+    <cmdk-command (keydown)="onKeyDown($event)" [ngStyle]="{'transform': styleTransform}" [loop]="true">
       <div>
         <div *ngFor="let p of pages" class="cmdk-vercel-badge">
           {{ p }}

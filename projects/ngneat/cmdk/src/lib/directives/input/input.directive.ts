@@ -8,15 +8,18 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { CmdkService } from '../../cmdk.service';
+import { CmdkInputProps } from '../../types';
 
 @Directive({
-  selector: '[cmdkInput]',
+  selector: 'input[cmdkInput]',
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'cmdk-input',
   },
 })
-export class InputDirective implements AfterViewInit, OnDestroy {
+export class InputDirective
+  implements AfterViewInit, OnDestroy, CmdkInputProps
+{
   @Input() updateOn: 'blur' | 'change' | 'input' = 'input';
   private _cmdkService = inject(CmdkService);
   private _elementRef = inject<ElementRef<HTMLInputElement>>(

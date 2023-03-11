@@ -8,7 +8,8 @@ export interface CmdkCommandProps {
   ariaLabel?: string;
   /**
    * Custom filter function for whether each command menu item should matches the given search query.
-   * It should return a boolean, false being hidden entirely.
+   * It should return a boolean, false being hidden entirely. You can pass null to disable default filtering.
+   * @default
    */
   filter?: ((value: string, search: string) => boolean) | null;
   /**
@@ -23,11 +24,15 @@ export interface CmdkCommandProps {
    * Optional indicator to show loader
    */
   loading?: boolean;
+  /**
+   * Optionally set to `true` to turn on looping around when using the arrow keys.
+   */
+  loop?: boolean;
 }
 
 export interface CmdkGroupProps {
   /**
-   * Label for this command menu. Can be shown visibly.
+   * Label for this command menu.
    */
   label?: Content;
   /**
@@ -35,13 +40,27 @@ export interface CmdkGroupProps {
    */
   ariaLabel?: string;
 }
+
+export interface CmdkListProps extends Omit<CmdkGroupProps, 'label'> {}
 export interface CmdkItemProps {
   /**
    * Contextual Value of the list-item
    */
   value: string | undefined;
   /**
+   * Contextually mark the item as disabled. Keyboard navigation will skip this item.
+   */
+  disabled?: boolean;
+  /**
    * Event handler called when the item is selected
    */
   selected: EventEmitter<void>;
+}
+
+export interface CmdkInputProps {
+  /**
+   * Optional indicator to provide event listener when filtering should happen
+   * @default input
+   */
+  updateOn?: 'blur' | 'change' | 'input';
 }

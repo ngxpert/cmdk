@@ -1,5 +1,5 @@
 <div class="raycast">
-    <cmdk-command [value]="value" (valueChanged)="setValue($event)">
+    <cmdk-command [value]="value" (valueChanged)="setValue($event)" [loop]="true">
       <div class="cmdk-raycast-top-shine"></div>
       <input cmdkInput autofocus placeholder="Search for apps and commands..." />
       <hr class="cmdk-raycast-loader" />
