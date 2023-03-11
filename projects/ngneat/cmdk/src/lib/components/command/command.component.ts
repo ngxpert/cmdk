@@ -31,6 +31,8 @@ import { LoaderDirective } from '../../directives/loader/loader.directive';
 import { ListComponent } from '../list/list.component';
 
 let commandId = 0;
+const GROUP_SELECTOR = 'cmdk-group';
+const GROUP_HEADING_SELECTOR = '.cmdk-group-label';
 @UntilDestroy()
 @Component({
   selector: 'cmdk-command',
@@ -122,15 +124,16 @@ export class CommandComponent
     this.cmdkService.itemClicked$
       .pipe(untilDestroyed(this))
       .subscribe((value) => {
-        this.setValue(value);
-        this.valueChanged.emit(value);
+        const emit = true;
+        this.setValue(value, emit);
       });
 
     // set active group on active item change
     this.keyManager.change.pipe(untilDestroyed(this)).subscribe(() => {
       const activeItem = this.keyManager.activeItem;
       if (activeItem) {
-        this.valueChanged.emit(activeItem.value);
+        const emit = true;
+        this.setValue(activeItem.value, emit);
         this.setActiveGroupForActiveItem(activeItem.itemId);
       }
     });
@@ -224,16 +227,41 @@ export class CommandComponent
     });
   }
 
-  private setValue(value: string | undefined) {
+  private setValue(value: string | undefined, emit = false) {
     if (value !== undefined) {
       const valueItem = this.filteredItems?.find(
         (item) => item.value === value
       );
       if (valueItem) {
+        if (this.keyManager.activeItem !== valueItem) {
+          setTimeout(() => {
+            this.keyManager.setActiveItem(valueItem);
+          });
+        }
         setTimeout(() => {
-          this.keyManager.setActiveItem(valueItem);
+          this.scrollActiveIntoView();
         });
+        if (emit) {
+          this.valueChanged.emit(value);
+        }
       }
+    }
+  }
+
+  private scrollActiveIntoView() {
+    const item = this.keyManager.activeItem;
+    const nativeElement = item?._elementRef?.nativeElement;
+    if (nativeElement) {
+      if (nativeElement.parentElement?.firstChild === nativeElement) {
+        // First item in Group, ensure heading is in view
+        nativeElement
+          .closest(GROUP_SELECTOR)
+          ?.querySelector(GROUP_HEADING_SELECTOR)
+          ?.scrollIntoView({ block: 'nearest' });
+      }
+
+      // Ensure the item is always in view
+      nativeElement.scrollIntoView({ block: 'nearest' });
     }
   }
 }

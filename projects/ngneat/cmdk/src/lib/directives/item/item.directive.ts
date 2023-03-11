@@ -56,7 +56,7 @@ export class ItemDirective implements CmdkItemProps, ListKeyManagerOption {
   private _cmdkService = inject(CmdkService);
 
   readonly itemId = `cmdk-item-${cmdkItemId++}`;
-  private _elementRef = inject(ElementRef<HTMLButtonElement>);
+  _elementRef = inject(ElementRef<HTMLButtonElement>);
 
   @HostListener('click')
   onClick() {

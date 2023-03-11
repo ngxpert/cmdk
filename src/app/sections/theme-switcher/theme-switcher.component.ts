@@ -11,12 +11,12 @@ import { Theme } from 'src/types';
   templateUrl: './theme-switcher.component.html',
 })
 export class ThemeSwitcherComponent {
-  currentTheme: Theme = 'framer';
+  currentTheme: Theme = 'raycast';
   allThemes: Array<{ label: string; icon: Content; value: Theme }> = [
-    { label: 'Framer', value: 'framer', icon: FramerIconComponent },
-    { label: 'Linear', value: 'linear', icon: LinearIconComponent },
     { label: 'Raycast', value: 'raycast', icon: RaycastIconComponent },
+    { label: 'Linear', value: 'linear', icon: LinearIconComponent },
     { label: 'Vercel', value: 'vercel', icon: VercelIconComponent },
+    { label: 'Framer', value: 'framer', icon: FramerIconComponent },
   ];
 
   setCurrentTheme(theme: Theme) {
