@@ -21,6 +21,25 @@
         "ideas",
         "research"
       ]
+    },
+    {
+      "login": "shhdharmen",
+      "name": "Dharmen Shah",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6831283?v=4",
+      "profile": "https://github.com/shhdharmen",
+      "contributions": [
+        "a11y",
+        "code",
+        "content",
+        "design",
+        "doc",
+        "example",
+        "ideas",
+        "maintenance",
+        "platform",
+        "projectManagement",
+        "research"
+      ]
     }
   ],
   "contributorsPerLine": 7
