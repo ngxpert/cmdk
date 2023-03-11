@@ -19,7 +19,7 @@
 
 @ngneat/cmdk is a command menu Angular component that can also be used as an accessible combobox. You render items, it filters and sorts them automatically. @ngneat/cmdk supports a fully composable API, so you can wrap items in other components or even as static HTML.
 
-Demo and examples: [ngneat.github.io/cmdk]([ngneat.github.io/cmdk)
+Demo and examples: [ngneat.github.io/cmdk](https://ngneat.github.io/cmdk)
 
 ## Features
 
