@@ -50,7 +50,7 @@ export class ItemDirective implements CmdkItemProps, ListKeyManagerOption {
   get value() {
     return this._value
       ? this._value
-      : this._elementRef.nativeElement.textContent;
+      : this._elementRef.nativeElement.textContent.trim().toLowerCase();
   }
 
   private _cmdkService = inject(CmdkService);
@@ -73,6 +73,11 @@ export class ItemDirective implements CmdkItemProps, ListKeyManagerOption {
   @HostBinding('attr.cmdk-hidden')
   get hidden() {
     return !this.filtered;
+  }
+
+  @HostBinding('attr.data-value')
+  get dataValue() {
+    return this.value;
   }
 
   @HostBinding('attr.role')
