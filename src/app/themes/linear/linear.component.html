@@ -2,8 +2,8 @@
   <cmdk-command [loop]="true">
     <div class="cmdk-linear-badge">Issue - FUN-343</div>
     <input cmdkInput autofocus placeholder="Type a command or search..." />
-    <div *cmdkEmpty>No results found.</div>
     <cmdk-list>
+      <div *cmdkEmpty>No results found.</div>
         <button *ngFor="let item of items" cmdkItem [value]="item.label">
           <ng-container *dynamicView="item.icon"></ng-container>
           {{ item.label }}

@@ -140,8 +140,6 @@ Contains items and groups.
 | ----------- | ------------ |
 | `cmdk-list` | `.cmdk-list` |
 
-Lists will not unmount from the DOM, rather the `cmdk-hidden` attribute is applied to hide it from view. This may be relevant in your styling.
-
 Animate height using the `--cmdk-list-height` CSS variable.
 
 ```css

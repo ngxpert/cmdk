@@ -1,9 +1,4 @@
 .vercel {
-  .cmdk-list, .cmdk-item, .cmdk-separator, .cmdk-group {
-    &[cmdk-hidden="true"] {
-      display: none;
-    }
-  }
   
   .cmdk-group, .cmdk-list, .cmdk-command {
     display: block;

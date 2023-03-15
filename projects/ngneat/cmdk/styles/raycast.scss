@@ -1,9 +1,4 @@
 .raycast {
-  .cmdk-item, .cmdk-separator, .cmdk-group {
-    &[cmdk-hidden="true"] {
-      display: none;
-    }
-  }
   
   .cmdk-group, .cmdk-list, .cmdk-command {
     display: block;
@@ -411,11 +406,6 @@
 }
 
 .raycast-submenu {
-  .cmdk-item, .cmdk-separator, .cmdk-group {
-    &[cmdk-hidden="true"] {
-      display: none;
-    }
-  }
   .cmdk-command {
     display: flex;
     flex-direction: column;

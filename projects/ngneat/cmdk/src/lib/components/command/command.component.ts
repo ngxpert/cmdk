@@ -169,12 +169,6 @@ export class CommandComponent
         group._cdr.markForCheck();
       });
 
-      // show/hide list
-      this.lists?.forEach((list) => {
-        list.showList = list.filteredItems?.length > 0;
-        list._cdr.markForCheck();
-      });
-
       // hide separator if search and filter both are present, else show
       this.separators?.forEach((seperator) => {
         seperator.showSeparator = !(this.filter && search);

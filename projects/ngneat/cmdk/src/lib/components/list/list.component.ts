@@ -34,7 +34,6 @@ export class ListComponent implements AfterViewInit, OnDestroy, CmdkListProps {
 
   @ViewChild('height') heightEle!: ElementRef<HTMLDivElement>;
 
-  showList = true;
   private _active = false;
   private _elementRef = inject<ElementRef<any>>(ElementRef<any>);
   private _animationFrame: number | undefined;
@@ -66,11 +65,6 @@ export class ListComponent implements AfterViewInit, OnDestroy, CmdkListProps {
   @HostBinding('class.cmdk-list-active')
   get activeClass() {
     return this.active;
-  }
-
-  @HostBinding('attr.cmdk-hidden')
-  get hidden() {
-    return !this.showList;
   }
 
   ngAfterViewInit() {

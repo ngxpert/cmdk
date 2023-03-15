@@ -18,6 +18,7 @@ import {
   host: {
     class: 'cmdk-separator',
   },
+  styleUrls: ['./separator.component.scss'],
 })
 export class SeparatorComponent {
   showSeparator = true;

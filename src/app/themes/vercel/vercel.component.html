@@ -11,8 +11,8 @@
         placeholder="What do you need?"
         (change)="setInputValue($event)"
       />
-      <div *cmdkEmpty>No results found.</div>
       <cmdk-list>
+        <div *cmdkEmpty>No results found.</div>
         <ng-container *ngIf="activePage === 'home'">
           <cmdk-group [label]="group.group" *ngFor="let group of groups">
             <ng-container *ngFor="let item of group.items">

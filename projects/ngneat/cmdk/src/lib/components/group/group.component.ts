@@ -22,6 +22,7 @@ let cmdkGroupId = 0;
   host: {
     class: 'cmdk-group',
   },
+  styleUrls: ['./group.component.scss'],
 })
 export class GroupComponent implements CmdkGroupProps {
   @Input() label?: Content;
@@ -64,5 +65,10 @@ export class GroupComponent implements CmdkGroupProps {
   @HostBinding('attr.cmdk-hidden')
   get hidden() {
     return !this.showGroup;
+  }
+
+  @HostBinding('attr.data-value')
+  get dataValue() {
+    return this.label?.toString().toLowerCase();
   }
 }

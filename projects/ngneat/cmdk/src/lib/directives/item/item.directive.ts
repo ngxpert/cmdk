@@ -1,10 +1,6 @@
+import { ListKeyManagerOption } from '@angular/cdk/a11y';
 import {
-  FocusableOption,
-  FocusOrigin,
-  Highlightable,
-  ListKeyManagerOption,
-} from '@angular/cdk/a11y';
-import {
+  AfterContentInit,
   Directive,
   ElementRef,
   EventEmitter,
@@ -28,9 +24,12 @@ let cmdkItemId = 0;
     class: 'cmdk-item',
   },
 })
-export class ItemDirective implements CmdkItemProps, ListKeyManagerOption {
+export class ItemDirective
+  implements CmdkItemProps, ListKeyManagerOption, AfterContentInit
+{
   @Input() disabled = false;
   @Output() selected = new EventEmitter();
+  originalDisplay = '';
   getLabel?(): string {
     throw new Error('Method not implemented.');
   }
@@ -75,6 +74,11 @@ export class ItemDirective implements CmdkItemProps, ListKeyManagerOption {
     return !this.filtered;
   }
 
+  @HostBinding('style.display')
+  get display() {
+    return this.filtered ? this.originalDisplay : 'none';
+  }
+
   @HostBinding('attr.data-value')
   get dataValue() {
     return this.value;
@@ -117,5 +121,11 @@ export class ItemDirective implements CmdkItemProps, ListKeyManagerOption {
   @HostListener('mouseup')
   onMouseUp() {
     this._cmdkService.itemClicked(this.value);
+  }
+
+  ngAfterContentInit(): void {
+    this.originalDisplay = window.getComputedStyle(
+      this._elementRef.nativeElement
+    ).display;
   }
 }
