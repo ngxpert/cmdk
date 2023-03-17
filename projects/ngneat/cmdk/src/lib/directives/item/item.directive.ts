@@ -44,7 +44,10 @@ export class ItemDirective
   private _value: string = '';
   @Input()
   set value(value: string) {
-    this._value = value;
+    if (value !== this.value) {
+      this._cmdkService.itemValueChanged(this.value, value);
+      this._value = value;
+    }
   }
   get value() {
     return this._value

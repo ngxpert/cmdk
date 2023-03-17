@@ -25,6 +25,7 @@ import { SeparatorComponent } from '../separator/separator.component';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { LoaderDirective } from '../../directives/loader/loader.directive';
 import { ListComponent } from '../list/list.component';
+import { race } from 'rxjs';
 
 let commandId = 0;
 const GROUP_SELECTOR = 'cmdk-group';
@@ -64,6 +65,7 @@ export class CommandComponent
   separators: QueryList<SeparatorComponent> | undefined;
   @ContentChild(EmptyDirective) empty: EmptyDirective | undefined;
   @ContentChild(LoaderDirective) loader: LoaderDirective | undefined;
+  search = '';
 
   @HostBinding('attr.aria-label')
   get attrAriaLabel() {
@@ -94,6 +96,24 @@ export class CommandComponent
   }
 
   ngAfterViewInit() {
+    race(this.cmdkService.itemValueChanged$, this.items.changes)
+      .pipe(untilDestroyed(this))
+      .subscribe(() => {
+        setTimeout(() => {
+          if (this.keyManager) {
+            this.keyManager.destroy();
+          }
+          // create key and focus managers
+          this.keyManager = new ActiveDescendantKeyManager(this.items)
+            .withWrap(this.loop)
+            .skipPredicate((item) => item.disabled || !item.filtered);
+
+          if (this.filter) {
+            this.handleSearch(this.search);
+          }
+        });
+      });
+
     // show/hide loader
     if (this.loader) {
       this.loader.cmdkLoader = this.loading;
@@ -149,32 +169,32 @@ export class CommandComponent
   }
 
   handleSearch(search: string) {
+    this.search = search;
     if (this.items?.length) {
       // filter items
       this.items?.forEach((item) => {
         item.filtered = this.filter ? this.filter(item.value, search) : true;
       });
 
-      // show/hide empty directive
-      if (this.empty) {
-        this.empty.cmdkEmpty = this.filteredItems?.length === 0;
-      }
-
       // make first item active and in-turn it will also make first group active, if available
       this.makeFirstItemActive();
-
-      // show/hide group
-      this.groups?.forEach((group) => {
-        group.showGroup = group.filteredItems?.length > 0;
-        group._cdr.markForCheck();
-      });
-
-      // hide separator if search and filter both are present, else show
-      this.separators?.forEach((seperator) => {
-        seperator.showSeparator = !(this.filter && search);
-        seperator.cdr.markForCheck();
-      });
     }
+    // show/hide empty directive
+    if (this.empty) {
+      this.empty.cmdkEmpty = this.filteredItems?.length === 0;
+    }
+
+    // show/hide group
+    this.groups?.forEach((group) => {
+      group.showGroup = group.filteredItems?.length > 0;
+      group._cdr.markForCheck();
+    });
+
+    // hide separator if search and filter both are present, else show
+    this.separators?.forEach((seperator) => {
+      seperator.showSeparator = !(this.filter && search);
+      seperator.cdr.markForCheck();
+    });
   }
 
   @HostListener('keydown', ['$event'])
@@ -185,6 +205,7 @@ export class CommandComponent
       this.filteredItems.length > 0
     ) {
       this.valueChanged.emit(this.keyManager.activeItem.value);
+      this.keyManager.activeItem.selected.emit();
     } else {
       this.keyManager.onKeydown(ev);
     }

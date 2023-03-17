@@ -7,6 +7,11 @@ export class CmdkService {
   search$ = this._searchSub.asObservable();
   private _itemClickedSub = new Subject<string>();
   itemClicked$ = this._itemClickedSub.asObservable();
+  private _itemValueChangedSub = new Subject<{
+    oldValue: string;
+    newValue: string;
+  }>();
+  itemValueChanged$ = this._itemValueChangedSub.asObservable();
 
   setSearch(value: string) {
     this._searchSub.next(value);
@@ -14,5 +19,9 @@ export class CmdkService {
 
   itemClicked(value: string) {
     this._itemClickedSub.next(value);
+  }
+
+  itemValueChanged(oldValue: string, newValue: string) {
+    this._itemValueChangedSub.next({ oldValue, newValue });
   }
 }

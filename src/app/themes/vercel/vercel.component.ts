@@ -30,7 +30,9 @@ export class VercelComponent {
       items: [
         {
           label: 'Search Projects...',
-          itemSelected: () => this.searchProjects(),
+          itemSelected: () => {
+            this.searchProjects();
+          },
           icon: ProjectsIconComponent,
           shortcut: 'S P',
         },
