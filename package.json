@@ -57,11 +57,11 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "all-contributors-cli": "^6.20.0",
-    "angular-cli-ghpages": "^1.0.3",
+    "angular-cli-ghpages": "^1.0.5",
     "commitizen": "^4.2.5",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
-    "cypress": "^12.7.0",
+    "cypress": "^12.8.1",
     "eslint": "^8.28.0",
     "husky": "^8.0.1",
     "jasmine-core": "~4.2.0",
@@ -84,7 +84,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,scss,ts,html,component.html}": [
+    "src/**/*.{js,json,css,scss,ts,html,component.html}": [
       "prettier --write"
     ]
   },

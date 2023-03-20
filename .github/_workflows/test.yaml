@@ -1,0 +1,40 @@
+name: Test, Build and Publish a beta version
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Install dependencies
+        env:
+          HUSKY_SKIP_INSTALL: true
+        run: npm ci
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.3.1
+        with:
+          build: npm run build
+          start: npm start
+
+      # - name: Lint, build and release
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: |
+      #     npm run lint
+      #     npm run build:lib
+      #     npx semantic-release --debug

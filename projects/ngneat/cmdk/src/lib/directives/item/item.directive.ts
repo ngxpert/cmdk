@@ -1,4 +1,5 @@
 import { ListKeyManagerOption } from '@angular/cdk/a11y';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterContentInit,
   Directive,
@@ -27,7 +28,14 @@ let cmdkItemId = 0;
 export class ItemDirective
   implements CmdkItemProps, ListKeyManagerOption, AfterContentInit
 {
-  @Input() disabled = false;
+  private _disabled = false;
+  @Input()
+  set disabled(value: any) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  get disabled() {
+    return this._disabled;
+  }
   @Output() selected = new EventEmitter();
   originalDisplay = '';
   getLabel?(): string {

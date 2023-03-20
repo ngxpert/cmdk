@@ -11,7 +11,7 @@ export interface CmdkCommandProps {
    * It should return a boolean, false being hidden entirely. You can pass null to disable default filtering.
    * @default
    */
-  filter?: ((value: string, search: string) => boolean) | null;
+  filter?: ((value: string, search: string) => boolean) | null | undefined;
   /**
    * Optional controlled state of the selected command menu item.
    */

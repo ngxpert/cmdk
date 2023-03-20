@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
-  HostListener,
   inject,
   Input,
   OnDestroy,
@@ -21,18 +20,21 @@ export class InputDirective
   implements AfterViewInit, OnDestroy, CmdkInputProps
 {
   @Input() updateOn: 'blur' | 'change' | 'input' = 'input';
+  @Input()
+  set value(value: string) {
+    this.search(value);
+  }
   private _cmdkService = inject(CmdkService);
-  private _elementRef = inject<ElementRef<HTMLInputElement>>(
-    ElementRef<HTMLInputElement>
-  );
+  private _elementRef = inject<ElementRef<any>>(ElementRef<HTMLInputElement>);
 
   search(value: string) {
     this._cmdkService.setSearch(value);
   }
 
   ngAfterViewInit(): void {
-    this._elementRef.nativeElement.addEventListener(this.updateOn, (ev) =>
-      this.search((ev.target as HTMLInputElement).value)
+    this._elementRef.nativeElement.addEventListener(
+      this.updateOn,
+      (ev: Event) => this.search((ev.target as HTMLInputElement).value)
     );
   }
 

@@ -49,10 +49,11 @@ export class CommandComponent
   @Input() value: string | undefined;
   @Input() ariaLabel?: string;
   @Input() loading?: boolean;
-  @Input() filter: ((value: string, search: string) => boolean) | null = (
-    value,
-    search
-  ) => value.toLowerCase().includes(search.toLowerCase());
+  @Input() filter:
+    | ((value: string, search: string) => boolean)
+    | null
+    | undefined = (value, search) =>
+    value.toLowerCase().includes(search.toLowerCase());
   @Input() loop = false;
 
   @ContentChildren(ItemDirective, { descendants: true })
@@ -104,9 +105,7 @@ export class CommandComponent
             this.keyManager.destroy();
           }
           // create key and focus managers
-          this.keyManager = new ActiveDescendantKeyManager(this.items)
-            .withWrap(this.loop)
-            .skipPredicate((item) => item.disabled || !item.filtered);
+          this.initKeyManager();
 
           if (this.filter) {
             this.handleSearch(this.search);
@@ -120,9 +119,7 @@ export class CommandComponent
     }
 
     // create key and focus managers
-    this.keyManager = new ActiveDescendantKeyManager(this.items)
-      .withWrap(this.loop)
-      .skipPredicate((item) => item.disabled || !item.filtered);
+    this.initKeyManager();
 
     if (this.filter) {
       this.cmdkService.search$
@@ -154,6 +151,13 @@ export class CommandComponent
         this.setActiveGroupForActiveItem(activeItem.itemId);
       }
     });
+  }
+
+  private initKeyManager() {
+    this.keyManager = new ActiveDescendantKeyManager(this.items)
+      .withWrap(this.loop)
+      .withPageUpDown()
+      .skipPredicate((item) => item.disabled || !item.filtered);
   }
 
   get filteredItems() {
