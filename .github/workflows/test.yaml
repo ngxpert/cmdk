@@ -29,6 +29,7 @@ jobs:
         with:
           build: npm run build
           start: npm start
+          component: true
 
       # - name: Lint, build and release
       #   env:
