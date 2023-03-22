@@ -27,12 +27,12 @@ jobs:
           HUSKY_SKIP_INSTALL: true
         run: npm ci
 
-      # - name: NPM install, build and deploy
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: |
-      #     npm run build
-      #     npm run build:lib
-      #     npx semantic-release
-      #     npm run deploy -- --no-silent --name="Mr. Dharmen's Bot" --email=shhdharmen@gmail.com
+      - name: NPM install, build and deploy
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm run build
+          npm run build:lib
+          npx semantic-release
+          npm run deploy -- --no-silent --name="Mr. Dharmen's Bot" --email=shhdharmen@gmail.com

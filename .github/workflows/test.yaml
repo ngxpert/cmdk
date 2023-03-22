@@ -31,11 +31,11 @@ jobs:
           start: npm start
           component: true
 
-      # - name: Lint, build and release
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: |
-      #     npm run lint
-      #     npm run build:lib
-      #     npx semantic-release --debug
+      - name: Lint, build and release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm run lint
+          npm run build:lib
+          npx semantic-release --debug
