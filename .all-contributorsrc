@@ -1,0 +1,63 @@
+{
+  "projectName": "cmdk",
+  "projectOwner": "@ngneat",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "pacocoursey",
+      "name": "Paco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34928425?v=4",
+      "profile": "https://github.com/pacocoursey",
+      "contributions": [
+        "design",
+        "doc",
+        "ideas",
+        "research"
+      ]
+    },
+    {
+      "login": "shhdharmen",
+      "name": "Dharmen Shah",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6831283?v=4",
+      "profile": "https://github.com/shhdharmen",
+      "contributions": [
+        "a11y",
+        "code",
+        "content",
+        "design",
+        "doc",
+        "example",
+        "ideas",
+        "maintenance",
+        "platform",
+        "projectManagement",
+        "research"
+      ]
+    },
+    {
+      "login": "NetanelBasal",
+      "name": "Netanel Basal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6745730?v=4",
+      "profile": "https://www.netbasal.com/",
+      "contributions": [
+        "question",
+        "business",
+        "fundingFinding",
+        "ideas",
+        "maintenance",
+        "mentoring",
+        "projectManagement",
+        "research",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

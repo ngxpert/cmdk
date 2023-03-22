@@ -1,0 +1,24 @@
+code,
+code[class*='language-'],
+pre,
+pre[class*='language-'] {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 14px !important;
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 40px;
+    color: #fff;
+    border-radius: 9999px;
+    font-size: 14px;
+    display: flex;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    cursor: pointer;
+}

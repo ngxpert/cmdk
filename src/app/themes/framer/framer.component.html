@@ -1,0 +1,68 @@
+<div class="framer">
+  <cmdk-command (valueChanged)="setValue($event)" [value]="value" [loop]="true">
+    <div class="cmdk-framer-header">
+      <app-search></app-search>
+      <input
+        cmdkInput
+        autofocus
+        placeholder="Find components, packages, and interactions..."
+      />
+    </div>
+    <cmdk-list>
+      <div class="cmdk-framer-items">
+
+      <div class="cmdk-framer-left">
+        <cmdk-group label="Components">
+          <button
+            *ngFor="let component of components"
+            cmdkItem
+            [value]="component.value"
+          >
+            <div class="cmdk-framer-icon-wrapper">
+              <ng-container *dynamicView="component.icon"></ng-container>
+            </div>
+            <div class="cmdk-framer-item-meta">
+              {{ component.value }}
+              <span class="cmdk-framer-item-subtitle">{{
+                component.subTitle
+              }}</span>
+            </div>
+          </button>
+        </cmdk-group>
+      </div>
+      <hr class="cmdk-framer-separator" />
+      <div class="cmdk-framer-right">
+        <ng-container [ngSwitch]="value">
+          <div *ngSwitchCase="'Button'">
+            
+            <button>Button</button>
+          </div>
+          <div *ngSwitchCase="'Input'">
+            <input type="text" placeholder="Start typing...">
+          </div>
+          <div *ngSwitchCase="'Radio'">
+            <div>
+              <input type="radio" id="huey" name="drone" value="huey"
+                     checked>
+              <label for="huey">Huey</label>
+            </div>
+          </div>
+          <div *ngSwitchCase="'Badge'">
+            <div class="cmdk-framer-badge">Badge</div>
+          </div>
+          <div *ngSwitchCase="'Slider'">
+            <div class="cmdk-framer-slider"><div></div></div>
+          </div>
+          <div *ngSwitchCase="'Avatar'">
+            <img class="cmdk-framer-avatar" src="https://avatars.githubusercontent.com/u/6831283?s=40&v=4" alt="Avatar of Dharmen">
+          </div>
+          <div *ngSwitchCase="'Container'">
+            <div class="cmdk-framer-container"></div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    </cmdk-list>
+  </cmdk-command>
+</div>

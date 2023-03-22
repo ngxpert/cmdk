@@ -1,0 +1,27 @@
+<div class="switcher">
+    <button
+      *ngFor="let theme of allThemes"
+      [attr.data-selected]="theme.value === currentTheme"
+      (click)="setCurrentTheme(theme.value)"
+    >
+      <ng-container *dynamicView="theme.icon"></ng-container>
+      {{ theme.label }}
+      <div class="activeTheme" *ngIf="theme.value === currentTheme"></div>
+    </button>
+  </div>
+  <div class="cmdk-wrapper">
+    <div [ngSwitch]="currentTheme">
+      <div *ngSwitchCase="'framer'">
+        <app-framer></app-framer>
+      </div>
+      <div *ngSwitchCase="'linear'">
+        <app-linear></app-linear>
+      </div>
+      <div *ngSwitchCase="'raycast'">
+        <app-raycast></app-raycast>
+      </div>
+      <div *ngSwitchCase="'vercel'">
+        <app-vercel></app-vercel>
+      </div>
+    </div>
+  </div>
