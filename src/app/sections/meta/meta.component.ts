@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-meta',
   templateUrl: './meta.component.html',
 })
 export class MetaComponent {
-  version = '0.0.1';
+  @Input() version: string | null = '0.0.1';
   copied = false;
   async copyInstall() {
     try {

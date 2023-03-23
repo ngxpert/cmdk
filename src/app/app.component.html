@@ -6,7 +6,7 @@
 </button>
 <main class="main">
   <div class="content">
-    <app-meta></app-meta>
+    <app-meta [version]="version$ | async"></app-meta>
 
     <app-theme-switcher></app-theme-switcher>
 

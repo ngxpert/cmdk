@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +23,7 @@ export class AppComponent {
 
   <button cmdkItem>Apple</button>
 </cmdk-command>`;
+  version$: any;
 
   toggleTheme() {
     if (this.currentTheme === 'light') {
@@ -30,5 +33,11 @@ export class AppComponent {
     }
 
     document.body.classList.toggle('dark');
+  }
+
+  constructor(private http: HttpClient) {
+    this.version$ = this.http
+      .get('https://registry.npmjs.org/@ngneat/cmdk')
+      .pipe(map((data: any) => data['dist-tags']['latest']));
   }
 }

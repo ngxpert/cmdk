@@ -12,6 +12,7 @@
 [![ngneat-lib](https://img.shields.io/badge/made%20with-%40ngneat%2Flib-ad1fe3?logo=angular)](https://github.com/ngneat/lib)
 [![spectator](https://img.shields.io/badge/tested%20with-spectator-2196F3.svg?style=flat-square)]()
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![npm](https://img.shields.io/npm/v/@ngneat/cmdk)](https://www.npmjs.com/package/@ngneat/cmdk)
 
 > Fast, composable, unstyled command menu for Angular. Directly inspired from [pacocoursey/cmdk](https://github.com/pacocoursey/cmdk)
 

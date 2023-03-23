@@ -21,6 +21,7 @@ import {
   RayCastSubItemComponent,
   SubCommandDialogComponent,
 } from './themes/raycast/sub-command-dialog/sub-command-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {
     SharedModule,
     OverlayModule,
     A11yModule,
+    HttpClientModule,
   ],
   bootstrap: [AppComponent],
 })
