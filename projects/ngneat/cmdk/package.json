@@ -1,0 +1,41 @@
+{
+  "name": "@ngneat/cmdk",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^15.1.0",
+    "@angular/core": "^15.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "@ngneat/overview": "^4.1.0",
+    "@ngneat/until-destroy": "^9.2.3",
+    "@angular/cdk": "^15.2.0"
+  },
+  "keywords": [
+    "angular",
+    "angular 2",
+    "cmdk",
+    "menu",
+    "anglar menu"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/ngneat/cmdk/issue"
+  },
+  "homepage": "https://github.com/ngneat/cmdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngneat/cmdk"
+  },
+  "schematics": "./schematics/collection.json",
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "copy:schemas": "cpx schematics/ng-add ../../../dist/ngneat/cmdk/",
+    "copy:collection": "cpx schematics/collection.json ../../../dist/ngneat/cmdk/schematics/",
+    "css": "sass --no-source-map styles:../../../dist/ngneat/cmdk/styles",
+    "postbuild": "npm run copy:schemas && npm run copy:collection && npm run css"
+  }
+}

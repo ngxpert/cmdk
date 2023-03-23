@@ -1,0 +1,80 @@
+<div class="raycast">
+    <cmdk-command [value]="value" (valueChanged)="setValue($event)" [loop]="true">
+      <div class="cmdk-raycast-top-shine"></div>
+      <input cmdkInput autofocus placeholder="Search for apps and commands..." />
+      <hr class="cmdk-raycast-loader" />
+      <cmdk-list>
+        <div *cmdkEmpty>No results found.</div>
+        <cmdk-group label="Suggestions">
+          <button cmdkItem value="Linear">
+            <app-logo>
+              <app-linear-icon />
+            </app-logo>
+            Linear
+            <span class="cmdk-raycast-meta">Application</span>
+          </button>
+          <button cmdkItem value="Figma">
+            <app-logo>
+              <app-figma />
+            </app-logo>
+            Figma
+            <span class="cmdk-raycast-meta">Application</span>
+          </button>
+          <button cmdkItem value="Slack">
+            <app-logo>
+              <app-slack-icon />
+            </app-logo>
+            Slack
+            <span class="cmdk-raycast-meta">Application</span>
+          </button>
+          <button cmdkItem value="YouTube">
+            <app-logo>
+              <app-you-tube-icon />
+            </app-logo>
+            YouTube
+            <span class="cmdk-raycast-meta">Application</span>
+          </button>
+          <button cmdkItem value="Raycast">
+            <app-logo>
+              <app-raycast-icon />
+            </app-logo>
+            Raycast
+            <span class="cmdk-raycast-meta">Application</span>
+          </button>
+        </cmdk-group>
+        <cmdk-group label="Commands">
+          <button cmdkItem isCommand value="Clipboard History">
+            <app-logo>
+              <app-clipboard-icon />
+            </app-logo>
+            Clipboard History
+            <span class="cmdk-raycast-meta">Command</span>
+          </button>
+          <button cmdkItem isCommand value="Import Extension">
+            <app-hammer-icon />
+            Import Extension
+            <span class="cmdk-raycast-meta">Command</span>
+          </button>
+          <button cmdkItem isCommand value="Manage Extensions">
+            <app-hammer-icon />
+            Manage Extensions
+            <span class="cmdk-raycast-meta">Command</span>
+          </button>
+        </cmdk-group>
+      </cmdk-list>
+
+      <div class="cmdk-raycast-footer">
+        <!-- {theme === 'dark' ? <app-raycast-dark-icon /> : <app-raycast-light-icon />} -->
+        <app-raycast-light-icon />
+
+        <button class="cmdk-raycast-open-trigger">
+          Open Application
+          <kbd>↵</kbd>
+        </button>
+
+        <hr />
+
+        <app-sub-command [value]="value"></app-sub-command>
+      </div>
+    </cmdk-command>
+  </div>

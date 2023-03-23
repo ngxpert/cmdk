@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/ngneat/cmdk",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "@ngneat/overview",
+    "@ngneat/until-destroy",
+    "@angular/cdk"
+  ],
+  "assets": [{ "glob": "**/*.*", "input": "styles", "output": "styles/scss" }]
+}

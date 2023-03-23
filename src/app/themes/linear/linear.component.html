@@ -1,0 +1,16 @@
+<div class="linear">
+  <cmdk-command [loop]="true">
+    <div class="cmdk-linear-badge">Issue - FUN-343</div>
+    <input cmdkInput autofocus placeholder="Type a command or search..." />
+    <cmdk-list>
+      <div *cmdkEmpty>No results found.</div>
+        <button *ngFor="let item of items" cmdkItem [value]="item.label">
+          <ng-container *dynamicView="item.icon"></ng-container>
+          {{ item.label }}
+          <div class="cmdk-linear-shortcuts">
+            <kbd *ngFor="let key of item.shortcut">{{ key }}</kbd>
+          </div>
+        </button>
+    </cmdk-list>
+  </cmdk-command>
+</div>

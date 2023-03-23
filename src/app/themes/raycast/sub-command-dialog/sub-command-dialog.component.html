@@ -1,0 +1,14 @@
+<div class="raycast-submenu">
+    <cmdk-command>
+      <cmdk-list>
+        <cmdk-group [label]="value">
+          <button cmdkItem *ngFor="let item of items" [value]="item.label">
+            <ng-container *dynamicView="item.icon"></ng-container>
+            {{ item.label }}
+            <app-raycast-sub-item [shortcut]="item.shortcuts" />
+          </button>
+        </cmdk-group>
+      </cmdk-list>
+        <input cdkFocusInitial cmdkInput #input placeholder="Search for actions..." />
+      </cmdk-command>
+</div>
