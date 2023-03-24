@@ -391,13 +391,13 @@ You can include the `SCSS` stylesheet in your application's style file:
 
 ```scss
 // Global is needed for any theme
-@use "~@ngneat/cdk/styles/scss/globals";
+@use "~@ngneat/cmdk/styles/scss/globals";
 
 // Then add theme
-@use "~@ngneat/cdk/styles/scss/framer";
-// @use "~@ngneat/cdk/styles/scss/vercel";
-// @use "~@ngneat/cdk/styles/scss/linear";
-// @use "~@ngneat/cdk/styles/scss/raycast";
+@use "~@ngneat/cmdk/styles/scss/framer";
+// @use "~@ngneat/cmdk/styles/scss/vercel";
+// @use "~@ngneat/cmdk/styles/scss/linear";
+// @use "~@ngneat/cmdk/styles/scss/raycast";
 ```
 
 or, use pre-built `CSS` file in `angular.json`
@@ -406,8 +406,8 @@ or, use pre-built `CSS` file in `angular.json`
 // ...
 "styles": [
   "...",
-  "node_modules/@ngneat/cdk/styles/globals.css"
-  "node_modules/@ngneat/cdk/styles/framer.css"
+  "node_modules/@ngneat/cmdk/styles/globals.css"
+  "node_modules/@ngneat/cmdk/styles/framer.css"
 ],
 // ...
 ```
