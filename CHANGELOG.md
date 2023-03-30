@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/ngneat/cmdk/compare/v1.0.0...v1.0.1) (2023-03-30)
+
+
+### Bug Fixes
+
+* **command.component:** re-listen to keymanager changes when items change ([f89136a](https://github.com/ngneat/cmdk/commit/f89136a1206cd6741e4ef6c8945a0cf0735eb4c5)), closes [#4](https://github.com/ngneat/cmdk/issues/4)
+
 # 1.0.0 (2023-03-23)
 
 
