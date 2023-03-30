@@ -141,6 +141,13 @@ export class CommandComponent
         const emit = true;
         this.setValue(value, emit);
       });
+  }
+
+  private initKeyManager() {
+    this.keyManager = new ActiveDescendantKeyManager(this.items)
+      .withWrap(this.loop)
+      .withPageUpDown()
+      .skipPredicate((item) => item.disabled || !item.filtered);
 
     // set active group on active item change
     this.keyManager.change.pipe(untilDestroyed(this)).subscribe(() => {
@@ -151,13 +158,6 @@ export class CommandComponent
         this.setActiveGroupForActiveItem(activeItem.itemId);
       }
     });
-  }
-
-  private initKeyManager() {
-    this.keyManager = new ActiveDescendantKeyManager(this.items)
-      .withWrap(this.loop)
-      .withPageUpDown()
-      .skipPredicate((item) => item.disabled || !item.filtered);
   }
 
   get filteredItems() {
