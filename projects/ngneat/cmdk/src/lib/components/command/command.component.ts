@@ -267,7 +267,6 @@ export class CommandComponent
   private scrollActiveIntoView() {
     const item = this.keyManager.activeItem;
     const nativeElement = item?._elementRef?.nativeElement;
-    console.log(nativeElement);
     if (nativeElement) {
       if (nativeElement.parentElement?.firstChild === nativeElement) {
         // First item in Group, ensure heading is in view
