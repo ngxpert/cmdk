@@ -118,7 +118,7 @@ const injectImports =
       } else {
         context.logger.log(
           'info',
-          'ℹ️ Skipped import for stand-alone application. Need to be imported manually.'
+          'ℹ️ Skipped writing import statement for standalone app. Need to be imported manually.'
         );
       }
 
@@ -126,35 +126,63 @@ const injectImports =
     }
   };
 
-const addModuleToImports = (options: Schema): Rule => (host: Tree, context: SchematicContext) => {
-  if (!options.skipImport) {
-    const workspace = getWorkspace(host) as any;
-    const project = getProjectFromWorkspace(
-      workspace,
-      options.project ? options.project : Object.keys(workspace.projects)[0]
-    );
+const addModuleToImports =
+  (options: Schema): Rule =>
+  (host: Tree, context: SchematicContext) => {
+    if (!options.skipImport) {
+      const workspace = getWorkspace(host) as any;
+      const project = getProjectFromWorkspace(
+        workspace,
+        options.project ? options.project : Object.keys(workspace.projects)[0]
+      );
 
-    if (!project || project.projectType !== 'application') {
-      throw new SchematicsException(`A client project type of "application" is required.`);
-    }
-    if (!project.architect) {
-      throw new SchematicsException(`Architect options not present for project.`);
-    }
-    if (!project.architect.build) {
-      throw new SchematicsException(`Architect:Build options not present for project.`);
-    }
-
-    const modulePath = getAppModulePath(host, project.architect.build.options.main);
-
-    importModuleSet.forEach((item) => {
-      if (hasNgModuleImport(host, modulePath, item.moduleName)) {
-        context.logger.warn(`Could not set up "${item.moduleName}" in "imports[]" because it's already imported.`);
-      } else {
-        addModuleImportToRootModule(host, item.importModuleStatement, null as any, project);
-        context.logger.log('info', '✅ Imported "' + item.moduleName + '" in imports');
+      if (!project || project.projectType !== 'application') {
+        throw new SchematicsException(
+          `A client project type of "application" is required.`
+        );
       }
-    });
-  }
+      if (!project.architect) {
+        throw new SchematicsException(
+          `Architect options not present for project.`
+        );
+      }
+      if (!project.architect.build) {
+        throw new SchematicsException(
+          `Architect:Build options not present for project.`
+        );
+      }
 
-  return host;
-};
+      if (!isStandaloneApp(host, project.architect.build.options.main)) {
+        const modulePath = getAppModulePath(
+          host,
+          project.architect.build.options.main
+        );
+
+        importModuleSet.forEach((item) => {
+          if (hasNgModuleImport(host, modulePath, item.moduleName)) {
+            context.logger.warn(
+              `Could not set up "${item.moduleName}" in "imports[]" because it's already imported.`
+            );
+          } else {
+            addModuleImportToRootModule(
+              host,
+              item.importModuleStatement,
+              null as any,
+              project
+            );
+            context.logger.log(
+              'info',
+              '✅ Imported "' + item.moduleName + '" in imports'
+            );
+          }
+        });
+      } else {
+        context.logger.log(
+          'info',
+          'ℹ️ Skipped import for stand-alone application. Need to be imported manually.'
+        );
+      }
+    }
+
+    return host;
+  };
