@@ -1,10 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { map } from 'rxjs';
+import { FooterComponent } from './sections/footer/footer.component';
+import { CodeBlockComponent } from './shared/components/code-block/code-block.component';
+import { ThemeSwitcherComponent } from './sections/theme-switcher/theme-switcher.component';
+import { MetaComponent } from './sections/meta/meta.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    standalone: true,
+    imports: [
+        NgIf,
+        MetaComponent,
+        ThemeSwitcherComponent,
+        CodeBlockComponent,
+        FooterComponent,
+        AsyncPipe,
+    ],
 })
 export class AppComponent {
   currentTheme: 'light' | 'dark' = 'light';
