@@ -30,6 +30,13 @@ Demo and examples: [ngneat.github.io/cmdk](https://ngneat.github.io/cmdk)
 - 🖼️ [Drop in stylesheet](#drop-in-stylesheets) themes provided
 - ♿ Accessible
 
+## Compatibility with Angular Versions
+
+| @ngneat/cmdk | Angular |
+| -- | -- |
+| 1.x | <16 |
+| 2.x | >=16 |
+
 ## Installation
 
 ### Angular CLI
