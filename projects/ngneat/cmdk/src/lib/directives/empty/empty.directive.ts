@@ -7,12 +7,12 @@ import {
 } from '@angular/core';
 
 @Directive({
-    selector: '[cmdkEmpty]',
-    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-    host: {
-        class: 'cmdk-empty',
-    },
-    standalone: true,
+  selector: '[cmdkEmpty]',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'cmdk-empty',
+  },
+  standalone: true,
 })
 export class EmptyDirective {
   private _hasView = false;

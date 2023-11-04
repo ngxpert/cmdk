@@ -1,20 +1,22 @@
-import { Directive, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  TemplateRef,
+  ViewContainerRef,
+  inject,
+} from '@angular/core';
 
 @Directive({
-    selector: '[cmdkLoader]',
-    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-    host: {
-        class: 'cmdk-loader',
-    },
-    standalone: true,
+  selector: '[cmdkLoader]',
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+  host: {
+    class: 'cmdk-loader',
+  },
+  standalone: true,
 })
 export class LoaderDirective {
   private _hasView = false;
-
-  constructor(
-    private _templateRef: TemplateRef<any>,
-    private _viewContainer: ViewContainerRef
-  ) {}
+  private _templateRef = inject(TemplateRef);
+  private _viewContainer = inject(ViewContainerRef);
 
   set cmdkLoader(condition: boolean | undefined) {
     if (condition && !this._hasView) {

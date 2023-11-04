@@ -1,7 +1,13 @@
 import { Rule, SchematicContext, Tree, SchematicsException, chain } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
-import { insertImport, isImported } from '@schematics/angular/utility/ast-utils';
+import {
+  getAppModulePath,
+  isStandaloneApp,
+} from '@schematics/angular/utility/ng-ast-utils';
+import {
+  insertImport,
+  isImported,
+} from '@schematics/angular/utility/ast-utils';
 import { InsertChange } from '@schematics/angular/utility/change';
 
 import { Schema } from './schema';
@@ -42,54 +48,83 @@ export const ngAdd =
     ]);
   };
 
-const installPackageJsonDependencies = (): Rule => (host: Tree, context: SchematicContext) => {
-  context.addTask(new NodePackageInstallTask());
-  context.logger.log('info', `🔍 Installing packages...`);
+const installPackageJsonDependencies =
+  (): Rule => (host: Tree, context: SchematicContext) => {
+    context.addTask(new NodePackageInstallTask());
+    context.logger.log('info', `🔍 Installing packages...`);
 
-  return host;
-};
-
-const injectImports = (options: Schema): Rule => (host: Tree, context: SchematicContext) => {
-  if (!options.skipImport) {
-    const workspace = getWorkspace(host) as any;
-    const project = getProjectFromWorkspace(
-      workspace,
-      options.project ? options.project : Object.keys(workspace.projects)[0]
-    );
-
-    if (!project || project.projectType !== 'application') {
-      throw new SchematicsException(`A client project type of "application" is required.`);
-    }
-
-    if (
-      !project.architect ||
-      !project.architect.build ||
-      !project.architect.build.options ||
-      !project.architect.build.options.main
-    ) {
-      throw targetBuildNotFoundError();
-    }
-
-    const modulePath = getAppModulePath(host, project.architect.build.options.main);
-    const moduleSource = getSourceFile(host, modulePath);
-
-    importModuleSet.forEach((item) => {
-      if (isImported(moduleSource, item.moduleName, item.importPath)) {
-        context.logger.warn(`Could not import "${item.moduleName}" because it's already imported.`);
-      } else {
-        const change = insertImport(moduleSource, modulePath, item.moduleName, item.importPath);
-
-        if (change) {
-          const recorder = host.beginUpdate(modulePath);
-          recorder.insertLeft((change as InsertChange).pos, (change as InsertChange).toAdd);
-          host.commitUpdate(recorder);
-          context.logger.log('info', '✅ Written import statement for "' + item.moduleName + '"');
-        }
-      }
-    });
     return host;
-  }
-};
+  };
+
+const injectImports =
+  (options: Schema): Rule =>
+  (host: Tree, context: SchematicContext) => {
+    if (!options.skipImport) {
+      const workspace = getWorkspace(host) as any;
+      const project = getProjectFromWorkspace(
+        workspace,
+        options.project ? options.project : Object.keys(workspace.projects)[0]
+      );
+
+      if (!project || project.projectType !== 'application') {
+        throw new SchematicsException(
+          `A client project type of "application" is required.`
+        );
+      }
+
+      if (
+        !project.architect ||
+        !project.architect.build ||
+        !project.architect.build.options ||
+        !project.architect.build.options.main
+      ) {
+        throw targetBuildNotFoundError();
+      }
+
+      if (!isStandaloneApp(host, project.architect.build.options.main)) {
+        const modulePath = getAppModulePath(
+          host,
+          project.architect.build.options.main
+        );
+        const moduleSource = getSourceFile(host, modulePath);
+
+        importModuleSet.forEach((item) => {
+          if (isImported(moduleSource, item.moduleName, item.importPath)) {
+            context.logger.warn(
+              `Could not import "${item.moduleName}" because it's already imported.`
+            );
+          } else {
+            const change = insertImport(
+              moduleSource,
+              modulePath,
+              item.moduleName,
+              item.importPath
+            );
+
+            if (change) {
+              const recorder = host.beginUpdate(modulePath);
+              recorder.insertLeft(
+                (change as InsertChange).pos,
+                (change as InsertChange).toAdd
+              );
+              host.commitUpdate(recorder);
+              context.logger.log(
+                'info',
+                '✅ Written import statement for "' + item.moduleName + '"'
+              );
+            }
+          }
+        });
+      } else {
+        context.logger.log(
+          'info',
+          'ℹ️ Skipped import for stand-alone application. Need to be imported manually.'
+        );
+      }
+
+      return host;
+    }
+  };
 
 const addModuleToImports = (options: Schema): Rule => (host: Tree, context: SchematicContext) => {
   if (!options.skipImport) {

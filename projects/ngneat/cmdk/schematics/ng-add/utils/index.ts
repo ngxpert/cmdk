@@ -30,7 +30,7 @@ export const getProjectFromWorkspace = (
   workspace: WorkspaceSchema,
   projectName?: string
 ): WorkspaceProject => {
-  const finalProjectName = projectName || workspace.defaultProject;
+  const finalProjectName = projectName;
   if (finalProjectName) {
     const project = workspace.projects[finalProjectName];
     return project;
