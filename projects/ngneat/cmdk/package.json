@@ -2,14 +2,14 @@
   "name": "@ngneat/cmdk",
   "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "^15.1.0",
-    "@angular/core": "^15.1.0"
+    "@angular/common": ">=16.0.0",
+    "@angular/core": ">16.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0",
-    "@ngneat/overview": "^4.1.0",
-    "@ngneat/until-destroy": "^9.2.3",
-    "@angular/cdk": "^15.2.0"
+    "@ngneat/overview": ">=5.0.0",
+    "@ngneat/until-destroy": ">=10.0.0",
+    "@angular/cdk": ">=16.0.0"
   },
   "keywords": [
     "angular",

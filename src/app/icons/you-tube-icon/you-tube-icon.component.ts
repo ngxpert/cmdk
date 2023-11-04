@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-you-tube-icon',
-  template: `<svg
+    selector: 'app-you-tube-icon',
+    template: `<svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 48 48"
     width="48px"
@@ -14,6 +14,7 @@ import { Component } from '@angular/core';
     />
     <path fill="#FFF" d="M20 31L20 17 32 24z" />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class YouTubeIconComponent {}

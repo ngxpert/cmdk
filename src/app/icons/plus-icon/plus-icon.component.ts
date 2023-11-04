@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-plus-icon',
-  template: `<svg
+    selector: 'app-plus-icon',
+    template: `<svg
     fill="none"
     height="24"
     shape-rendering="geometricPrecision"
@@ -16,6 +16,7 @@ import { Component } from '@angular/core';
     <path d="M12 5v14"></path>
     <path d="M5 12h14"></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class PlusIconComponent {}

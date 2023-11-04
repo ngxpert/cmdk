@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-change-status-icon',
-  template: `<svg
+    selector: 'app-change-status-icon',
+    template: `<svg
     width="16"
     height="16"
     viewBox="-1 -1 15 15"
@@ -17,6 +17,7 @@ import { Component } from '@angular/core';
       d="M7 12.5C10.0376 12.5 12.5 10.0376 12.5 7C12.5 3.96243 10.0376 1.5 7 1.5C3.96243 1.5 1.5 3.96243 1.5 7C1.5 10.0376 3.96243 12.5 7 12.5ZM7 14C10.866 14 14 10.866 14 7C14 3.13401 10.866 0 7 0C3.13401 0 0 3.13401 0 7C0 10.866 3.13401 14 7 14Z"
     />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class ChangeStatusIconComponent {}

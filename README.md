@@ -30,11 +30,12 @@ Demo and examples: [ngneat.github.io/cmdk](https://ngneat.github.io/cmdk)
 - 🖼️ [Drop in stylesheet](#drop-in-stylesheets) themes provided
 - ♿ Accessible
 
-## Table of Contents
+## Compatibility with Angular Versions
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [FAQ](#faq)
+| @ngneat/cmdk | Angular |
+| -- | -- |
+| 1.x | <16 |
+| 2.x | >=16 |
 
 ## Installation
 
@@ -47,24 +48,34 @@ ng add @ngneat/cmdk
 ### NPM
 
 ```bash
-# First, install dependencies
-npm install @ngneat/overview @ngneat/until-destroy @angular/cdk
+# For Angular version < 16
 
-npm install @ngneat/cmdk
+## First, install dependencies
+npm install @ngneat/overview@4 @ngneat/until-destroy@9 @angular/cdk@15
+
+## Then library
+npm install @ngneat/cmdk@1
+
+# For Angular version >= 16
+
+## First, install dependencies
+npm install @ngneat/overview@5 @ngneat/until-destroy@10 @angular/cdk@16
+
+## Then library
+npm install @ngneat/cmdk@2
 ```
 
 ### Yarn
 
-```bash
-# First, install dependencies
-yarn add @ngneat/overview @ngneat/until-destroy @angular/cdk
-
-yarn add @ngneat/cmdk
-```
+Same as `npm`, just instead of `npm install`, write `yarn add`.
 
 ## Usage
 
-### 1. Import in module
+### 1. Setup
+
+#### 1.1 Module Setup
+
+> This is taken care with ng add @ngneat/cmdk
 
 ```ts
 import { CmdkModule } from '@ngneat/cmdk';
@@ -75,6 +86,34 @@ import { CmdkModule } from '@ngneat/cmdk';
   ],
 })
 export class AppModule {}
+```
+
+#### 1.2 Standalone Setup
+
+```typescript
+import { AppComponent } from './src/app.component';
+
+import {
+  CommandComponent,
+  GroupComponent,
+  InputDirective,
+  ItemDirective,
+  ListComponent,
+  EmptyDirective
+} from '@ngneat/cmdk';
+
+@Component({
+    selector: 'app-root',
+    standalone: true,
+    imports: [
+        CommandComponent,
+        InputDirective,
+        ListComponent,
+        GroupComponent,
+        ItemDirective,
+        EmptyDirective
+    ],
+})
 ```
 
 ### 2. Start using it

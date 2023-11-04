@@ -10,11 +10,12 @@ import { CmdkService } from '../../cmdk.service';
 import { CmdkInputProps } from '../../types';
 
 @Directive({
-  selector: 'input[cmdkInput]',
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'cmdk-input',
-  },
+    selector: 'input[cmdkInput]',
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'cmdk-input',
+    },
+    standalone: true,
 })
 export class InputDirective
   implements AfterViewInit, OnDestroy, CmdkInputProps

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-contact-icon',
-  template: `<svg
+    selector: 'app-contact-icon',
+    template: `<svg
     fill="none"
     height="24"
     shape-rendering="geometricPrecision"
@@ -18,6 +18,7 @@ import { Component } from '@angular/core';
     ></path>
     <path d="M22 6l-10 7L2 6"></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class ContactIconComponent {}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-slack-icon',
-  template: `<svg
+    selector: 'app-slack-icon',
+    template: `<svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 48 48"
     width="48px"
@@ -41,6 +41,7 @@ import { Component } from '@angular/core';
       d="M28,43c-2.209,0-4-1.791-4-4c0-1.195,0-4,0-4s2.986,0,4,0c2.209,0,4,1.791,4,4S30.209,43,28,43z"
     />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class SlackIconComponent {}

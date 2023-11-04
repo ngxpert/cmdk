@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-teams-icon',
-  template: `<svg
+    selector: 'app-teams-icon',
+    template: `<svg
     fill="none"
     height="24"
     shape-rendering="geometricPrecision"
@@ -18,6 +18,7 @@ import { Component } from '@angular/core';
     <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
     <path d="M16 3.13a4 4 0 010 7.75"></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class TeamsIconComponent {}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-figma',
-  template: `<svg
+    selector: 'app-figma',
+    template: `<svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 48 48"
     width="48px"
@@ -26,6 +26,7 @@ import { Component } from '@angular/core';
     />
     <circle cx="32" cy="24" r="7" fill="#29b6f6" />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class FigmaComponent {}

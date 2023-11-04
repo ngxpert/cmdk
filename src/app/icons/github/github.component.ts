@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-github',
-  template: `<svg
+    selector: 'app-github',
+    template: `<svg
     width="14"
     height="14"
     viewBox="0 0 14 14"
@@ -14,6 +14,7 @@ import { Component } from '@angular/core';
       fill="currentColor"
     />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class GithubComponent {}

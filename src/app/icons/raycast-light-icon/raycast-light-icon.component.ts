@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-raycast-light-icon',
-  template: `<svg
+    selector: 'app-raycast-light-icon',
+    template: `<svg
     width="1024"
     height="1024"
     viewBox="0 0 1024 1024"
@@ -16,6 +16,7 @@ import { Component } from '@angular/core';
       fill="#FF6363"
     />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class RaycastLightIconComponent {}

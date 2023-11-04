@@ -6,8 +6,7 @@ import { IconsModule } from '../icons/icons.module';
 const COMPONENTS = [CodeBlockComponent];
 
 @NgModule({
-  declarations: COMPONENTS,
-  imports: [CommonModule, IconsModule],
-  exports: COMPONENTS,
+    imports: [CommonModule, IconsModule, ...COMPONENTS],
+    exports: COMPONENTS,
 })
 export class SharedModule {}

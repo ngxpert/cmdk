@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-linear-icon',
-  template: `<svg
+    selector: 'app-linear-icon',
+    template: `<svg
     width="64"
     height="64"
     viewBox="0 0 64 64"
@@ -26,6 +26,7 @@ import { Component } from '@angular/core';
       fill="#5E6AD2"
     ></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class LinearIconComponent {}

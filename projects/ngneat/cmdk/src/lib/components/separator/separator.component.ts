@@ -11,14 +11,15 @@ import {
  * Visible when the search query is empty or `alwaysRender` is true, hidden otherwise.
  */
 @Component({
-  selector: 'cmdk-separator',
-  templateUrl: './separator.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'cmdk-separator',
-  },
-  styleUrls: ['./separator.component.scss'],
+    selector: 'cmdk-separator',
+    templateUrl: './separator.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'cmdk-separator',
+    },
+    styleUrls: ['./separator.component.scss'],
+    standalone: true,
 })
 export class SeparatorComponent {
   showSeparator = true;
