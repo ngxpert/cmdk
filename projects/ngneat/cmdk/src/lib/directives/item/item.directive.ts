@@ -19,11 +19,12 @@ let cmdkItemId = 0;
 
 @UntilDestroy()
 @Directive({
-  selector: '[cmdkItem]',
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'cmdk-item',
-  },
+    selector: '[cmdkItem]',
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'cmdk-item',
+    },
+    standalone: true,
 })
 export class ItemDirective
   implements CmdkItemProps, ListKeyManagerOption, AfterContentInit

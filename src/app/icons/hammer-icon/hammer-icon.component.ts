@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-hammer-icon',
-  template: `<div class="cmdk-raycast-hammer-icon">
+    selector: 'app-hammer-icon',
+    template: `<div class="cmdk-raycast-hammer-icon">
     <svg
       width="32"
       height="32"
@@ -19,6 +19,7 @@ import { Component } from '@angular/core';
       />
     </svg>
   </div>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class HammerIconComponent {}

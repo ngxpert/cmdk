@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-vercel-icon',
-  template: `<svg
+    selector: 'app-vercel-icon',
+    template: `<svg
     aria-label="Vercel Logo"
     fill="var(--highContrast)"
     height="26"
@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
   >
     <path d="M37.59.25l36.95 64H.64l36.95-64z"></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class VercelIconComponent {}

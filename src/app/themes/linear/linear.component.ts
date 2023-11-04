@@ -6,10 +6,27 @@ import { ChangePriorityIconComponent } from 'src/app/icons/change-priority-icon/
 import { ChangeStatusIconComponent } from 'src/app/icons/change-status-icon/change-status-icon.component';
 import { RemoveLabelIconComponent } from 'src/app/icons/remove-label-icon/remove-label-icon.component';
 import { SetDueDateIconComponent } from 'src/app/icons/set-due-date-icon/set-due-date-icon.component';
+import { DynamicViewModule } from '@ngneat/overview';
+import { ItemDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/item/item.directive';
+import { NgFor } from '@angular/common';
+import { EmptyDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/empty/empty.directive';
+import { ListComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/list/list.component';
+import { InputDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/input/input.directive';
+import { CommandComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/command/command.component';
 
 @Component({
-  selector: 'app-linear',
-  templateUrl: './linear.component.html',
+    selector: 'app-linear',
+    templateUrl: './linear.component.html',
+    standalone: true,
+    imports: [
+        CommandComponent,
+        InputDirective,
+        ListComponent,
+        EmptyDirective,
+        NgFor,
+        ItemDirective,
+        DynamicViewModule,
+    ],
 })
 export class LinearComponent {
   readonly items = [

@@ -8,21 +8,24 @@ import {
   Input,
   QueryList,
 } from '@angular/core';
-import { Content } from '@ngneat/overview';
+import { Content, DynamicViewModule } from '@ngneat/overview';
 import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkGroupProps } from '../../types';
+import { NgIf } from '@angular/common';
 
 let cmdkGroupId = 0;
 
 @Component({
-  selector: 'cmdk-group',
-  templateUrl: './group.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'cmdk-group',
-  },
-  styleUrls: ['./group.component.scss'],
+    selector: 'cmdk-group',
+    templateUrl: './group.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'cmdk-group',
+    },
+    styleUrls: ['./group.component.scss'],
+    standalone: true,
+    imports: [NgIf, DynamicViewModule],
 })
 export class GroupComponent implements CmdkGroupProps {
   @Input() label?: Content;

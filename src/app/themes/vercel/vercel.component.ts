@@ -1,15 +1,37 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Content } from '@ngneat/overview';
+import { Content, DynamicViewModule } from '@ngneat/overview';
 import { ContactIconComponent } from 'src/app/icons/contact-icon/contact-icon.component';
 import { DocsIconComponent } from 'src/app/icons/docs-icon/docs-icon.component';
 import { FeedbackIconComponent } from 'src/app/icons/feedback-icon/feedback-icon.component';
 import { PlusIconComponent } from 'src/app/icons/plus-icon/plus-icon.component';
 import { ProjectsIconComponent } from 'src/app/icons/projects-icon/projects-icon.component';
 import { TeamsIconComponent } from 'src/app/icons/teams-icon/teams-icon.component';
+import { ItemDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/item/item.directive';
+import { SeparatorComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/separator/separator.component';
+import { GroupComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/group/group.component';
+import { EmptyDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/empty/empty.directive';
+import { ListComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/list/list.component';
+import { InputDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/input/input.directive';
+import { NgStyle, NgFor, NgIf } from '@angular/common';
+import { CommandComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/command/command.component';
 
 @Component({
-  selector: 'app-vercel',
-  templateUrl: './vercel.component.html',
+    selector: 'app-vercel',
+    templateUrl: './vercel.component.html',
+    standalone: true,
+    imports: [
+        CommandComponent,
+        NgStyle,
+        NgFor,
+        InputDirective,
+        ListComponent,
+        EmptyDirective,
+        NgIf,
+        GroupComponent,
+        SeparatorComponent,
+        ItemDirective,
+        DynamicViewModule,
+    ],
 })
 export class VercelComponent {
   @ViewChild('cmdkCommand') cmdkCommand!: ElementRef<HTMLDivElement>;

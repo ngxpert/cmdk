@@ -18,13 +18,14 @@ import { CmdkListProps } from '../../types';
 let cmdkListId = 0;
 
 @Component({
-  selector: 'cmdk-list',
-  templateUrl: './list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'cmdk-list',
-  },
+    selector: 'cmdk-list',
+    templateUrl: './list.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'cmdk-list',
+    },
+    standalone: true,
 })
 export class ListComponent implements AfterViewInit, OnDestroy, CmdkListProps {
   @Input() ariaLabel?: string;

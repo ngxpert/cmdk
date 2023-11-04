@@ -32,15 +32,16 @@ const GROUP_SELECTOR = 'cmdk-group';
 const GROUP_HEADING_SELECTOR = '.cmdk-group-label';
 @UntilDestroy()
 @Component({
-  selector: 'cmdk-command',
-  templateUrl: './command.component.html',
-  providers: [CmdkService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  exportAs: 'cmdkCommand',
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'cmdk-command',
-  },
+    selector: 'cmdk-command',
+    templateUrl: './command.component.html',
+    providers: [CmdkService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    exportAs: 'cmdkCommand',
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'cmdk-command',
+    },
+    standalone: true,
 })
 export class CommandComponent
   implements CmdkCommandProps, AfterViewInit, OnChanges, OnDestroy

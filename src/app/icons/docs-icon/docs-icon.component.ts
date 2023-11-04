@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-docs-icon',
-  template: `<svg
+    selector: 'app-docs-icon',
+    template: `<svg
     fill="none"
     height="24"
     shape-rendering="geometricPrecision"
@@ -19,6 +19,7 @@ import { Component } from '@angular/core';
     <path d="M16 17H8"></path>
     <path d="M10 9H8"></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class DocsIconComponent {}

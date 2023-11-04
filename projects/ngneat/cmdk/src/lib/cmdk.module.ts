@@ -22,9 +22,8 @@ const ComponentsAndDirectives = [
   ListComponent,
 ];
 @NgModule({
-  declarations: ComponentsAndDirectives,
-  imports: [CommonModule, DynamicViewModule, A11yModule],
-  exports: ComponentsAndDirectives,
+    imports: [CommonModule, DynamicViewModule, A11yModule, ...ComponentsAndDirectives],
+    exports: ComponentsAndDirectives,
 })
 export class CmdkModule {
   static forRoot(): ModuleWithProviders<CmdkModule> {
