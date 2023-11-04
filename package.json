@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.9",
+    "@angular-devkit/core": "^16.2.9",
     "@angular-eslint/builder": "16.2.0",
     "@angular-eslint/eslint-plugin": "16.2.0",
     "@angular-eslint/eslint-plugin-template": "16.2.0",
@@ -61,7 +62,7 @@
     "commitizen": "^4.2.5",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
-    "cypress": "^12.8.1",
+    "cypress": "^13.4.0",
     "eslint": "^8.39.0",
     "husky": "^8.0.1",
     "jasmine-core": "~4.2.0",
