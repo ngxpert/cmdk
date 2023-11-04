@@ -12,6 +12,7 @@ import {
   host: {
     class: 'cmdk-empty',
   },
+  standalone: true,
 })
 export class EmptyDirective {
   private _hasView = false;

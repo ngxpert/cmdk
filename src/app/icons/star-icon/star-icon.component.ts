@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-star-icon',
-  template: `<svg
+    selector: 'app-star-icon',
+    template: `<svg
     width="32"
     height="32"
     viewBox="0 0 16 16"
@@ -17,6 +17,7 @@ import { Component } from '@angular/core';
       stroke-linejoin="round"
     ></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class StarIconComponent {}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-button',
-  template: `<svg
+    selector: 'app-button',
+    template: `<svg
     width="15"
     height="15"
     viewBox="0 0 15 15"
@@ -16,6 +16,7 @@ import { Component } from '@angular/core';
       clip-rule="evenodd"
     ></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class ButtonComponent {}

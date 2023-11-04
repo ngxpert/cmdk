@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-change-priority-icon',
-  template: `<svg
+    selector: 'app-change-priority-icon',
+    template: `<svg
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
     <rect x="6" y="5" width="3" height="9" rx="1"></rect>
     <rect x="11" y="2" width="3" height="12" rx="1"></rect>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class ChangePriorityIconComponent {}

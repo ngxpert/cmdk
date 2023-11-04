@@ -1,15 +1,39 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Content } from '@ngneat/overview';
+import { Content, DynamicViewModule } from '@ngneat/overview';
 import { ContactIconComponent } from 'src/app/icons/contact-icon/contact-icon.component';
 import { DocsIconComponent } from 'src/app/icons/docs-icon/docs-icon.component';
 import { FeedbackIconComponent } from 'src/app/icons/feedback-icon/feedback-icon.component';
 import { PlusIconComponent } from 'src/app/icons/plus-icon/plus-icon.component';
 import { ProjectsIconComponent } from 'src/app/icons/projects-icon/projects-icon.component';
 import { TeamsIconComponent } from 'src/app/icons/teams-icon/teams-icon.component';
+import { NgStyle, NgFor, NgIf } from '@angular/common';
+import {
+  CommandComponent,
+  EmptyDirective,
+  GroupComponent,
+  InputDirective,
+  ItemDirective,
+  ListComponent,
+  SeparatorComponent,
+} from '@ngneat/cmdk';
 
 @Component({
-  selector: 'app-vercel',
-  templateUrl: './vercel.component.html',
+    selector: 'app-vercel',
+    templateUrl: './vercel.component.html',
+    standalone: true,
+    imports: [
+        CommandComponent,
+        NgStyle,
+        NgFor,
+        InputDirective,
+        ListComponent,
+        EmptyDirective,
+        NgIf,
+        GroupComponent,
+        SeparatorComponent,
+        ItemDirective,
+        DynamicViewModule,
+    ],
 })
 export class VercelComponent {
   @ViewChild('cmdkCommand') cmdkCommand!: ElementRef<HTMLDivElement>;

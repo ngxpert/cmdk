@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-copy',
-  template: `<svg
+    selector: 'app-copy',
+    template: `<svg
     [attr.width]="width"
     [attr.height]="height"
     strokeWidth="1.5"
@@ -22,7 +22,8 @@ import { Component, Input } from '@angular/core';
       strokeLinejoin="round"
     />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class CopyComponent {
   @Input() height = '16';

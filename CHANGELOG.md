@@ -1,3 +1,15 @@
+# [2.0.0-beta.1](https://github.com/ngneat/cmdk/compare/v1.0.1...v2.0.0-beta.1) (2023-11-04)
+
+
+### Documentation
+
+* add versions ([ab16198](https://github.com/ngneat/cmdk/commit/ab16198b6a49dca48aaff27df93aae5d8eeb56c6)), closes [#7](https://github.com/ngneat/cmdk/issues/7)
+
+
+### BREAKING CHANGES
+
+* Supports Angular 16
+
 ## [1.0.1](https://github.com/ngneat/cmdk/compare/v1.0.0...v1.0.1) (2023-03-30)
 
 

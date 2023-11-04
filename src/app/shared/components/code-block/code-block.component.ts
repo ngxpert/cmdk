@@ -6,11 +6,20 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CodeHighlightService } from '../../../core/services/code-highlight.service';
+import { CopyComponent } from '../../../icons/copy/copy.component';
+import { CopiedComponent } from '../../../icons/copied/copied.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-code-block',
-  templateUrl: './code-block.component.html',
-  styleUrls: ['./code-block.component.scss'],
+    selector: 'app-code-block',
+    templateUrl: './code-block.component.html',
+    styleUrls: ['./code-block.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        CopiedComponent,
+        CopyComponent,
+    ],
 })
 export class CodeBlockComponent implements OnChanges {
   @Input() language = 'typescript';

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-clipboard-icon',
-  template: `<div class="cmdk-raycast-clipboard-icon">
+    selector: 'app-clipboard-icon',
+    template: `<div class="cmdk-raycast-clipboard-icon">
     <svg
       width="32"
       height="32"
@@ -19,6 +19,7 @@ import { Component } from '@angular/core';
       />
     </svg>
   </div>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class ClipboardIconComponent {}

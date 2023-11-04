@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-copied',
-  template: `<svg
+    selector: 'app-copied',
+    template: `<svg
     [attr.width]="width"
     [attr.height]="height"
     strokeWidth="1.5"
@@ -17,7 +17,8 @@ import { Component, Input } from '@angular/core';
       strokeLinejoin="round"
     />
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: true,
 })
 export class CopiedComponent {
   @Input() height = '16';
