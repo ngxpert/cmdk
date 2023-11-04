@@ -7,13 +7,15 @@ import { InputComponent } from 'src/app/icons/input/input.component';
 import { LayoutComponent } from 'src/app/icons/layout/layout.component';
 import { RadioComponent } from 'src/app/icons/radio/radio.component';
 import { SliderComponent } from 'src/app/icons/slider/slider.component';
-import { ItemDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/item/item.directive';
 import { NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
-import { GroupComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/group/group.component';
-import { ListComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/list/list.component';
-import { InputDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/input/input.directive';
-import { SearchComponent } from '../../icons/search/search.component';
-import { CommandComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/command/command.component';
+import {
+  CommandComponent,
+  GroupComponent,
+  InputDirective,
+  ItemDirective,
+  ListComponent,
+} from '@ngneat/cmdk';
+import { SearchComponent } from 'src/app/icons/search/search.component';
 
 @Component({
     selector: 'app-framer',

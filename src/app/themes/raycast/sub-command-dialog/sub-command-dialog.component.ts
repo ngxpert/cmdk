@@ -3,12 +3,14 @@ import { Content, DynamicViewModule } from '@ngneat/overview';
 import { FinderIconComponent } from 'src/app/icons/finder-icon/finder-icon.component';
 import { StarIconComponent } from 'src/app/icons/star-icon/star-icon.component';
 import { WindowIconComponent } from 'src/app/icons/window-icon/window-icon.component';
-import { InputDirective } from '../../../../../projects/ngneat/cmdk/src/lib/directives/input/input.directive';
-import { ItemDirective } from '../../../../../projects/ngneat/cmdk/src/lib/directives/item/item.directive';
 import { NgFor } from '@angular/common';
-import { GroupComponent } from '../../../../../projects/ngneat/cmdk/src/lib/components/group/group.component';
-import { ListComponent } from '../../../../../projects/ngneat/cmdk/src/lib/components/list/list.component';
-import { CommandComponent } from '../../../../../projects/ngneat/cmdk/src/lib/components/command/command.component';
+import {
+  CommandComponent,
+  GroupComponent,
+  InputDirective,
+  ItemDirective,
+  ListComponent,
+} from '@ngneat/cmdk';
 
 export interface SubCommandDialogData {
   selectedValue: string;

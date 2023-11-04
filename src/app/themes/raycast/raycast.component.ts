@@ -9,12 +9,14 @@ import { SlackIconComponent } from '../../icons/slack-icon/slack-icon.component'
 import { FigmaComponent } from '../../icons/figma/figma.component';
 import { LinearIconComponent } from '../../icons/linear-icon/linear-icon.component';
 import { LogoComponent } from '../../icons/logo/logo.component';
-import { ItemDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/item/item.directive';
-import { GroupComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/group/group.component';
-import { EmptyDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/empty/empty.directive';
-import { ListComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/list/list.component';
-import { InputDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/input/input.directive';
-import { CommandComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/command/command.component';
+import {
+  CommandComponent,
+  EmptyDirective,
+  GroupComponent,
+  InputDirective,
+  ItemDirective,
+  ListComponent,
+} from '@ngneat/cmdk';
 
 @Component({
     selector: 'app-raycast',

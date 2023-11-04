@@ -9,10 +9,12 @@ import { SetDueDateIconComponent } from 'src/app/icons/set-due-date-icon/set-due
 import { DynamicViewModule } from '@ngneat/overview';
 import { ItemDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/item/item.directive';
 import { NgFor } from '@angular/common';
-import { EmptyDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/empty/empty.directive';
-import { ListComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/list/list.component';
-import { InputDirective } from '../../../../projects/ngneat/cmdk/src/lib/directives/input/input.directive';
-import { CommandComponent } from '../../../../projects/ngneat/cmdk/src/lib/components/command/command.component';
+import {
+  CommandComponent,
+  EmptyDirective,
+  InputDirective,
+  ListComponent,
+} from '@ngneat/cmdk';
 
 @Component({
     selector: 'app-linear',
