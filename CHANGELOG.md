@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/ngneat/cmdk/compare/v1.0.1...v2.0.0) (2023-11-04)
+
+
+### Bug Fixes
+
+* fix ng-add schematics for standalone app ([036e9ac](https://github.com/ngneat/cmdk/commit/036e9ac0f157759a57370bc98f43972e8ec49364))
+
+
+### Documentation
+
+* add versions ([ab16198](https://github.com/ngneat/cmdk/commit/ab16198b6a49dca48aaff27df93aae5d8eeb56c6)), closes [#7](https://github.com/ngneat/cmdk/issues/7)
+
+
+### BREAKING CHANGES
+
+* Supports Angular 16
+
 # [2.0.0-beta.1](https://github.com/ngneat/cmdk/compare/v1.0.1...v2.0.0-beta.1) (2023-11-04)
 
 
