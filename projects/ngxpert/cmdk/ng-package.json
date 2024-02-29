@@ -5,8 +5,8 @@
     "entryFile": "src/public-api.ts"
   },
   "allowedNonPeerDependencies": [
-    "@ngxpert/overview",
-    "@ngxpert/until-destroy",
+    "@ngneat/overview",
+    "@ngneat/until-destroy",
     "@angular/cdk"
   ],
   "assets": [{ "glob": "**/*.*", "input": "styles", "output": "styles/scss" }]

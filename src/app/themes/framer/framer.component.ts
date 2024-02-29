@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngxpert/overview';
+import { Content, DynamicViewModule } from '@ngneat/overview';
 import { AvatarComponent } from 'src/app/icons/avatar/avatar.component';
 import { BadgeComponent } from 'src/app/icons/badge/badge.component';
 import { ButtonComponent } from 'src/app/icons/button/button.component';

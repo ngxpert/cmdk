@@ -11,7 +11,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { UntilDestroy } from '@ngxpert/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
 import { CmdkItemProps } from '../../types';
 

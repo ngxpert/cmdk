@@ -6,7 +6,7 @@ import { ChangePriorityIconComponent } from 'src/app/icons/change-priority-icon/
 import { ChangeStatusIconComponent } from 'src/app/icons/change-status-icon/change-status-icon.component';
 import { RemoveLabelIconComponent } from 'src/app/icons/remove-label-icon/remove-label-icon.component';
 import { SetDueDateIconComponent } from 'src/app/icons/set-due-date-icon/set-due-date-icon.component';
-import { DynamicViewModule } from '@ngxpert/overview';
+import { DynamicViewModule } from '@ngneat/overview';
 import { ItemDirective } from '../../../../projects/ngxpert/cmdk/src/lib/directives/item/item.directive';
 import { NgFor } from '@angular/common';
 import {

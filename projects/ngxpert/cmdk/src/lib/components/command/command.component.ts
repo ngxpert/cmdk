@@ -15,7 +15,7 @@ import {
   OnDestroy,
   HostBinding,
 } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngxpert/until-destroy';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CmdkService } from '../../cmdk.service';
 import { EmptyDirective } from '../../directives/empty/empty.directive';
 import { ItemDirective } from '../../directives/item/item.directive';

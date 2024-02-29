@@ -8,7 +8,7 @@ import {
   Input,
   QueryList,
 } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngxpert/overview';
+import { Content, DynamicViewModule } from '@ngneat/overview';
 import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkGroupProps } from '../../types';
 import { NgIf } from '@angular/common';

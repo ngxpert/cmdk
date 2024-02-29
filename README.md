@@ -51,7 +51,7 @@ ng add @ngxpert/cmdk
 # For Angular version < 16
 
 ## First, install dependencies
-npm install @ngxpert/overview@4 @ngxpert/until-destroy@9 @angular/cdk@15
+npm install @ngneat/overview@4 @ngneat/until-destroy@9 @angular/cdk@15
 
 ## Then library
 npm install @ngxpert/cmdk@1
@@ -59,7 +59,7 @@ npm install @ngxpert/cmdk@1
 # For Angular version >= 16
 
 ## First, install dependencies
-npm install @ngxpert/overview@5 @ngxpert/until-destroy@10 @angular/cdk@16
+npm install @ngneat/overview@5 @ngneat/until-destroy@10 @angular/cdk@16
 
 ## Then library
 npm install @ngxpert/cmdk@2

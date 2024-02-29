@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngxpert/overview';
+import { Content, DynamicViewModule } from '@ngneat/overview';
 import { FramerIconComponent } from 'src/app/icons/framer/framer.component';
 import { LinearIconComponent } from 'src/app/icons/linear-icon/linear-icon.component';
 import { RaycastIconComponent } from 'src/app/icons/raycast-icon/raycast-icon.component';
