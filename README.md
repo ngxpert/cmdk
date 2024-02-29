@@ -34,8 +34,13 @@ Demo and examples: [ngxpert.github.io/cmdk](https://ngxpert.github.io/cmdk)
 
 | @ngxpert/cmdk | Angular |
 | -- | -- |
-| 1.x | <16 |
-| 2.x | >=16 |
+| 1.x | >=16 |
+
+<details>
+<summary>For older versions</summary>
+
+You can use `@ngneat/cmdk` package from [npm](https://www.npmjs.com/package/@ngneat/cmdk).
+</details>
 
 ## Installation
 
