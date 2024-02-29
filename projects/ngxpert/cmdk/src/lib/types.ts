@@ -1,5 +1,5 @@
 import { EventEmitter } from '@angular/core';
-import { Content } from '@ngneat/overview';
+import { Content } from '@ngxpert/overview';
 
 export interface CmdkCommandProps {
   /**

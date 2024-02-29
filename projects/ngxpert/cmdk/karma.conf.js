@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../../coverage/ngneat/cmdk'),
+      dir: require('path').join(__dirname, '../../../coverage/ngxpert/cmdk'),
       subdir: '.',
       reporters: [
         { type: 'html' },

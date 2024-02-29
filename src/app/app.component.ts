@@ -51,7 +51,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {
     this.version$ = this.http
-      .get('https://registry.npmjs.org/@ngneat/cmdk')
+      .get('https://registry.npmjs.org/@ngxpert/cmdk')
       .pipe(map((data: any) => data['dist-tags']['latest']));
   }
 }

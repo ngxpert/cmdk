@@ -28,7 +28,7 @@ const importModuleSet: {
   {
     moduleName: 'CmdkModule',
     importModuleStatement: 'CmdkModule.forRoot()',
-    importPath: '@ngneat/cmdk',
+    importPath: '@ngxpert/cmdk',
   },
 ];
 

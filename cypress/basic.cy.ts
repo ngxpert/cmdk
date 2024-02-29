@@ -1,4 +1,4 @@
-import { CmdkModule } from '@ngneat/cmdk';
+import { CmdkModule } from '@ngxpert/cmdk';
 import { createOutputSpy } from 'cypress/angular';
 
 describe('basic behavior', () => {

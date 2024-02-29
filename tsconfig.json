@@ -22,8 +22,8 @@
       "dom"
     ],
     "paths": {
-      "@ngneat/cmdk": [
-        "projects/ngneat/cmdk/src/public-api.ts"
+      "@ngxpert/cmdk": [
+        "projects/ngxpert/cmdk/src/public-api.ts"
       ]
     },
     "useDefineForClassFields": false

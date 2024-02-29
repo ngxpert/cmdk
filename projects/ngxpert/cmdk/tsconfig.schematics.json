@@ -15,7 +15,7 @@
         "noUnusedParameters": true,
         "noUnusedLocals": true,
         "rootDir": "schematics",
-        "outDir": "../../../dist/ngneat/cmdk/schematics",
+        "outDir": "../../../dist/ngxpert/cmdk/schematics",
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "sourceMap": true,

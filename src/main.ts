@@ -9,9 +9,9 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { SharedModule } from './app/shared/shared.module';
 import { IconsModule } from './app/icons/icons.module';
-import { DynamicViewModule } from '@ngneat/overview';
+import { DynamicViewModule } from '@ngxpert/overview';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CmdkModule } from '@ngneat/cmdk';
+import { CmdkModule } from '@ngxpert/cmdk';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
 if (environment.production) {

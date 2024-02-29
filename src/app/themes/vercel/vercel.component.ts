@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngneat/overview';
+import { Content, DynamicViewModule } from '@ngxpert/overview';
 import { ContactIconComponent } from 'src/app/icons/contact-icon/contact-icon.component';
 import { DocsIconComponent } from 'src/app/icons/docs-icon/docs-icon.component';
 import { FeedbackIconComponent } from 'src/app/icons/feedback-icon/feedback-icon.component';
@@ -15,7 +15,7 @@ import {
   ItemDirective,
   ListComponent,
   SeparatorComponent,
-} from '@ngneat/cmdk';
+} from '@ngxpert/cmdk';
 
 @Component({
     selector: 'app-vercel',

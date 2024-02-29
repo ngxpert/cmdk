@@ -20,7 +20,7 @@ export class MetaComponent {
   copied = false;
   async copyInstall() {
     try {
-      await navigator.clipboard.writeText(`ng add @ngneat/cmdk`);
+      await navigator.clipboard.writeText(`ng add @ngxpert/cmdk`);
       this.copied = true;
       setTimeout(() => {
         this.copied = false;

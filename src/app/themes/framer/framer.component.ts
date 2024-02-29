@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngneat/overview';
+import { Content, DynamicViewModule } from '@ngxpert/overview';
 import { AvatarComponent } from 'src/app/icons/avatar/avatar.component';
 import { BadgeComponent } from 'src/app/icons/badge/badge.component';
 import { ButtonComponent } from 'src/app/icons/button/button.component';
@@ -14,7 +14,7 @@ import {
   InputDirective,
   ItemDirective,
   ListComponent,
-} from '@ngneat/cmdk';
+} from '@ngxpert/cmdk';
 import { SearchComponent } from 'src/app/icons/search/search.component';
 
 @Component({

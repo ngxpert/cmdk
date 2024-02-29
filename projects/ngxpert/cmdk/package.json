@@ -1,5 +1,5 @@
 {
-  "name": "@ngneat/cmdk",
+  "name": "@ngxpert/cmdk",
   "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": ">=16.0.0",
@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "tslib": "^2.3.0",
-    "@ngneat/overview": ">=5.0.0",
-    "@ngneat/until-destroy": ">=10.0.0",
+    "@ngxpert/overview": ">=5.0.0",
+    "@ngxpert/until-destroy": ">=10.0.0",
     "@angular/cdk": ">=16.0.0"
   },
   "keywords": [
@@ -23,19 +23,19 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/ngneat/cmdk/issue"
+    "url": "https://github.com/ngxpert/cmdk/issue"
   },
-  "homepage": "https://github.com/ngneat/cmdk#readme",
+  "homepage": "https://github.com/ngxpert/cmdk#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ngneat/cmdk"
+    "url": "https://github.com/ngxpert/cmdk"
   },
   "schematics": "./schematics/collection.json",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "copy:schemas": "cpx schematics/ng-add ../../../dist/ngneat/cmdk/",
-    "copy:collection": "cpx schematics/collection.json ../../../dist/ngneat/cmdk/schematics/",
-    "css": "sass --no-source-map styles:../../../dist/ngneat/cmdk/styles",
+    "copy:schemas": "cpx schematics/ng-add ../../../dist/ngxpert/cmdk/",
+    "copy:collection": "cpx schematics/collection.json ../../../dist/ngxpert/cmdk/schematics/",
+    "css": "sass --no-source-map styles:../../../dist/ngxpert/cmdk/styles",
     "postbuild": "npm run copy:schemas && npm run copy:collection && npm run css"
   }
 }

@@ -102,28 +102,28 @@
         }
       }
     },
-    "@ngneat/cmdk": {
+    "@ngxpert/cmdk": {
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/ngneat/cmdk",
-      "sourceRoot": "projects/ngneat/cmdk/src",
+      "root": "projects/ngxpert/cmdk",
+      "sourceRoot": "projects/ngxpert/cmdk/src",
       "prefix": "cmdk",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngneat/cmdk/ng-package.json"
+            "project": "projects/ngxpert/cmdk/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngneat/cmdk/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngxpert/cmdk/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngneat/cmdk/tsconfig.lib.json"
+              "tsConfig": "projects/ngxpert/cmdk/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -131,17 +131,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngneat/cmdk/src/test.ts",
-            "tsConfig": "projects/ngneat/cmdk/tsconfig.spec.json",
-            "karmaConfig": "projects/ngneat/cmdk/karma.conf.js"
+            "main": "projects/ngxpert/cmdk/src/test.ts",
+            "tsConfig": "projects/ngxpert/cmdk/tsconfig.spec.json",
+            "karmaConfig": "projects/ngxpert/cmdk/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngneat/cmdk/**/*.ts",
-              "projects/ngneat/cmdk/**/*.html"
+              "projects/ngxpert/cmdk/**/*.ts",
+              "projects/ngxpert/cmdk/**/*.html"
             ]
           }
         }

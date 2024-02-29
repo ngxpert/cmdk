@@ -1,26 +1,26 @@
 <p align="center">
- <img width="20%" height="20%" src="./src/assets/ngneat%20cdk.svg">
+ <img width="20%" height="20%" src="./src/assets/ngxpert%20cdk.svg">
 </p>
 
 <br />
 
 [![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg?style=flat-square)](./LICENSE)
 [![commitizen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](./CONTRIBUTING.md)
-[![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/ngneat/cmdk/compare)
+[![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/ngxpert/cmdk/compare)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
-[![ngneat-lib](https://img.shields.io/badge/made%20with-%40ngneat%2Flib-ad1fe3?logo=angular)](https://github.com/ngneat/lib)
+[![ngxpert-lib](https://img.shields.io/badge/made%20with-%40ngxpert%2Flib-ad1fe3?logo=angular)](https://github.com/ngxpert/lib)
 [![spectator](https://img.shields.io/badge/tested%20with-spectator-2196F3.svg?style=flat-square)]()
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![npm](https://img.shields.io/npm/v/@ngneat/cmdk)](https://www.npmjs.com/package/@ngneat/cmdk)
+[![npm](https://img.shields.io/npm/v/@ngxpert/cmdk)](https://www.npmjs.com/package/@ngxpert/cmdk)
 
 > Fast, composable, unstyled command menu for Angular. Directly inspired from [pacocoursey/cmdk](https://github.com/pacocoursey/cmdk)
 
-# @ngneat/cmdk
+# @ngxpert/cmdk
 
-@ngneat/cmdk is a command menu Angular component that can also be used as an accessible combobox. You render items, it filters and sorts them automatically. @ngneat/cmdk supports a fully composable API, so you can wrap items in other components or even as static HTML.
+@ngxpert/cmdk is a command menu Angular component that can also be used as an accessible combobox. You render items, it filters and sorts them automatically. @ngxpert/cmdk supports a fully composable API, so you can wrap items in other components or even as static HTML.
 
-Demo and examples: [ngneat.github.io/cmdk](https://ngneat.github.io/cmdk)
+Demo and examples: [ngxpert.github.io/cmdk](https://ngxpert.github.io/cmdk)
 
 ## Features
 
@@ -32,7 +32,7 @@ Demo and examples: [ngneat.github.io/cmdk](https://ngneat.github.io/cmdk)
 
 ## Compatibility with Angular Versions
 
-| @ngneat/cmdk | Angular |
+| @ngxpert/cmdk | Angular |
 | -- | -- |
 | 1.x | <16 |
 | 2.x | >=16 |
@@ -42,7 +42,7 @@ Demo and examples: [ngneat.github.io/cmdk](https://ngneat.github.io/cmdk)
 ### Angular CLI
 
 ```bash
-ng add @ngneat/cmdk
+ng add @ngxpert/cmdk
 ```
 
 ### NPM
@@ -51,18 +51,18 @@ ng add @ngneat/cmdk
 # For Angular version < 16
 
 ## First, install dependencies
-npm install @ngneat/overview@4 @ngneat/until-destroy@9 @angular/cdk@15
+npm install @ngxpert/overview@4 @ngxpert/until-destroy@9 @angular/cdk@15
 
 ## Then library
-npm install @ngneat/cmdk@1
+npm install @ngxpert/cmdk@1
 
 # For Angular version >= 16
 
 ## First, install dependencies
-npm install @ngneat/overview@5 @ngneat/until-destroy@10 @angular/cdk@16
+npm install @ngxpert/overview@5 @ngxpert/until-destroy@10 @angular/cdk@16
 
 ## Then library
-npm install @ngneat/cmdk@2
+npm install @ngxpert/cmdk@2
 ```
 
 ### Yarn
@@ -75,10 +75,10 @@ Same as `npm`, just instead of `npm install`, write `yarn add`.
 
 #### 1.1 Module Setup
 
-> This is taken care with ng add @ngneat/cmdk
+> This is taken care with ng add @ngxpert/cmdk
 
 ```ts
-import { CmdkModule } from '@ngneat/cmdk';
+import { CmdkModule } from '@ngxpert/cmdk';
 
 @NgModule({
   imports: [
@@ -100,7 +100,7 @@ import {
   ItemDirective,
   ListComponent,
   EmptyDirective
-} from '@ngneat/cmdk';
+} from '@ngxpert/cmdk';
 
 @Component({
     selector: 'app-root',
@@ -342,7 +342,7 @@ getItems() {
 
 ### Use inside Popover
 
-We recommend using the [Angular CDK Overlay](https://material.angular.io/cdk/overlay/overview). @ngneat/cdk relies on the Angular CDK, so this will reduce your bundle size a bit due to shared dependencies.
+We recommend using the [Angular CDK Overlay](https://material.angular.io/cdk/overlay/overview). @ngxpert/cdk relies on the Angular CDK, so this will reduce your bundle size a bit due to shared dependencies.
 
 First, configure the trigger component:
 
@@ -424,19 +424,19 @@ ngAfterViewInit() {
 
 ### Drop in stylesheets
 
-You can find global stylesheets to drop in as a starting point for styling. See [ngneat/cmdk/styles](./projects/ngneat/cmdk/styles) for examples.
+You can find global stylesheets to drop in as a starting point for styling. See [ngxpert/cmdk/styles](./projects/ngxpert/cmdk/styles) for examples.
 
 You can include the `SCSS` stylesheet in your application's style file:
 
 ```scss
 // Global is needed for any theme
-@use "~@ngneat/cmdk/styles/scss/globals";
+@use "~@ngxpert/cmdk/styles/scss/globals";
 
 // Then add theme
-@use "~@ngneat/cmdk/styles/scss/framer";
-// @use "~@ngneat/cmdk/styles/scss/vercel";
-// @use "~@ngneat/cmdk/styles/scss/linear";
-// @use "~@ngneat/cmdk/styles/scss/raycast";
+@use "~@ngxpert/cmdk/styles/scss/framer";
+// @use "~@ngxpert/cmdk/styles/scss/vercel";
+// @use "~@ngxpert/cmdk/styles/scss/linear";
+// @use "~@ngxpert/cmdk/styles/scss/raycast";
 ```
 
 or, use pre-built `CSS` file in `angular.json`
@@ -445,8 +445,8 @@ or, use pre-built `CSS` file in `angular.json`
 // ...
 "styles": [
   "...",
-  "node_modules/@ngneat/cmdk/styles/globals.css"
-  "node_modules/@ngneat/cmdk/styles/framer.css"
+  "node_modules/@ngxpert/cmdk/styles/globals.css"
+  "node_modules/@ngxpert/cmdk/styles/framer.css"
 ],
 // ...
 ```
@@ -474,9 +474,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/shhdharmen"><img src="https://avatars.githubusercontent.com/u/6831283?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dharmen Shah</b></sub></a><br /><a href="#a11y-shhdharmen" title="Accessibility">️️️️♿️</a> <a href="https://github.com/@ngneat/cmdk/commits?author=shhdharmen" title="Code">💻</a> <a href="#content-shhdharmen" title="Content">🖋</a> <a href="#design-shhdharmen" title="Design">🎨</a> <a href="https://github.com/@ngneat/cmdk/commits?author=shhdharmen" title="Documentation">📖</a> <a href="#example-shhdharmen" title="Examples">💡</a> <a href="#ideas-shhdharmen" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-shhdharmen" title="Maintenance">🚧</a> <a href="#platform-shhdharmen" title="Packaging/porting to new platform">📦</a> <a href="#projectManagement-shhdharmen" title="Project Management">📆</a> <a href="#research-shhdharmen" title="Research">🔬</a></td>
-    <td align="center"><a href="https://www.netbasal.com/"><img src="https://avatars.githubusercontent.com/u/6745730?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Netanel Basal</b></sub></a><br /><a href="#question-NetanelBasal" title="Answering Questions">💬</a> <a href="#business-NetanelBasal" title="Business development">💼</a> <a href="#fundingFinding-NetanelBasal" title="Funding Finding">🔍</a> <a href="#ideas-NetanelBasal" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-NetanelBasal" title="Maintenance">🚧</a> <a href="#mentoring-NetanelBasal" title="Mentoring">🧑‍🏫</a> <a href="#projectManagement-NetanelBasal" title="Project Management">📆</a> <a href="#research-NetanelBasal" title="Research">🔬</a> <a href="https://github.com/@ngneat/cmdk/pulls?q=is%3Apr+reviewed-by%3ANetanelBasal" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/pacocoursey"><img src="https://avatars.githubusercontent.com/u/34928425?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paco</b></sub></a><br /><a href="#design-pacocoursey" title="Design">🎨</a> <a href="https://github.com/@ngneat/cmdk/commits?author=pacocoursey" title="Documentation">📖</a> <a href="#ideas-pacocoursey" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-pacocoursey" title="Research">🔬</a></td>
+    <td align="center"><a href="https://github.com/shhdharmen"><img src="https://avatars.githubusercontent.com/u/6831283?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dharmen Shah</b></sub></a><br /><a href="#a11y-shhdharmen" title="Accessibility">️️️️♿️</a> <a href="https://github.com/@ngxpert/cmdk/commits?author=shhdharmen" title="Code">💻</a> <a href="#content-shhdharmen" title="Content">🖋</a> <a href="#design-shhdharmen" title="Design">🎨</a> <a href="https://github.com/@ngxpert/cmdk/commits?author=shhdharmen" title="Documentation">📖</a> <a href="#example-shhdharmen" title="Examples">💡</a> <a href="#ideas-shhdharmen" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-shhdharmen" title="Maintenance">🚧</a> <a href="#platform-shhdharmen" title="Packaging/porting to new platform">📦</a> <a href="#projectManagement-shhdharmen" title="Project Management">📆</a> <a href="#research-shhdharmen" title="Research">🔬</a></td>
+    <td align="center"><a href="https://www.netbasal.com/"><img src="https://avatars.githubusercontent.com/u/6745730?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Netanel Basal</b></sub></a><br /><a href="#question-NetanelBasal" title="Answering Questions">💬</a> <a href="#business-NetanelBasal" title="Business development">💼</a> <a href="#fundingFinding-NetanelBasal" title="Funding Finding">🔍</a> <a href="#ideas-NetanelBasal" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-NetanelBasal" title="Maintenance">🚧</a> <a href="#mentoring-NetanelBasal" title="Mentoring">🧑‍🏫</a> <a href="#projectManagement-NetanelBasal" title="Project Management">📆</a> <a href="#research-NetanelBasal" title="Research">🔬</a> <a href="https://github.com/@ngxpert/cmdk/pulls?q=is%3Apr+reviewed-by%3ANetanelBasal" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/pacocoursey"><img src="https://avatars.githubusercontent.com/u/34928425?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paco</b></sub></a><br /><a href="#design-pacocoursey" title="Design">🎨</a> <a href="https://github.com/@ngxpert/cmdk/commits?author=pacocoursey" title="Documentation">📖</a> <a href="#ideas-pacocoursey" title="Ideas, Planning, & Feedback">🤔</a> <a href="#research-pacocoursey" title="Research">🔬</a></td>
   </tr>
 </table>
 

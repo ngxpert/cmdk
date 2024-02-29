@@ -10,8 +10,8 @@
       ],
       "parserOptions": {
         "project": [
-          "projects/ngneat/cmdk/tsconfig.lib.json",
-          "projects/ngneat/cmdk/tsconfig.spec.json"
+          "projects/ngxpert/cmdk/tsconfig.lib.json",
+          "projects/ngxpert/cmdk/tsconfig.spec.json"
         ],
         "createDefaultProgram": true
       },

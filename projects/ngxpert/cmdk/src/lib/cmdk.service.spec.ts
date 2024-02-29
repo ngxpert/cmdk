@@ -1,4 +1,4 @@
-import { createServiceFactory, SpectatorService } from '@ngneat/spectator';
+import { createServiceFactory, SpectatorService } from '@ngxpert/spectator';
 import { CmdkService } from './cmdk.service';
 
 describe('CmdkService', () => {

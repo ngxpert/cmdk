@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild, forwardRef } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngneat/overview';
+import { Content, DynamicViewModule } from '@ngxpert/overview';
 import { FinderIconComponent } from 'src/app/icons/finder-icon/finder-icon.component';
 import { StarIconComponent } from 'src/app/icons/star-icon/star-icon.component';
 import { WindowIconComponent } from 'src/app/icons/window-icon/window-icon.component';
@@ -10,7 +10,7 @@ import {
   InputDirective,
   ItemDirective,
   ListComponent,
-} from '@ngneat/cmdk';
+} from '@ngxpert/cmdk';
 
 export interface SubCommandDialogData {
   selectedValue: string;

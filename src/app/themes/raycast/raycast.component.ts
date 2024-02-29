@@ -16,7 +16,7 @@ import {
   InputDirective,
   ItemDirective,
   ListComponent,
-} from '@ngneat/cmdk';
+} from '@ngxpert/cmdk';
 
 @Component({
     selector: 'app-raycast',

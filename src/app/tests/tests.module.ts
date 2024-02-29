@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GroupComponent } from './group.component';
-import { CmdkModule } from '@ngneat/cmdk';
+import { CmdkModule } from '@ngxpert/cmdk';
 import { ItemComponent } from './item.component';
 import { ItemAdvancedComponent } from './item-advanced.component';
 import { KeybindingsComponent } from './keybindings.component';
