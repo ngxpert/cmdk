@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cmdk:build:production"
+              "buildTarget": "cmdk:build:production"
             },
             "development": {
-              "browserTarget": "cmdk:build:development"
+              "buildTarget": "cmdk:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cmdk:build"
+            "buildTarget": "cmdk:build"
           }
         },
         "test": {
