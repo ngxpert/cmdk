@@ -1,7 +1,9 @@
 <button class="theme-switcher" (click)="toggleTheme()">
-  <ng-container *ngIf="currentTheme === 'light'; else darkThemeIcon">
+  @if (currentTheme === 'light') {
     🌚
-  </ng-container>
+  } @else {
+    🌞
+  }
 
 </button>
 <main class="main">
@@ -16,6 +18,3 @@
   </div>
 </main>
 <app-footer></app-footer>
-<ng-template #darkThemeIcon>
-  🌞
-</ng-template>

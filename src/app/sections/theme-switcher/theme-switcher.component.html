@@ -1,27 +1,40 @@
 <div class="switcher">
+  @for (theme of allThemes; track theme) {
     <button
-      *ngFor="let theme of allThemes"
       [attr.data-selected]="theme.value === currentTheme"
       (click)="setCurrentTheme(theme.value)"
-    >
+      >
       <ng-container *dynamicView="theme.icon"></ng-container>
       {{ theme.label }}
-      <div class="activeTheme" *ngIf="theme.value === currentTheme"></div>
+      @if (theme.value === currentTheme) {
+        <div class="activeTheme"></div>
+      }
     </button>
+  }
+</div>
+<div class="cmdk-wrapper">
+  <div>
+    @switch (currentTheme) {
+      @case ('framer') {
+        <div>
+          <app-framer></app-framer>
+        </div>
+      }
+      @case ('linear') {
+        <div>
+          <app-linear></app-linear>
+        </div>
+      }
+      @case ('raycast') {
+        <div>
+          <app-raycast></app-raycast>
+        </div>
+      }
+      @case ('vercel') {
+        <div>
+          <app-vercel></app-vercel>
+        </div>
+      }
+    }
   </div>
-  <div class="cmdk-wrapper">
-    <div [ngSwitch]="currentTheme">
-      <div *ngSwitchCase="'framer'">
-        <app-framer></app-framer>
-      </div>
-      <div *ngSwitchCase="'linear'">
-        <app-linear></app-linear>
-      </div>
-      <div *ngSwitchCase="'raycast'">
-        <app-raycast></app-raycast>
-      </div>
-      <div *ngSwitchCase="'vercel'">
-        <app-vercel></app-vercel>
-      </div>
-    </div>
-  </div>
+</div>

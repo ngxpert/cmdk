@@ -6,49 +6,51 @@ import { Component, Input } from '@angular/core';
     <div>
       <div data-testid="value">{{ value }}</div>
       <div data-testid="search">{{ search }}</div>
-
+    
       <button data-testid="controlledValue" (click)="setValue('anteater')">
         Change value
       </button>
       <button data-testid="controlledSearch" (click)="setSearch('eat')">
         Change search value
       </button>
-
-      <cmdk-command
-        *ngIf="customFilter"
-        [value]="value"
-        (valueChanged)="setValue($event)"
-        [filter]="customFilterFn"
-      >
-        <input
-          cmdkInput
-          placeholder="Search…"
-          [value]="search"
-          (change)="setSearch($event)"
-        />
-        <cmdk-list>
-          <button cmdkItem>ant</button>
-          <button cmdkItem>anteater</button>
-        </cmdk-list>
-      </cmdk-command>
-      <cmdk-command
-        *ngIf="!customFilter"
-        [value]="value"
-        (valueChanged)="setValue($event)"
-      >
-        <input
-          cmdkInput
-          placeholder="Search…"
-          [value]="search"
-          (change)="setSearch($event)"
-        />
-        <cmdk-list>
-          <button cmdkItem>ant</button>
-          <button cmdkItem>anteater</button>
-        </cmdk-list>
-      </cmdk-command>
-    </div>
-  `,
+    
+      @if (customFilter) {
+        <cmdk-command
+          [value]="value"
+          (valueChanged)="setValue($event)"
+          [filter]="customFilterFn"
+          >
+          <input
+            cmdkInput
+            placeholder="Search…"
+            [value]="search"
+            (change)="setSearch($event)"
+            />
+            <cmdk-list>
+              <button cmdkItem>ant</button>
+              <button cmdkItem>anteater</button>
+            </cmdk-list>
+          </cmdk-command>
+        }
+        @if (!customFilter) {
+          <cmdk-command
+            [value]="value"
+            (valueChanged)="setValue($event)"
+            >
+            <input
+              cmdkInput
+              placeholder="Search…"
+              [value]="search"
+              (change)="setSearch($event)"
+              />
+              <cmdk-list>
+                <button cmdkItem>ant</button>
+                <button cmdkItem>anteater</button>
+              </cmdk-list>
+            </cmdk-command>
+          }
+        </div>
+    `,
   styles: [],
 })
 export class PropsComponent {
