@@ -8,10 +8,10 @@ import {
   Input,
   QueryList,
 } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngneat/overview';
+import { Content, DynamicViewDirective } from '@ngneat/overview';
 import { ItemDirective } from '../../directives/item/item.directive';
 import { CmdkGroupProps } from '../../types';
-import { NgIf } from '@angular/common';
+
 
 let cmdkGroupId = 0;
 
@@ -25,7 +25,7 @@ let cmdkGroupId = 0;
     },
     styleUrls: ['./group.component.scss'],
     standalone: true,
-    imports: [NgIf, DynamicViewModule],
+    imports: [DynamicViewDirective],
 })
 export class GroupComponent implements CmdkGroupProps {
   @Input() label?: Content;

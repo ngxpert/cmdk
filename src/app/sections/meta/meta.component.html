@@ -1,41 +1,42 @@
 <div class="meta">
-    <div class="info-wrapper">
-      <span class="versionBadge">v{{ version }}</span>
-      <div class="info">
-        <img
-          class="cmdk-logo"
-          src="assets/ngxpert cdk.svg"
-          alt="ngxpert cmdk logo"
+  <div class="info-wrapper">
+    <span class="versionBadge">v{{ version }}</span>
+    <div class="info">
+      <img
+        class="cmdk-logo"
+        src="assets/ngxpert cdk.svg"
+        alt="ngxpert cmdk logo"
         />
         <div>
           <p>Fast, composable, unstyled command menu for Angular.</p>
           <p><small
             >Directly inspired from
             <a href="https://github.com/pacocoursey/cmdk">pacocoursey/cmdk</a
-            >.</small
-          ></p>
+              >.</small
+            ></p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="buttons">
-      <button class="installButton" (click)="copyInstall()">
-        ng add @ngxpert/cmdk
-        <span>
-          <app-copied *ngIf="copied; else copyIcon"></app-copied>
-        </span>
-      </button>
-      <a
-        href="https://github.com/ngxpert/cmdk"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="githubButton"
-      >
-        <app-github></app-github>
-        ngxpert/cmdk
-      </a>
+      <div class="buttons">
+        <button class="installButton" (click)="copyInstall()">
+          npm i &#64;ngxpert/cmdk
+          <span>
+            @if (copied) {
+              <app-copied></app-copied>
+            } @else {
+              <app-copy></app-copy>
+            }
+          </span>
+        </button>
+        <a
+          href="https://github.com/ngxpert/cmdk"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="githubButton"
+          >
+          <app-github></app-github>
+          ngxpert/cmdk
+        </a>
+      </div>
     </div>
-  </div>
-  <ng-template #copyIcon>
-    <app-copy></app-copy>
-  </ng-template>

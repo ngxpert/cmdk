@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild, forwardRef } from '@angular/core';
-import { Content, DynamicViewModule } from '@ngneat/overview';
+import { Content, DynamicViewDirective } from '@ngneat/overview';
 import { FinderIconComponent } from 'src/app/icons/finder-icon/finder-icon.component';
 import { StarIconComponent } from 'src/app/icons/star-icon/star-icon.component';
 import { WindowIconComponent } from 'src/app/icons/window-icon/window-icon.component';
-import { NgFor } from '@angular/common';
+
 import {
   CommandComponent,
   GroupComponent,
@@ -21,15 +21,14 @@ export interface SubCommandDialogData {
     templateUrl: './sub-command-dialog.component.html',
     standalone: true,
     imports: [
-        CommandComponent,
-        ListComponent,
-        GroupComponent,
-        NgFor,
-        ItemDirective,
-        DynamicViewModule,
-        forwardRef(() => RayCastSubItemComponent),
-        InputDirective,
-    ],
+    CommandComponent,
+    ListComponent,
+    GroupComponent,
+    ItemDirective,
+    forwardRef(() => RayCastSubItemComponent),
+    InputDirective,
+    DynamicViewDirective
+],
 })
 export class SubCommandDialogComponent implements AfterViewInit {
   @Input() value = '';
@@ -67,9 +66,11 @@ export class SubCommandDialogComponent implements AfterViewInit {
     selector: 'app-raycast-sub-item',
     template: `
     <div class="cmdk-raycast-submenu-shortcuts">
-      <kbd *ngFor="let key of shortcut.split(' ')">{{ key }}</kbd>
+      @for (key of shortcut.split(' '); track key) {
+        <kbd>{{ key }}</kbd>
+      }
     </div>
-  `,
+    `,
     styles: [
         `
       :host {
@@ -78,7 +79,7 @@ export class SubCommandDialogComponent implements AfterViewInit {
     `,
     ],
     standalone: true,
-    imports: [NgFor],
+    imports: [],
 })
 export class RayCastSubItemComponent {
   @Input() shortcut = '';

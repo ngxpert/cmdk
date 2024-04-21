@@ -1,11 +1,12 @@
 <pre class="language-{{ language }}">
-    <button class="copy-button" (click)="copySnippet()">
-            <app-copied height="32" width="32" *ngIf="copied; else copyIcon"></app-copied>
-    </button>
-    <code class="language-{{ language }}" #code>
-        {{ snippet }}
-    </code>
-  </pre>
-<ng-template #copyIcon>
-  <app-copy height="32" width="32"></app-copy>
-</ng-template>
+  <button class="copy-button" (click)="copySnippet()">
+    @if (copied) {
+      <app-copied height="32" width="32"></app-copied>
+    } @else {
+      <app-copy height="32" width="32"></app-copy>
+    }
+  </button>
+  <code class="language-{{ language }}" #code>
+    {{ snippet }}
+  </code>
+</pre>
