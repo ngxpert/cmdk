@@ -1,0 +1,194 @@
+.framer .cmdk-group, .framer .cmdk-list, .framer .cmdk-command {
+  display: block;
+}
+.framer .cmdk-command {
+  max-width: 640px;
+  padding: 8px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  border: 1px solid var(--gray6);
+  box-shadow: var(--cmdk-shadow);
+}
+.dark .framer .cmdk-command {
+  background: var(--gray2);
+}
+.framer .cmdk-framer-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--gray5);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+}
+.framer .cmdk-framer-header svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gray9);
+  transform: translateY(1px);
+}
+.framer .cmdk-input {
+  font-family: var(--font-sans);
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  background: var(--bg);
+  color: var(--gray12);
+}
+.framer .cmdk-input::placeholder {
+  color: var(--gray9);
+}
+.framer .cmdk-item {
+  content-visibility: auto;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gray12);
+  padding: 8px 8px;
+  margin-right: 8px;
+  font-weight: 500;
+  transition: all 150ms ease;
+  transition-property: none;
+  width: 100%;
+  text-align: left;
+}
+.framer .cmdk-item:focus {
+  outline: none;
+}
+.framer .cmdk-item:hover, .framer .cmdk-item:focus {
+  background: var(--blue2);
+}
+.framer .cmdk-item[aria-selected=true] {
+  background: var(--blue9);
+  color: #ffffff;
+}
+.framer .cmdk-item[aria-selected=true] .cmdk-framer-item-subtitle {
+  color: #ffffff;
+}
+.framer .cmdk-item[aria-disabled=true] {
+  color: var(--gray8);
+  cursor: not-allowed;
+}
+.framer .cmdk-item + .cmdk-item {
+  margin-top: 4px;
+}
+.framer .cmdk-item svg {
+  width: 16px;
+  height: 16px;
+  color: #ffffff;
+}
+.framer .cmdk-framer-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  background: orange;
+  border-radius: 8px;
+  line-height: 0.7;
+}
+.framer .cmdk-framer-item-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.framer .cmdk-framer-item-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray11);
+}
+.framer .cmdk-framer-items {
+  min-height: 308px;
+  display: flex;
+}
+.framer .cmdk-framer-left {
+  width: 40%;
+}
+.framer .cmdk-framer-separator {
+  width: 1px;
+  border: 0;
+  margin-right: 8px;
+  background: var(--gray6);
+}
+.framer .cmdk-framer-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-left: 8px;
+  width: 60%;
+}
+.framer .cmdk-framer-right .cmdk-framer-badge {
+  background: var(--blue3);
+  padding: 0 8px;
+  height: 28px;
+  font-size: 14px;
+  line-height: 28px;
+  color: var(--blue11);
+  border-radius: 9999px;
+  font-weight: 500;
+}
+.framer .cmdk-framer-right .cmdk-framer-slider {
+  height: 20px;
+  width: 200px;
+  background: linear-gradient(90deg, var(--blue9) 40%, var(--gray3) 0%);
+  border-radius: 9999px;
+}
+.framer .cmdk-framer-right .cmdk-framer-slider div {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.32);
+  transform: translateX(70px);
+}
+.framer .cmdk-framer-right .cmdk-framer-avatar {
+  border-radius: 50%;
+}
+.framer .cmdk-framer-right .cmdk-framer-container {
+  width: 100px;
+  height: 100px;
+  background: var(--blue9);
+  border-radius: 16px;
+}
+.framer .cmdk-list {
+  overflow: auto;
+}
+.framer .cmdk-separator {
+  padding: 0 16px;
+  display: block;
+}
+.framer .cmdk-separator hr {
+  height: 1px;
+  width: 100%;
+  background: var(--gray3);
+  margin: 4px 0;
+}
+.framer .cmdk-group-label {
+  user-select: none;
+  font-size: 12px;
+  color: var(--gray11);
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.framer .cmdk-empty {
+  font-size: 14px;
+  padding: 32px;
+  white-space: pre-wrap;
+  color: var(--gray11);
+}
+
+@media (max-width: 640px) {
+  .framer .cmdk-framer-item-subtitle {
+    display: none;
+  }
+}

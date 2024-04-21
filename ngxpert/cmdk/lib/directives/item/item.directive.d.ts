@@ -1,0 +1,38 @@
+import { ListKeyManagerOption } from '@angular/cdk/a11y';
+import { AfterContentInit, ElementRef, EventEmitter } from '@angular/core';
+import { CmdkItemProps } from '../../types';
+import * as i0 from "@angular/core";
+export declare class ItemDirective implements CmdkItemProps, ListKeyManagerOption, AfterContentInit {
+    private _disabled;
+    set disabled(value: any);
+    get disabled(): any;
+    selected: EventEmitter<any>;
+    originalDisplay: string;
+    getLabel?(): string;
+    setActiveStyles(): void;
+    setInactiveStyles(): void;
+    filtered: boolean;
+    private _active;
+    private _value;
+    set value(value: string);
+    get value(): string;
+    private _cmdkService;
+    readonly itemId: string;
+    _elementRef: ElementRef<any>;
+    onClick(): void;
+    onKeyUp(ev: KeyboardEvent): void;
+    get hidden(): boolean;
+    get display(): string;
+    get dataValue(): string;
+    get attrRole(): string;
+    get buttonType(): string;
+    get isSelected(): boolean;
+    get active(): boolean;
+    get itemDisabled(): any;
+    get itemFiltered(): boolean;
+    set active(value: boolean);
+    onMouseUp(): void;
+    ngAfterContentInit(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ItemDirective, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ItemDirective, "[cmdkItem]", never, { "disabled": { "alias": "disabled"; "required": false; }; "filtered": { "alias": "filtered"; "required": false; }; "value": { "alias": "value"; "required": false; }; }, { "selected": "selected"; }, never, never, true, never>;
+}
