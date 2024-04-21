@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/ngxpert/cmdk/compare/v1.0.0...v2.0.0) (2024-04-21)
+
+
+### chore
+
+* add support for angular v17 ([2b2422c](https://github.com/ngxpert/cmdk/commit/2b2422c3e06f095db9fe189d41ff1152a57709e7))
+* update ngneat overview to v6 ([614bd0c](https://github.com/ngxpert/cmdk/commit/614bd0cf5cc929eae76204e9f4bc22fdfd4b0f85))
+
+
+### Features
+
+* ng update changes, ngneat overview changes ([cfd241f](https://github.com/ngxpert/cmdk/commit/cfd241f6a3091dfbfff0e8c1e8061b5e5bed232c))
+
+
+### BREAKING CHANGES
+
+* update ngneat overview to v6
+* migrated to angular v17
+
 # 1.0.0 (2024-02-29)
 
 
