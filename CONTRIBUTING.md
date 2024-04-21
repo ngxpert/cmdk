@@ -1,6 +1,6 @@
-# Contributing to Cmdk
+# Contributing to CMDK
 
-🙏 We would ❤️ for you to contribute to Cmdk and help make it even better than it is today!
+🙏 We would ❤️ for you to contribute to cmdk and help make it even better than it is today!
 
 ## Developing
 
@@ -10,18 +10,22 @@ Start by installing all dependencies:
 npm i
 ```
 
-Run the tests:
-
-```bash
-npm test
-npm run e2e
-```
-
 Run the playground app:
 
 ```bash
 npm start
 ```
+
+## Testing
+
+### Run cypress tests
+
+```bash
+npm start
+npm run unit
+```
+
+Cypress window will open, you can click on individual tests.
 
 ## Building
 
@@ -38,19 +42,21 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 
 ## <a name="commit"></a> Commit Message Guidelines
 
-We have very precise rules over how our git commit messages can be formatted. This leads to **more
-readable messages** that are easy to follow when looking through the **project history**. But also,
-we use the git commit messages to **generate the Cmdk changelog**.
+### TL;DR
 
-### Through CLI
-
-Simply run below command to take of all the rules:
+Simply run commit script after staging your files to take care about commit message guidelines
 
 ```bash
 npm run commit
 ```
 
-### Commit Message Format
+### Details
+
+We have very precise rules over how our git commit messages can be formatted. This leads to **more
+readable messages** that are easy to follow when looking through the **project history**. But also,
+we use the git commit messages to **generate the cmdk changelog**.
+
+#### Commit Message Format
 
 Each commit message consists of a **header**, a **body** and a **footer**. The header has a special
 format that includes a **type**, a **scope** and a **subject**:

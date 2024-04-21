@@ -6,7 +6,6 @@
     "start": "ng serve",
     "build": "ng build --base-href=/cmdk/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "contributors:add": "all-contributors add",
     "hooks:pre-commit": "node hooks/pre-commit.js",
     "commit": "cz",
@@ -17,7 +16,9 @@
     "test:lib:headless": "cross-env CI=true npm run test:lib",
     "postbuild:lib": "npm run build --prefix projects/ngxpert/cmdk",
     "semantic-release": "semantic-release",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "unit": "npm run cy:open",
+    "cy:open": "cypress open"
   },
   "private": true,
   "dependencies": {
