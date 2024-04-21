@@ -45,17 +45,16 @@ You can use `@ngneat/cmdk` package from [npm](https://www.npmjs.com/package/@ngn
 
 ## Installation
 
-### Angular CLI
-
-```bash
-ng add @ngxpert/cmdk
-```
-
 ### NPM
 
 ```bash
 ## First, install dependencies
+
+## For Angular v16
 npm install @ngneat/overview@5 @ngneat/until-destroy@10 @angular/cdk@16
+
+## For Angular v17
+npm install @ngneat/overview@6 @ngneat/until-destroy@10 @angular/cdk@17
 
 ## Then library
 npm install @ngxpert/cmdk
