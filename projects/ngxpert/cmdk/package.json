@@ -33,6 +33,6 @@
   "schematics": "./schematics/collection.json",
   "scripts": {
     "css": "sass --no-source-map styles:../../../dist/ngxpert/cmdk/styles",
-    "postbuild": "npm run css"
+    "build": "npm run css"
   }
 }
