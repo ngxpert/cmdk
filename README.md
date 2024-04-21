@@ -32,9 +32,10 @@ Demo and examples: [ngxpert.github.io/cmdk](https://ngxpert.github.io/cmdk)
 
 ## Compatibility with Angular Versions
 
-| @ngxpert/cmdk | Angular |
-| -- | -- |
-| 1.x | >=16 |
+| @ngxpert/cmdk | Angular  |
+| ------------- | -------- |
+| 1.x           | >=16 <17 |
+| 2.x           | >=17     |
 
 <details>
 <summary>For older versions</summary>
