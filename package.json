@@ -10,7 +10,7 @@
     "contributors:add": "all-contributors add",
     "hooks:pre-commit": "node hooks/pre-commit.js",
     "commit": "cz",
-    "deploy": "npx angular-cli-ghpages",
+    "deploy": "npx angular-cli-ghpages --dir=dist/cmdk",
     "copy": "cpx README.md dist/ngxpert/cmdk",
     "build:lib": "ng build @ngxpert/cmdk && npm run copy",
     "test:lib": "ng test @ngxpert/cmdk",
