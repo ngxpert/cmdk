@@ -1,17 +1,20 @@
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
-  video: false,
   component: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
-    setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.js')(on, config);
-    },
     devServer: {
       framework: 'angular',
-      bundler: 'webpack'
+      bundler: 'webpack',
+      options: {
+        projectConfig: {
+          root: './',
+          sourceRoot: 'src',
+          buildOptions: {
+            outputPath: 'dist/browser',
+          },
+        },
+      },
     },
-    excludeSpecPattern: '**/examples/*.spec.js',
+    specPattern: '**/*.cy.ts',
   },
 });
