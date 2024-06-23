@@ -17,8 +17,7 @@
     "postbuild:lib": "npm run build --prefix projects/ngxpert/cmdk",
     "semantic-release": "semantic-release",
     "lint": "ng lint",
-    "unit": "npm run cy:open",
-    "cy:open": "cypress open"
+    "unit": "npm run cy:open"
   },
   "private": true,
   "dependencies": {
@@ -62,7 +61,7 @@
     "commitizen": "^4.2.5",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
-    "cypress": "^13.4.0",
+    "cypress": "^13.12.0",
     "eslint": "^8.57.0",
     "husky": "^8.0.1",
     "jasmine-core": "~4.2.0",
