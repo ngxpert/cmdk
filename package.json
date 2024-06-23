@@ -17,7 +17,12 @@
     "postbuild:lib": "npm run build --prefix projects/ngxpert/cmdk",
     "semantic-release": "semantic-release",
     "lint": "ng lint",
-    "unit": "npm run cy:open"
+    "unit": "npm run cy:open",
+    "cy:open": "cypress open",
+    "test": "npm run ci:cy-run",
+    "ci:cy-run": "start-server-and-test ci:start-server http://localhost:4200 cy:run",
+    "ci:start-server": "serve -l 4200 -s ./dist/cmdk/browser",
+    "cy:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -76,6 +81,7 @@
     "prettier": "^2.7.1",
     "sass": "^1.58.3",
     "semantic-release": "^19.0.3",
+    "start-server-and-test": "^2.0.4",
     "typescript": "~5.4.5"
   },
   "config": {
