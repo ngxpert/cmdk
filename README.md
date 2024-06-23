@@ -8,7 +8,7 @@
 [![commitizen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](./CONTRIBUTING.md)
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/ngxpert/cmdk/compare)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-3)
 [![ngxpert-lib](https://img.shields.io/badge/made%20with-%40ngxpert%2Flib-ad1fe3?logo=angular)](https://github.com/ngxpert/lib)
 [![spectator](https://img.shields.io/badge/tested%20with-spectator-2196F3.svg?style=flat-square)]()
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
@@ -35,7 +35,8 @@ Demo and examples: [ngxpert.github.io/cmdk](https://ngxpert.github.io/cmdk)
 | @ngxpert/cmdk | Angular  |
 | ------------- | -------- |
 | 1.x           | >=16 <17 |
-| 2.x           | >=17     |
+| 2.x           | >=17 <18 |
+| 3.x           | >=18     |
 
 <details>
 <summary>For older versions</summary>
