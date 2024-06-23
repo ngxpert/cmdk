@@ -18,11 +18,11 @@
     "semantic-release": "semantic-release",
     "lint": "ng lint",
     "unit": "npm run cy:open",
-    "cy:open": "cypress open",
+    "cy:open": "cypress open --component",
     "test": "npm run ci:cy-run",
     "ci:cy-run": "start-server-and-test ci:start-server http://localhost:4200 cy:run",
     "ci:start-server": "serve -l 4200 -s ./dist/cmdk/browser",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run --component"
   },
   "private": true,
   "dependencies": {
