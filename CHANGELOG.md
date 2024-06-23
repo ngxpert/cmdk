@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/ngxpert/cmdk/compare/v2.0.0...v3.0.0) (2024-06-23)
+
+
+### Features
+
+* ng update @angular/cdk ([855bd8a](https://github.com/ngxpert/cmdk/commit/855bd8a858d8ab0519ca934b8368f6d681e16e57))
+* ng update @angular/cli ([7c0b271](https://github.com/ngxpert/cmdk/commit/7c0b2717e28d95fac1c554ca5a769dd3e9e954df))
+
+
+### BREAKING CHANGES
+
+* Updating angular cdk to 18
+* Adding support for Angular version 18
+
 # [2.0.0](https://github.com/ngxpert/cmdk/compare/v1.0.0...v2.0.0) (2024-04-21)
 
 
