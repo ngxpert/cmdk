@@ -36,4 +36,4 @@ jobs:
           npm run build
           npm run build:lib
           npx semantic-release
-          npm run deploy -- --no-silent --name="Mr. Dharmen's Bot" --email=shhdharmen@gmail.com
+          npx angular-cli-ghpages --name="mr. Dharmen's Bot" --email=shhdharmen@gmail.com --dir=dist/cmdk/browser
