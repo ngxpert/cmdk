@@ -81,6 +81,7 @@
     "prettier": "^2.7.1",
     "sass": "^1.58.3",
     "semantic-release": "^19.0.3",
+    "serve": "^14.2.3",
     "start-server-and-test": "^2.0.4",
     "typescript": "~5.4.5"
   },
