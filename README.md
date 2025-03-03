@@ -428,7 +428,7 @@ ngAfterViewInit() {
 
 ### Drop in stylesheets
 
-You can find global stylesheets to drop in as a starting point for styling. See [ngxpert/cmdk/styles](./projects/ngxpert/cmdk/styles) for examples.
+You can find global stylesheets to drop in as a starting point for styling. See [src/app/themes](./src/app/themes) for examples.
 
 You can include the `SCSS` stylesheet in your application's style file:
 
