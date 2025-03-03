@@ -101,7 +101,8 @@ import {
   InputDirective,
   ItemDirective,
   ListComponent,
-  EmptyDirective
+  EmptyDirective,
+  SeparatorComponent
 } from '@ngxpert/cmdk';
 
 @Component({
@@ -113,7 +114,8 @@ import {
         ListComponent,
         GroupComponent,
         ItemDirective,
-        EmptyDirective
+        EmptyDirective,
+        SeparatorComponent
     ],
 })
 ```
