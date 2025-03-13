@@ -37,7 +37,7 @@
     "@angular/router": "^18.0.4",
     "@ngneat/overview": "6.0.0",
     "@ngneat/until-destroy": "10.0.0",
-    "prismjs": "^1.29.0",
+    "prismjs": "^1.30.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.4"
