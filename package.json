@@ -67,7 +67,7 @@
     "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
     "cypress": "^13.12.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.25.0",
     "husky": "^8.0.1",
     "jasmine-core": "~4.2.0",
     "jsonc-parser": "^3.1.0",
