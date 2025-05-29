@@ -36,7 +36,8 @@ Demo and examples: [ngxpert.github.io/cmdk](https://ngxpert.github.io/cmdk)
 | ------------- | -------- |
 | 1.x           | >=16 <17 |
 | 2.x           | >=17 <18 |
-| 3.x           | >=18     |
+| 3.x           | ^18.0.0, ^19.0.0 |
+| 4.x | >=20.0.0 |
 
 <details>
 <summary>For older versions</summary>
