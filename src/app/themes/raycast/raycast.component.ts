@@ -21,7 +21,6 @@ import {
 @Component({
     selector: 'app-raycast',
     templateUrl: './raycast.component.html',
-    standalone: true,
     imports: [
         CommandComponent,
         InputDirective,
@@ -39,7 +38,7 @@ import {
         HammerIconComponent,
         RaycastLightIconComponent,
         SubCommandComponent,
-    ],
+    ]
 })
 export class RaycastComponent {
   value = 'Linear';

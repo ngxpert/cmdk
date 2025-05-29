@@ -14,14 +14,13 @@ import { FramerComponent } from '../../themes/framer/framer.component';
 @Component({
     selector: 'app-theme-switcher',
     templateUrl: './theme-switcher.component.html',
-    standalone: true,
     imports: [
-    FramerComponent,
-    LinearComponent,
-    RaycastComponent,
-    VercelComponent,
-    DynamicViewDirective
-],
+        FramerComponent,
+        LinearComponent,
+        RaycastComponent,
+        VercelComponent,
+        DynamicViewDirective
+    ]
 })
 export class ThemeSwitcherComponent {
   currentTheme: Theme = 'raycast';

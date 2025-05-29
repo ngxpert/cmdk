@@ -14,11 +14,10 @@ import { CopiedComponent } from '../../../icons/copied/copied.component';
     selector: 'app-code-block',
     templateUrl: './code-block.component.html',
     styleUrls: ['./code-block.component.scss'],
-    standalone: true,
     imports: [
-    CopiedComponent,
-    CopyComponent
-],
+        CopiedComponent,
+        CopyComponent
+    ]
 })
 export class CodeBlockComponent implements OnChanges {
   @Input() language = 'typescript';

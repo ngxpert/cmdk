@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-projects-icon',
-  template: `<svg
+    selector: 'app-projects-icon',
+    template: `<svg
     fill="none"
     height="24"
     shape-rendering="geometricPrecision"
@@ -18,6 +18,7 @@ import { Component } from '@angular/core';
     <path d="M14 14h7v7h-7z"></path>
     <path d="M3 14h7v7H3z"></path>
   </svg>`,
-  styles: [],
+    styles: [],
+    standalone: false
 })
 export class ProjectsIconComponent {}

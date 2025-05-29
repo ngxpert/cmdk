@@ -7,12 +7,11 @@ import { CopiedComponent } from '../../icons/copied/copied.component';
 @Component({
     selector: 'app-meta',
     templateUrl: './meta.component.html',
-    standalone: true,
     imports: [
-    CopiedComponent,
-    GithubComponent,
-    CopyComponent
-],
+        CopiedComponent,
+        GithubComponent,
+        CopyComponent
+    ]
 })
 export class MetaComponent {
   @Input() version: string | null = '0.0.1';
