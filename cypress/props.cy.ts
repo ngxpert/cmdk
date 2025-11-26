@@ -1,9 +1,9 @@
-import { TestsModule } from 'src/app/tests/tests.module';
+import { GroupComponent } from "src/app/tests/group.component";
 
 describe('props', () => {
   it('results match against custom filter', async () => {
     cy.mount("<app-props [customFilter]='true'></app-props>", {
-      imports: [TestsModule],
+      imports: [GroupComponent],
     });
     cy.get(`[cmdkinput]`).type(`ant`);
     cy.get(`[cmdkitem]`).should('have.data', 'value', 'ant');
@@ -11,7 +11,7 @@ describe('props', () => {
 
   it('controlled value', () => {
     cy.mount('<app-props></app-props>', {
-      imports: [TestsModule],
+      imports: [GroupComponent],
     });
     cy.get(`[cmdkitem][aria-selected="true"]`).should(
       'have.data',
@@ -28,7 +28,7 @@ describe('props', () => {
 
   it('controlled search', () => {
     cy.mount('<app-props></app-props>', {
-      imports: [TestsModule],
+      imports: [GroupComponent],
     });
     cy.get(`[cmdkitem][aria-selected="true"]`).should(
       'have.data',

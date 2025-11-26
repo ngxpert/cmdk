@@ -1,8 +1,8 @@
-import { TestsModule } from 'src/app/tests/tests.module';
+import { GroupComponent } from "src/app/tests/group.component";
 
 describe('group', async () => {
   beforeEach(() => {
-    cy.mount(`<app-group></app-group>`, { imports: [TestsModule] });
+    cy.mount(`<app-group></app-group>`, { imports: [GroupComponent] });
   });
 
   it('groups are shown/hidden based on item matches', () => {

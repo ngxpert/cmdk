@@ -1,8 +1,8 @@
-import { TestsModule } from 'src/app/tests/tests.module';
+import { GroupComponent } from "src/app/tests/group.component";
 
 describe('item', () => {
   beforeEach(() => {
-    cy.mount(`<app-item></app-item>`, { imports: [TestsModule] });
+    cy.mount(`<app-item></app-item>`, { imports: [GroupComponent] });
   });
 
   it('mounted item matches search', () => {
