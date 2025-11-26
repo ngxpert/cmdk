@@ -28,6 +28,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           component: true
+          install-command: npm ci --legacy-peer-deps
 
       - name: Lint, build and release
         env:
