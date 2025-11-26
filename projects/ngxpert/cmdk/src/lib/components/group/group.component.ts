@@ -24,8 +24,7 @@ let cmdkGroupId = 0;
         class: 'cmdk-group',
     },
     styleUrls: ['./group.component.scss'],
-    standalone: true,
-    imports: [DynamicViewDirective],
+    imports: [DynamicViewDirective]
 })
 export class GroupComponent implements CmdkGroupProps {
   @Input() label?: Content;

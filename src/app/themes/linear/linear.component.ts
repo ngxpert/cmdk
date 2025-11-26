@@ -19,15 +19,14 @@ import { DynamicViewDirective } from '@ngneat/overview';
 @Component({
     selector: 'app-linear',
     templateUrl: './linear.component.html',
-    standalone: true,
     imports: [
-    CommandComponent,
-    InputDirective,
-    ListComponent,
-    EmptyDirective,
-    ItemDirective,
-    DynamicViewDirective
-],
+        CommandComponent,
+        InputDirective,
+        ListComponent,
+        EmptyDirective,
+        ItemDirective,
+        DynamicViewDirective
+    ]
 })
 export class LinearComponent {
   readonly items = [

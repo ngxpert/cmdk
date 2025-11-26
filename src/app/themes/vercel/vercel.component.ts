@@ -20,18 +20,17 @@ import {
 @Component({
     selector: 'app-vercel',
     templateUrl: './vercel.component.html',
-    standalone: true,
     imports: [
-    CommandComponent,
-    NgStyle,
-    InputDirective,
-    ListComponent,
-    EmptyDirective,
-    GroupComponent,
-    SeparatorComponent,
-    ItemDirective,
-    DynamicViewDirective
-],
+        CommandComponent,
+        NgStyle,
+        InputDirective,
+        ListComponent,
+        EmptyDirective,
+        GroupComponent,
+        SeparatorComponent,
+        ItemDirective,
+        DynamicViewDirective
+    ]
 })
 export class VercelComponent {
   @ViewChild('cmdkCommand') cmdkCommand!: ElementRef<HTMLDivElement>;

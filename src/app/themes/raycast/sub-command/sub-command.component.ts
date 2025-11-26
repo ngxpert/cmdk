@@ -6,12 +6,11 @@ import { CdkOverlayOrigin, CdkConnectedOverlay } from '@angular/cdk/overlay';
     selector: 'app-sub-command',
     templateUrl: './sub-command.component.html',
     styleUrls: ['./sub-command.component.scss'],
-    standalone: true,
     imports: [
         CdkOverlayOrigin,
         CdkConnectedOverlay,
         SubCommandDialogComponent,
-    ],
+    ]
 })
 export class SubCommandComponent implements OnInit, OnDestroy {
   @Input() value: string = '';
