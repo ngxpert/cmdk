@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         env:
           HUSKY_SKIP_INSTALL: true
-        run: npm ci
+        run: npm ci --force
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
