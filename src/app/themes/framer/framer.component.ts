@@ -20,16 +20,15 @@ import { SearchComponent } from 'src/app/icons/search/search.component';
 @Component({
     selector: 'app-framer',
     templateUrl: './framer.component.html',
-    standalone: true,
     imports: [
-    CommandComponent,
-    SearchComponent,
-    InputDirective,
-    ListComponent,
-    GroupComponent,
-    ItemDirective,
-    DynamicViewDirective
-],
+        CommandComponent,
+        SearchComponent,
+        InputDirective,
+        ListComponent,
+        GroupComponent,
+        ItemDirective,
+        DynamicViewDirective
+    ]
 })
 export class FramerComponent {
   value = 'Button';

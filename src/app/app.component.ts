@@ -10,14 +10,13 @@ import { AsyncPipe } from '@angular/common';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    standalone: true,
     imports: [
-    MetaComponent,
-    ThemeSwitcherComponent,
-    CodeBlockComponent,
-    FooterComponent,
-    AsyncPipe
-],
+        MetaComponent,
+        ThemeSwitcherComponent,
+        CodeBlockComponent,
+        FooterComponent,
+        AsyncPipe
+    ]
 })
 export class AppComponent {
   currentTheme: 'light' | 'dark' = 'light';

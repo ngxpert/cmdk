@@ -11,8 +11,7 @@ import { NgStyle } from '@angular/common';
       <ng-content></ng-content>
     </div>
   </div>`,
-    standalone: true,
-    imports: [NgStyle],
+    imports: [NgStyle]
 })
 export class LogoComponent {
   @Input() size = 20;

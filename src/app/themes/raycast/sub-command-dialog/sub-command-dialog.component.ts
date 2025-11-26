@@ -19,16 +19,15 @@ export interface SubCommandDialogData {
 @Component({
     selector: 'app-sub-command-dialog',
     templateUrl: './sub-command-dialog.component.html',
-    standalone: true,
     imports: [
-    CommandComponent,
-    ListComponent,
-    GroupComponent,
-    ItemDirective,
-    forwardRef(() => RayCastSubItemComponent),
-    InputDirective,
-    DynamicViewDirective
-],
+        CommandComponent,
+        ListComponent,
+        GroupComponent,
+        ItemDirective,
+        forwardRef(() => RayCastSubItemComponent),
+        InputDirective,
+        DynamicViewDirective
+    ]
 })
 export class SubCommandDialogComponent implements AfterViewInit {
   @Input() value = '';
@@ -78,8 +77,7 @@ export class SubCommandDialogComponent implements AfterViewInit {
       }
     `,
     ],
-    standalone: true,
-    imports: [],
+    imports: []
 })
 export class RayCastSubItemComponent {
   @Input() shortcut = '';

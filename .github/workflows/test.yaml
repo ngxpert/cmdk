@@ -17,17 +17,18 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: "24.x"
 
       - name: Install dependencies
         env:
           HUSKY_SKIP_INSTALL: true
-        run: npm ci
+        run: npm ci --force
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           component: true
+          install-command: npm ci --legacy-peer-deps
 
       - name: Lint, build and release
         env:

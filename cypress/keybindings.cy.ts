@@ -1,8 +1,8 @@
-import { TestsModule } from 'src/app/tests/tests.module';
+import { GroupComponent } from "src/app/tests/group.component";
 
 describe('arrow keybinds', async () => {
   beforeEach(() => {
-    cy.mount('<app-keybindings></app-keybindings>', { imports: [TestsModule] });
+    cy.mount('<app-keybindings></app-keybindings>', { imports: [GroupComponent] });
   });
 
   test('arrow up/down changes selected item', () => {
